@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AvaxLens - Contract Analytics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);
+        }
+        .card {
+            background: #1A1A1A;
+            border: 1px solid #2A2A2A;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #E84142 0%, #FF6B6B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white">
+    <!-- Header -->
+    <header class="border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <a href="/" class="text-2xl font-bold">
+                    <span class="gradient-text">AVAXLENS</span>
+                </a>
+                <nav class="hidden md:flex gap-6 text-gray-400">
+                    <a href="#" class="hover:text-white transition">Docs</a>
+                    <a href="#" class="hover:text-white transition">GitHub</a>
+                </nav>
+            </div>
+            <button class="bg-[#E84142] hover:bg-[#d63637] px-4 py-2 rounded-lg font-medium transition">
+                Launch App
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Contract Info -->
+        <div class="mb-8">
+            <div class="flex items-center gap-3 mb-2">
+                <a href="/" class="text-gray-400 hover:text-white">←</a>
+                <h1 class="text-xl font-semibold">Contract Dashboard</h1>
+            </div>
+            <div class="card rounded-xl p-6">
+                <div class="flex items-start justify-between flex-wrap gap-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-gray-400 font-mono text-sm">0x60aE616a2155Ee3d9A68541Ba4544862310933d4</span>
+                            <span class="bg-green-900 text-green-400 px-2 py-0.5 rounded text-xs font-medium">✓ Verified</span>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-1">Trader Joe Router</h2>
+                        <p class="text-gray-400 text-sm">Created: Jan 15, 2024 • C-Chain</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-lg text-sm transition">
+                            🔗 Share
+                        </button>
+                        <button class="bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-lg text-sm transition">
+                            ⋮
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="card rounded-xl p-5">
+                <p class="text-gray-400 text-sm mb-1">Total Transactions</p>
+                <p class="text-3xl font-bold">2,847,392</p>
+                <p class="text-green-400 text-sm mt-1">↑ 12.5%</p>
+            </div>
+            <div class="card rounded-xl p-5">
+                <p class="text-gray-400 text-sm mb-1">Success Rate</p>
+                <p class="text-3xl font-bold text-green-400">94.2%</p>
+                <p class="text-gray-500 text-sm mt-1">↓ 0.3%</p>
+            </div>
+            <div class="card rounded-xl p-5">
+                <p class="text-gray-400 text-sm mb-1">Unique Callers</p>
+                <p class="text-3xl font-bold">124,591</p>
+                <p class="text-green-400 text-sm mt-1">↑ 8.2%</p>
+            </div>
+            <div class="card rounded-xl p-5">
+                <p class="text-gray-400 text-sm mb-1">Avg Gas Used</p>
+                <p class="text-3xl font-bold">142,300</p>
+                <p class="text-gray-500 text-sm mt-1">↓ 5.1%</p>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex gap-1 mb-6 bg-gray-900 p-1 rounded-lg w-fit">
+            <button class="bg-[#E84142] px-4 py-2 rounded-md text-sm font-medium">Overview</button>
+            <button class="px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition">Transactions</button>
+            <button class="px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition">Functions</button>
+            <button class="px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition">Errors</button>
+            <button class="px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition">Callers</button>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid lg:grid-cols-2 gap-6">
+            <!-- Transaction Volume Chart -->
+            <div class="card rounded-xl p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-semibold">Transaction Volume (30 days)</h3>
+                    <div class="flex gap-2">
+                        <button class="bg-gray-800 px-3 py-1 rounded text-sm">7d</button>
+                        <button class="bg-[#E84142] px-3 py-1 rounded text-sm">30d</button>
+                        <button class="bg-gray-800 px-3 py-1 rounded text-sm">90d</button>
+                    </div>
+                </div>
+                <div class="h-48 flex items-end justify-between gap-2">
+                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 85%">
+                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 1</span>
+                    </div>
+                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 72%">
+                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 5</span>
+                    </div>
+                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 90%">
+                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 10</span>
+                    </div>
+                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 65%">
+                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 15</span>
+                    </div>
+                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 78%">
+                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 20</span>
+                    </div>
+                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 95%">
+                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 25</span>
+                    </div>
+                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 100%">
+                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 29</span>
+                    </div>
+                </div>
+                <div class="flex justify-between mt-2 text-xs text-gray-500">
+                    <span>800K</span>
+                    <span>1.2M</span>
+                </div>
+            </div>
+
+            <!-- Success/Fail Trend -->
+            <div class="card rounded-xl p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-semibold">Success / Fail Trend</h3>
+                    <div class="flex gap-4 text-sm">
+                        <span class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-green-500 rounded"></span>
+                            Success
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <span class="w-3 h-3 bg-red-500 rounded"></span>
+                            Failed
+                        </span>
+                    </div>
+                </div>
+                <div class="h-48 flex items-end justify-between gap-2">
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 88%"></div>
+                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 12%"></div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 90%"></div>
+                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 10%"></div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 85%"></div>
+                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 15%"></div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 92%"></div>
+                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 8%"></div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 87%"></div>
+                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 13%"></div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 94%"></div>
+                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 6%"></div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center gap-1">
+                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 91%"></div>
+                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 9%"></div>
+                    </div>
+                </div>
+                <div class="flex justify-center mt-4 text-sm text-gray-400">
+                    Avg: 94% Success • 6% Failed
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Functions Table -->
+        <div class="card rounded-xl p-6 mt-6">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-semibold">Top Functions</h3>
+                <select class="bg-gray-800 px-3 py-2 rounded-lg text-sm">
+                    <option>Sort by Calls ↓</option>
+                    <option>Sort by Success Rate</option>
+                    <option>Sort by Gas</option>
+                </select>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-gray-400 text-sm border-b border-gray-800">
+                            <th class="text-left py-3 px-4">Function</th>
+                            <th class="text-right py-3 px-4">Calls</th>
+                            <th class="text-right py-3 px-4">%</th>
+                            <th class="text-right py-3 px-4">Success Rate</th>
+                            <th class="text-right py-3 px-4">Avg Gas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-800 hover:bg-gray-800/50">
+                            <td class="py-3 px-4 font-mono text-sm">swap(uint256,address,uint256,uint256)</td>
+                            <td class="py-3 px-4 text-right font-medium">4,201</td>
+                            <td class="py-3 px-4 text-right text-gray-400">32.1%</td>
+                            <td class="py-3 px-4 text-right text-green-400">97.2%</td>
+                            <td class="py-3 px-4 text-right">185,000</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 hover:bg-gray-800/50">
+                            <td class="py-3 px-4 font-mono text-sm">addLiquidity(...)</td>
+                            <td class="py-3 px-4 text-right font-medium">2,100</td>
+                            <td class="py-3 px-4 text-right text-gray-400">16.0%</td>
+                            <td class="py-3 px-4 text-right text-green-400">99.1%</td>
+                            <td class="py-3 px-4 text-right">250,000</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 hover:bg-gray-800/50">
+                            <td class="py-3 px-4 font-mono text-sm">removeLiquidity(...)</td>
+                            <td class="py-3 px-4 text-right font-medium">1,803</td>
+                            <td class="py-3 px-4 text-right text-gray-400">13.8%</td>
+                            <td class="py-3 px-4 text-right text-green-400">98.5%</td>
+                            <td class="py-3 px-4 text-right">210,000</td>
+                        </tr>
+                        <tr class="border-b border-gray-800 hover:bg-gray-800/50">
+                            <td class="py-3 px-4 font-mono text-sm">claim()</td>
+                            <td class="py-3 px-4 text-right font-medium">890</td>
+                            <td class="py-3 px-4 text-right text-gray-400">6.8%</td>
+                            <td class="py-3 px-4 text-right text-yellow-400">95.0%</td>
+                            <td class="py-3 px-4 text-right">95,000</td>
+                        </tr>
+                        <tr class="hover:bg-gray-800/50">
+                            <td class="py-3 px-4 font-mono text-sm">getReserves()</td>
+                            <td class="py-3 px-4 text-right font-medium">654</td>
+                            <td class="py-3 px-4 text-right text-gray-400">5.0%</td>
+                            <td class="py-3 px-4 text-right text-green-400">100%</td>
+                            <td class="py-3 px-4 text-right">15,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>AvaxLens — Understand your contract in 10 seconds</p>
+        </div>
+    </footer>
+</body>
+</html>
