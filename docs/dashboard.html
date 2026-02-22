@@ -24,6 +24,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .chart-bar {
+            transition: all 0.3s ease;
+        }
+        .chart-bar:hover {
+            filter: brightness(1.2);
+            transform: scaleY(1.02);
+            transform-origin: bottom;
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen text-white">
@@ -120,30 +128,25 @@
                         <button class="bg-gray-800 px-3 py-1 rounded text-sm">90d</button>
                     </div>
                 </div>
-                <div class="h-48 flex items-end justify-between gap-2">
-                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 85%">
-                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 1</span>
-                    </div>
-                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 72%">
-                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 5</span>
-                    </div>
-                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 90%">
-                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 10</span>
-                    </div>
-                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 65%">
-                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 15</span>
-                    </div>
-                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 78%">
-                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 20</span>
-                    </div>
-                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 95%">
-                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 25</span>
-                    </div>
-                    <div class="flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t opacity-80 hover:opacity-100 transition" style="height: 100%">
-                        <span class="text-xs text-gray-400 block text-center pt-2">Jan 29</span>
-                    </div>
+                <div class="h-40 flex items-end justify-between gap-2">
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 85%"></div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 72%"></div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 90%"></div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 65%"></div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 78%"></div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 95%"></div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 100%"></div>
                 </div>
-                <div class="flex justify-between mt-2 text-xs text-gray-500">
+                <div class="flex justify-between mt-3 text-xs text-gray-500">
+                    <span>Jan 1</span>
+                    <span>Jan 5</span>
+                    <span>Jan 10</span>
+                    <span>Jan 15</span>
+                    <span>Jan 20</span>
+                    <span>Jan 25</span>
+                    <span>Jan 29</span>
+                </div>
+                <div class="flex justify-between mt-1 text-xs text-gray-600 font-medium">
                     <span>800K</span>
                     <span>1.2M</span>
                 </div>
@@ -164,38 +167,50 @@
                         </span>
                     </div>
                 </div>
-                <div class="h-48 flex items-end justify-between gap-2">
-                    <div class="flex-1 flex flex-col items-center gap-1">
-                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 88%"></div>
-                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 12%"></div>
+                <div class="h-40 flex items-end justify-between gap-1">
+                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
+                        <div class="w-full bg-green-500" style="height: 88%"></div>
+                        <div class="w-full bg-red-500" style="height: 12%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col items-center gap-1">
-                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 90%"></div>
-                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 10%"></div>
+                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
+                        <div class="w-full bg-green-500" style="height: 90%"></div>
+                        <div class="w-full bg-red-500" style="height: 10%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col items-center gap-1">
-                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 85%"></div>
-                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 15%"></div>
+                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
+                        <div class="w-full bg-green-500" style="height: 85%"></div>
+                        <div class="w-full bg-red-500" style="height: 15%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col items-center gap-1">
-                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 92%"></div>
-                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 8%"></div>
+                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
+                        <div class="w-full bg-green-500" style="height: 92%"></div>
+                        <div class="w-full bg-red-500" style="height: 8%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col items-center gap-1">
-                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 87%"></div>
-                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 13%"></div>
+                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
+                        <div class="w-full bg-green-500" style="height: 87%"></div>
+                        <div class="w-full bg-red-500" style="height: 13%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col items-center gap-1">
-                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 94%"></div>
-                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 6%"></div>
+                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
+                        <div class="w-full bg-green-500" style="height: 94%"></div>
+                        <div class="w-full bg-red-500" style="height: 6%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col items-center gap-1">
-                        <div class="w-full bg-green-500 rounded-t opacity-80" style="height: 91%"></div>
-                        <div class="w-full bg-red-500 rounded-t opacity-80" style="height: 9%"></div>
+                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
+                        <div class="w-full bg-green-500" style="height: 91%"></div>
+                        <div class="w-full bg-red-500" style="height: 9%"></div>
                     </div>
                 </div>
-                <div class="flex justify-center mt-4 text-sm text-gray-400">
-                    Avg: 94% Success • 6% Failed
+                <div class="flex justify-between mt-3 text-xs text-gray-500">
+                    <span>Jan 1</span>
+                    <span>Jan 5</span>
+                    <span>Jan 10</span>
+                    <span>Jan 15</span>
+                    <span>Jan 20</span>
+                    <span>Jan 25</span>
+                    <span>Jan 29</span>
+                </div>
+                <div class="flex justify-center mt-4 text-sm font-medium">
+                    <span class="text-green-400">94%</span>
+                    <span class="text-gray-500 mx-2">•</span>
+                    <span class="text-red-400">6%</span>
+                    <span class="text-gray-500 ml-2">Avg</span>
                 </div>
             </div>
         </div>
@@ -269,5 +284,65 @@
             <p>AvaxLens — Understand your contract in 10 seconds</p>
         </div>
     </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Tab navigation
+        const tabButtons = document.querySelectorAll('.flex.gap-1 button');
+        tabButtons.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabButtons.forEach(t => {
+                    t.classList.remove('bg-[#E84142]');
+                    t.classList.add('text-gray-400');
+                });
+                this.classList.add('bg-[#E84142]');
+                this.classList.remove('text-gray-400');
+            });
+        });
+
+        // Period buttons (7d/30d/90d) - first group
+        const periodButtons = document.querySelectorAll('.card:first-of-type .flex.gap-2 button');
+        periodButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                periodButtons.forEach(b => {
+                    b.classList.remove('bg-[#E84142]');
+                    b.classList.add('bg-gray-800');
+                });
+                this.classList.remove('bg-gray-800');
+                this.classList.add('bg-[#E84142]');
+            });
+        });
+
+        // Sort dropdown functionality
+        const sortSelect = document.querySelector('select');
+        const tableBody = document.querySelector('tbody');
+
+        sortSelect.addEventListener('change', function() {
+            const rows = Array.from(tableBody.querySelectorAll('tr'));
+            const sortType = this.value;
+
+            if (sortType === 'Sort by Calls ↓') {
+                rows.sort((a, b) => {
+                    const aVal = parseInt(a.children[1].textContent.replace(/,/g, ''));
+                    const bVal = parseInt(b.children[1].textContent.replace(/,/g, ''));
+                    return bVal - aVal;
+                });
+            } else if (sortType === 'Sort by Success Rate') {
+                rows.sort((a, b) => {
+                    const aVal = parseFloat(a.children[3].textContent);
+                    const bVal = parseFloat(b.children[3].textContent);
+                    return bVal - aVal;
+                });
+            } else if (sortType === 'Sort by Gas') {
+                rows.sort((a, b) => {
+                    const aVal = parseInt(a.children[4].textContent.replace(/,/g, ''));
+                    const bVal = parseInt(b.children[4].textContent.replace(/,/g, ''));
+                    return bVal - aVal;
+                });
+            }
+
+            rows.forEach(row => tableBody.appendChild(row));
+        });
+    </script>
 </body>
 </html>
