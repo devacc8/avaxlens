@@ -13,11 +13,11 @@
             font-family: 'Inter', sans-serif;
         }
         .gradient-bg {
-            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
         }
         .card {
-            background: #1A1A1A;
-            border: 1px solid #2A2A2A;
+            background: #1e293b;
+            border: 1px solid #334155;
         }
         .gradient-text {
             background: linear-gradient(135deg, #E84142 0%, #FF6B6B 100%);
@@ -26,11 +26,36 @@
         }
         .chart-bar {
             transition: all 0.3s ease;
+            position: relative;
         }
         .chart-bar:hover {
-            filter: brightness(1.2);
-            transform: scaleY(1.02);
-            transform-origin: bottom;
+            filter: brightness(1.1);
+        }
+        .chart-value {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            white-space: nowrap;
+        }
+        .tab-content {
+            display: block;
+        }
+        .tab-content.hidden {
+            display: none;
+        }
+        /* Toast notification */
+        #toast {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #toast.hidden {
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
         }
     </style>
 </head>
@@ -39,7 +64,7 @@
     <header class="border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center gap-8">
-                <a href="/" class="text-2xl font-bold">
+                <a href="index.html" class="text-2xl font-bold">
                     <span class="gradient-text">AVAXLENS</span>
                 </a>
                 <nav class="hidden md:flex gap-6 text-gray-400">
@@ -47,97 +72,123 @@
                     <a href="#" class="hover:text-white transition">GitHub</a>
                 </nav>
             </div>
-            <button class="bg-[#E84142] hover:bg-[#d63637] px-4 py-2 rounded-lg font-medium transition">
-                Launch App
-            </button>
         </div>
     </header>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-gray-800 text-white px-4 py-3 rounded-lg shadow-lg border border-gray-700 hidden z-50">
+        <span id="toastMessage">Link copied!</span>
+    </div>
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 py-8">
         <!-- Contract Info -->
         <div class="mb-8">
             <div class="flex items-center gap-3 mb-2">
-                <a href="/" class="text-gray-400 hover:text-white">←</a>
+                <a href="index.html" class="text-gray-400 hover:text-white">←</a>
                 <h1 class="text-xl font-semibold">Contract Dashboard</h1>
             </div>
             <div class="card rounded-xl p-6">
-                <div class="flex items-start justify-between flex-wrap gap-4">
-                    <div>
+                <div class="flex items-start justify-between gap-4">
+                    <div class="flex-1">
                         <div class="flex items-center gap-2 mb-1">
                             <span class="text-gray-400 font-mono text-sm">0x60aE616a2155Ee3d9A68541Ba4544862310933d4</span>
-                            <span class="bg-green-900 text-green-400 px-2 py-0.5 rounded text-xs font-medium">✓ Verified</span>
+                            <span class="px-2 py-0.5 rounded text-xs font-medium" style="background: #14532d; color: #4ade80">✓ Verified</span>
                         </div>
                         <h2 class="text-2xl font-bold mb-1">Trader Joe Router</h2>
                         <p class="text-gray-400 text-sm">Created: Jan 15, 2024 • C-Chain</p>
                     </div>
-                    <div class="flex gap-2">
-                        <button class="bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-lg text-sm transition">
-                            🔗 Share
-                        </button>
-                        <button class="bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-lg text-sm transition">
-                            ⋮
-                        </button>
+                    <div class="flex gap-2" style="min-width: 180px; justify-content: flex-end;">
+                        <div class="relative">
+                            <button id="menuBtn" style="background: #4b5563; border: 1px solid #6b7280; padding: 8px 12px; border-radius: 8px; color: white; font-weight: 500; cursor: pointer;">
+                                ⋮
+                            </button>
+                            <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg py-1 z-50 border border-gray-700">
+                                <a href="https://snowtrace.io/address/0x60aE616a2155Ee3d9A68541Ba4544862310933d4" target="_blank" class="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition">
+                                    <span>🔍</span> Open in Snowtrace
+                                </a>
+                                <button id="copyAddressBtn" class="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 transition">
+                                    <span>📋</span> Copy Address
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Metric Cards -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8" id="overview-metrics">
             <div class="card rounded-xl p-5">
                 <p class="text-gray-400 text-sm mb-1">Total Transactions</p>
-                <p class="text-3xl font-bold">2,847,392</p>
-                <p class="text-green-400 text-sm mt-1">↑ 12.5%</p>
+                <p class="text-3xl font-bold" id="totalTx">2,847,392</p>
+                <p class="text-sm mt-1" style="color: #4ade80" id="txChange">↑ 12.5%</p>
             </div>
             <div class="card rounded-xl p-5">
                 <p class="text-gray-400 text-sm mb-1">Success Rate</p>
-                <p class="text-3xl font-bold text-green-400">94.2%</p>
-                <p class="text-gray-500 text-sm mt-1">↓ 0.3%</p>
+                <p class="text-3xl font-bold" style="color: #4ade80" id="successRate">94.2%</p>
+                <p class="text-gray-500 text-sm mt-1" id="successChange">↓ 0.3%</p>
             </div>
             <div class="card rounded-xl p-5">
                 <p class="text-gray-400 text-sm mb-1">Unique Callers</p>
-                <p class="text-3xl font-bold">124,591</p>
-                <p class="text-green-400 text-sm mt-1">↑ 8.2%</p>
+                <p class="text-3xl font-bold" id="uniqueCallers">124,591</p>
+                <p class="text-sm mt-1" style="color: #4ade80" id="callersChange">↑ 8.2%</p>
             </div>
             <div class="card rounded-xl p-5">
                 <p class="text-gray-400 text-sm mb-1">Avg Gas Used</p>
-                <p class="text-3xl font-bold">142,300</p>
-                <p class="text-gray-500 text-sm mt-1">↓ 5.1%</p>
+                <p class="text-3xl font-bold" id="avgGas">142,300</p>
+                <p class="text-gray-500 text-sm mt-1" id="gasChange">↓ 5.1%</p>
             </div>
         </div>
 
         <!-- Tabs -->
         <div class="flex gap-1 mb-6 bg-gray-900 p-1 rounded-lg w-fit">
-            <button class="bg-[#E84142] px-4 py-2 rounded-md text-sm font-medium">Overview</button>
-            <button class="px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition">Transactions</button>
-            <button class="px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition">Functions</button>
-            <button class="px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition">Errors</button>
-            <button class="px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition">Callers</button>
+            <button class="tab-btn bg-[#E84142] px-4 py-2 rounded-md text-sm font-medium" data-tab="overview">Overview</button>
+            <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="transactions">Transactions</button>
+            <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="functions">Functions</button>
+            <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="errors">Errors</button>
+            <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="callers">Callers</button>
         </div>
 
+        <!-- Tab Content: Overview -->
+        <div id="tab-overview" class="tab-content">
+
         <!-- Charts Section -->
-        <div class="grid lg:grid-cols-2 gap-6">
+        <div class="grid lg:grid-cols-2 gap-6" id="overview-charts">
             <!-- Transaction Volume Chart -->
             <div class="card rounded-xl p-6">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="font-semibold">Transaction Volume (30 days)</h3>
-                    <div class="flex gap-2">
-                        <button class="bg-gray-800 px-3 py-1 rounded text-sm">7d</button>
-                        <button class="bg-[#E84142] px-3 py-1 rounded text-sm">30d</button>
-                        <button class="bg-gray-800 px-3 py-1 rounded text-sm">90d</button>
+                    <div class="flex gap-2" id="periodButtons">
+                        <button class="bg-gray-800 px-3 py-1 rounded text-sm period-btn" data-period="7d">7d</button>
+                        <button class="bg-[#E84142] px-3 py-1 rounded text-sm period-btn" data-period="30d">30d</button>
+                        <button class="bg-gray-800 px-3 py-1 rounded text-sm period-btn" data-period="90d">90d</button>
                     </div>
                 </div>
-                <div class="h-40 flex items-end justify-between gap-2">
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 85%"></div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 72%"></div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 90%"></div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 65%"></div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 78%"></div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 95%"></div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#E84142] to-[#FF6B6B] rounded-t" style="height: 100%"></div>
+                <div class="h-40 flex items-end justify-between gap-2" id="volumeChart">
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 85%">
+                        <span class="chart-value">1.0M</span>
+                    </div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 72%">
+                        <span class="chart-value">860K</span>
+                    </div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 90%">
+                        <span class="chart-value">1.1M</span>
+                    </div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 65%">
+                        <span class="chart-value">780K</span>
+                    </div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 78%">
+                        <span class="chart-value">940K</span>
+                    </div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 95%">
+                        <span class="chart-value">1.1M</span>
+                    </div>
+                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 100%">
+                        <span class="chart-value">1.2M</span>
+                    </div>
                 </div>
-                <div class="flex justify-between mt-3 text-xs text-gray-500">
+                <div class="flex justify-between mt-3 text-xs text-gray-500" id="volumeLabels">
                     <span>Jan 1</span>
                     <span>Jan 5</span>
                     <span>Jan 10</span>
@@ -146,7 +197,7 @@
                     <span>Jan 25</span>
                     <span>Jan 29</span>
                 </div>
-                <div class="flex justify-between mt-1 text-xs text-gray-600 font-medium">
+                <div class="flex justify-between mt-1 text-xs text-gray-600 font-medium" id="volumeScale">
                     <span>800K</span>
                     <span>1.2M</span>
                 </div>
@@ -167,37 +218,37 @@
                         </span>
                     </div>
                 </div>
-                <div class="h-40 flex items-end justify-between gap-1">
-                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
-                        <div class="w-full bg-green-500" style="height: 88%"></div>
-                        <div class="w-full bg-red-500" style="height: 12%"></div>
+                <div class="h-40 flex items-end justify-between gap-1" id="successFailChart">
+                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 88%">
+                        <div class="w-full bg-green-500 success-bar" style="height: 88%"></div>
+                        <div class="w-full bg-red-500 fail-bar" style="height: 12%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
-                        <div class="w-full bg-green-500" style="height: 90%"></div>
-                        <div class="w-full bg-red-500" style="height: 10%"></div>
+                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 90%">
+                        <div class="w-full bg-green-500 success-bar" style="height: 90%"></div>
+                        <div class="w-full bg-red-500 fail-bar" style="height: 10%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
-                        <div class="w-full bg-green-500" style="height: 85%"></div>
-                        <div class="w-full bg-red-500" style="height: 15%"></div>
+                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 85%">
+                        <div class="w-full bg-green-500 success-bar" style="height: 85%"></div>
+                        <div class="w-full bg-red-500 fail-bar" style="height: 15%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
-                        <div class="w-full bg-green-500" style="height: 92%"></div>
-                        <div class="w-full bg-red-500" style="height: 8%"></div>
+                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 92%">
+                        <div class="w-full bg-green-500 success-bar" style="height: 92%"></div>
+                        <div class="w-full bg-red-500 fail-bar" style="height: 8%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
-                        <div class="w-full bg-green-500" style="height: 87%"></div>
-                        <div class="w-full bg-red-500" style="height: 13%"></div>
+                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 87%">
+                        <div class="w-full bg-green-500 success-bar" style="height: 87%"></div>
+                        <div class="w-full bg-red-500 fail-bar" style="height: 13%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
-                        <div class="w-full bg-green-500" style="height: 94%"></div>
-                        <div class="w-full bg-red-500" style="height: 6%"></div>
+                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 94%">
+                        <div class="w-full bg-green-500 success-bar" style="height: 94%"></div>
+                        <div class="w-full bg-red-500 fail-bar" style="height: 6%"></div>
                     </div>
-                    <div class="flex-1 flex flex-col rounded-t overflow-hidden">
-                        <div class="w-full bg-green-500" style="height: 91%"></div>
-                        <div class="w-full bg-red-500" style="height: 9%"></div>
+                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 91%">
+                        <div class="w-full bg-green-500 success-bar" style="height: 91%"></div>
+                        <div class="w-full bg-red-500 fail-bar" style="height: 9%"></div>
                     </div>
                 </div>
-                <div class="flex justify-between mt-3 text-xs text-gray-500">
+                <div class="flex justify-between mt-3 text-xs text-gray-500" id="successFailLabels">
                     <span>Jan 1</span>
                     <span>Jan 5</span>
                     <span>Jan 10</span>
@@ -207,16 +258,16 @@
                     <span>Jan 29</span>
                 </div>
                 <div class="flex justify-center mt-4 text-sm font-medium">
-                    <span class="text-green-400">94%</span>
+                    <span style="color: #4ade80" id="avgSuccess">94%</span>
                     <span class="text-gray-500 mx-2">•</span>
-                    <span class="text-red-400">6%</span>
-                    <span class="text-gray-500 ml-2">Avg</span>
+                    <span style="color: #f87171" id="avgFail">6%</span>
+                    <span class="text-gray-400 ml-2">Avg</span>
                 </div>
             </div>
         </div>
 
         <!-- Top Functions Table -->
-        <div class="card rounded-xl p-6 mt-6">
+        <div class="card rounded-xl p-6 mt-6" id="overview-functions">
             <div class="flex items-center justify-between mb-6">
                 <h3 class="font-semibold">Top Functions</h3>
                 <select class="bg-gray-800 px-3 py-2 rounded-lg text-sm">
@@ -236,44 +287,97 @@
                             <th class="text-right py-3 px-4">Avg Gas</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="functionsTable">
                         <tr class="border-b border-gray-800 hover:bg-gray-800/50">
                             <td class="py-3 px-4 font-mono text-sm">swap(uint256,address,uint256,uint256)</td>
                             <td class="py-3 px-4 text-right font-medium">4,201</td>
                             <td class="py-3 px-4 text-right text-gray-400">32.1%</td>
-                            <td class="py-3 px-4 text-right text-green-400">97.2%</td>
+                            <td class="py-3 px-4 text-right" style="color: #4ade80">97.2%</td>
                             <td class="py-3 px-4 text-right">185,000</td>
                         </tr>
                         <tr class="border-b border-gray-800 hover:bg-gray-800/50">
                             <td class="py-3 px-4 font-mono text-sm">addLiquidity(...)</td>
                             <td class="py-3 px-4 text-right font-medium">2,100</td>
                             <td class="py-3 px-4 text-right text-gray-400">16.0%</td>
-                            <td class="py-3 px-4 text-right text-green-400">99.1%</td>
+                            <td class="py-3 px-4 text-right" style="color: #4ade80">99.1%</td>
                             <td class="py-3 px-4 text-right">250,000</td>
                         </tr>
                         <tr class="border-b border-gray-800 hover:bg-gray-800/50">
                             <td class="py-3 px-4 font-mono text-sm">removeLiquidity(...)</td>
                             <td class="py-3 px-4 text-right font-medium">1,803</td>
                             <td class="py-3 px-4 text-right text-gray-400">13.8%</td>
-                            <td class="py-3 px-4 text-right text-green-400">98.5%</td>
+                            <td class="py-3 px-4 text-right" style="color: #4ade80">98.5%</td>
                             <td class="py-3 px-4 text-right">210,000</td>
                         </tr>
                         <tr class="border-b border-gray-800 hover:bg-gray-800/50">
                             <td class="py-3 px-4 font-mono text-sm">claim()</td>
                             <td class="py-3 px-4 text-right font-medium">890</td>
                             <td class="py-3 px-4 text-right text-gray-400">6.8%</td>
-                            <td class="py-3 px-4 text-right text-yellow-400">95.0%</td>
+                            <td class="py-3 px-4 text-right" style="color: #facc15">95.0%</td>
                             <td class="py-3 px-4 text-right">95,000</td>
                         </tr>
                         <tr class="hover:bg-gray-800/50">
                             <td class="py-3 px-4 font-mono text-sm">getReserves()</td>
                             <td class="py-3 px-4 text-right font-medium">654</td>
                             <td class="py-3 px-4 text-right text-gray-400">5.0%</td>
-                            <td class="py-3 px-4 text-right text-green-400">100%</td>
+                            <td class="py-3 px-4 text-right" style="color: #4ade80">100%</td>
                             <td class="py-3 px-4 text-right">15,000</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        </div>
+
+        <!-- Tab Content: Transactions (Coming Soon) -->
+        <div id="tab-transactions" class="tab-content hidden">
+            <div class="card rounded-xl p-12 text-center">
+                <div class="text-6xl mb-4">📋</div>
+                <h3 class="text-xl font-semibold mb-2">Transactions</h3>
+                <p class="text-gray-400 mb-4">Detailed transaction list with filters</p>
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg text-sm text-gray-400">
+                    <span class="w-2 h-2 bg-[#E84142] rounded-full animate-pulse"></span>
+                    Coming Soon
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Functions (Coming Soon) -->
+        <div id="tab-functions" class="tab-content hidden">
+            <div class="card rounded-xl p-12 text-center">
+                <div class="text-6xl mb-4">⚡</div>
+                <h3 class="text-xl font-semibold mb-2">Functions</h3>
+                <p class="text-gray-400 mb-4">Detailed breakdown by function with call trends</p>
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg text-sm text-gray-400">
+                    <span class="w-2 h-2 bg-[#E84142] rounded-full animate-pulse"></span>
+                    Coming Soon
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Errors (Coming Soon) -->
+        <div id="tab-errors" class="tab-content hidden">
+            <div class="card rounded-xl p-12 text-center">
+                <div class="text-6xl mb-4">⚠️</div>
+                <h3 class="text-xl font-semibold mb-2">Errors</h3>
+                <p class="text-gray-400 mb-4">Error analysis and breakdown by type</p>
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg text-sm text-gray-400">
+                    <span class="w-2 h-2 bg-[#E84142] rounded-full animate-pulse"></span>
+                    Coming Soon
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Content: Callers (Coming Soon) -->
+        <div id="tab-callers" class="tab-content hidden">
+            <div class="card rounded-xl p-12 text-center">
+                <div class="text-6xl mb-4">👥</div>
+                <h3 class="text-xl font-semibold mb-2">Callers</h3>
+                <p class="text-gray-400 mb-4">Top callers and usage distribution</p>
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 rounded-lg text-sm text-gray-400">
+                    <span class="w-2 h-2 bg-[#E84142] rounded-full animate-pulse"></span>
+                    Coming Soon
+                </div>
             </div>
         </div>
     </main>
@@ -287,21 +391,332 @@
 
     <!-- Interactive Scripts -->
     <script>
+        // Parse URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const addressFromUrl = urlParams.get('address');
+
+        // Contract data based on address
+        const contractNames = {
+            '0x60aE616a2155Ee3d9A68541Ba4544862310933d4': 'Trader Joe Router',
+            '0xE54Ca86531e17Ef3616d22Ca28b0D86bC24b4eA3': 'Pangolin Router',
+            '0xfc5A1A6EB076a2C7ad06e22dc90Fb38d9E600c20': 'GMX Reader',
+            '0x4855d169D58B5C399Ca0D195C7B1FDC8Da1F35A4': 'Benqi Comptroller'
+        };
+
+        // If address in URL, update the page
+        if (addressFromUrl) {
+            const shortAddr = addressFromUrl.slice(0, 6) + '...' + addressFromUrl.slice(-4);
+            const name = contractNames[addressFromUrl] || 'Unknown Contract';
+
+            // Update address display
+            document.querySelectorAll('.text-gray-400.font-mono').forEach(el => {
+                el.textContent = addressFromUrl;
+            });
+
+            // Update contract name
+            document.querySelectorAll('.text-2xl.font-bold').forEach(el => {
+                if (el.textContent.includes('Router') || el.textContent.includes('Reader') || el.textContent.includes('Comptroller') || el.textContent.includes('Unknown')) {
+                    el.textContent = name;
+                }
+            });
+
+            // Update dropdown/Snowtrace links
+            document.querySelectorAll('a[href*="snowtrace"]').forEach(el => {
+                el.href = 'https://snowtrace.io/address/' + addressFromUrl;
+            });
+
+            // Update copy address button
+            const copyBtn = document.getElementById('copyAddressBtn');
+            if (copyBtn) {
+                copyBtn.onclick = function() {
+                    navigator.clipboard.writeText(addressFromUrl).then(function() {
+                        showToast('Address copied!');
+                    });
+                };
+            }
+        }
+
+        // Data for different periods
+        const periodData = {
+            '7d': {
+                metrics: {
+                    totalTx: '284,392',
+                    txChange: '↑ 5.2%',
+                    txChangeColor: '#4ade80',
+                    successRate: '95.8%',
+                    successChange: '↑ 1.2%',
+                    successChangeColor: '#4ade80',
+                    uniqueCallers: '18,245',
+                    callersChange: '↑ 3.1%',
+                    callersChangeColor: '#4ade80',
+                    avgGas: '138,500',
+                    gasChange: '↓ 2.1%',
+                    gasChangeColor: '#9ca3af'
+                },
+                volume: [
+                    { height: '60%', value: '320K' },
+                    { height: '72%', value: '380K' },
+                    { height: '55%', value: '290K' },
+                    { height: '68%', value: '360K' },
+                    { height: '80%', value: '420K' },
+                    { height: '75%', value: '395K' },
+                    { height: '65%', value: '345K' }
+                ],
+                volumeLabels: ['Jan 23', 'Jan 24', 'Jan 25', 'Jan 26', 'Jan 27', 'Jan 28', 'Jan 29'],
+                volumeScale: ['200K', '500K'],
+                successFail: [
+                    { success: 96, fail: 4 },
+                    { success: 95, fail: 5 },
+                    { success: 97, fail: 3 },
+                    { success: 94, fail: 6 },
+                    { success: 96, fail: 4 },
+                    { success: 95, fail: 5 },
+                    { success: 96, fail: 4 }
+                ],
+                successFailLabels: ['Jan 23', 'Jan 24', 'Jan 25', 'Jan 26', 'Jan 27', 'Jan 28', 'Jan 29'],
+                avgSuccess: '96%',
+                avgFail: '4%',
+                functions: [
+                    { name: 'swap(uint256,address,uint256,uint256)', calls: '45,201', pct: '28.5%', success: '97.8%', gas: '182,000', successColor: '#4ade80' },
+                    { name: 'addLiquidity(...)', calls: '22,100', pct: '13.9%', success: '99.2%', gas: '248,000', successColor: '#4ade80' },
+                    { name: 'removeLiquidity(...)', calls: '18,803', pct: '11.8%', success: '98.1%', gas: '205,000', successColor: '#4ade80' },
+                    { name: 'claim()', calls: '12,890', pct: '8.1%', success: '94.5%', gas: '92,000', successColor: '#facc15' },
+                    { name: 'getReserves()', calls: '8,654', pct: '5.4%', success: '100%', gas: '14,000', successColor: '#4ade80' }
+                ]
+            },
+            '30d': {
+                metrics: {
+                    totalTx: '2,847,392',
+                    txChange: '↑ 12.5%',
+                    txChangeColor: '#4ade80',
+                    successRate: '94.2%',
+                    successChange: '↓ 0.3%',
+                    successChangeColor: '#9ca3af',
+                    uniqueCallers: '124,591',
+                    callersChange: '↑ 8.2%',
+                    callersChangeColor: '#4ade80',
+                    avgGas: '142,300',
+                    gasChange: '↓ 5.1%',
+                    gasChangeColor: '#9ca3af'
+                },
+                volume: [
+                    { height: '85%', value: '1.0M' },
+                    { height: '72%', value: '860K' },
+                    { height: '90%', value: '1.1M' },
+                    { height: '65%', value: '780K' },
+                    { height: '78%', value: '940K' },
+                    { height: '95%', value: '1.1M' },
+                    { height: '100%', value: '1.2M' }
+                ],
+                volumeLabels: ['Jan 1', 'Jan 5', 'Jan 10', 'Jan 15', 'Jan 20', 'Jan 25', 'Jan 29'],
+                volumeScale: ['800K', '1.2M'],
+                successFail: [
+                    { success: 88, fail: 12 },
+                    { success: 90, fail: 10 },
+                    { success: 85, fail: 15 },
+                    { success: 92, fail: 8 },
+                    { success: 87, fail: 13 },
+                    { success: 94, fail: 6 },
+                    { success: 91, fail: 9 }
+                ],
+                successFailLabels: ['Jan 1', 'Jan 5', 'Jan 10', 'Jan 15', 'Jan 20', 'Jan 25', 'Jan 29'],
+                avgSuccess: '94%',
+                avgFail: '6%',
+                functions: [
+                    { name: 'swap(uint256,address,uint256,uint256)', calls: '4,201', pct: '32.1%', success: '97.2%', gas: '185,000', successColor: '#4ade80' },
+                    { name: 'addLiquidity(...)', calls: '2,100', pct: '16.0%', success: '99.1%', gas: '250,000', successColor: '#4ade80' },
+                    { name: 'removeLiquidity(...)', calls: '1,803', pct: '13.8%', success: '98.5%', gas: '210,000', successColor: '#4ade80' },
+                    { name: 'claim()', calls: '890', pct: '6.8%', success: '95.0%', gas: '95,000', successColor: '#facc15' },
+                    { name: 'getReserves()', calls: '654', pct: '5.0%', success: '100%', gas: '15,000', successColor: '#4ade80' }
+                ]
+            },
+            '90d': {
+                metrics: {
+                    totalTx: '8,421,056',
+                    txChange: '↑ 28.4%',
+                    txChangeColor: '#4ade80',
+                    successRate: '93.1%',
+                    successChange: '↓ 1.2%',
+                    successChangeColor: '#9ca3af',
+                    uniqueCallers: '342,891',
+                    callersChange: '↑ 15.6%',
+                    callersChangeColor: '#4ade80',
+                    avgGas: '148,200',
+                    gasChange: '↑ 3.2%',
+                    gasChangeColor: '#9ca3af'
+                },
+                volume: [
+                    { height: '45%', value: '2.1M' },
+                    { height: '52%', value: '2.4M' },
+                    { height: '48%', value: '2.2M' },
+                    { height: '60%', value: '2.8M' },
+                    { height: '55%', value: '2.5M' },
+                    { height: '68%', value: '3.1M' },
+                    { height: '100%', value: '4.6M' }
+                ],
+                volumeLabels: ['Nov 1', 'Nov 15', 'Dec 1', 'Dec 15', 'Jan 1', 'Jan 15', 'Jan 29'],
+                volumeScale: ['1.5M', '5M'],
+                successFail: [
+                    { success: 91, fail: 9 },
+                    { success: 93, fail: 7 },
+                    { success: 92, fail: 8 },
+                    { success: 94, fail: 6 },
+                    { success: 90, fail: 10 },
+                    { success: 95, fail: 5 },
+                    { success: 93, fail: 7 }
+                ],
+                successFailLabels: ['Nov 1', 'Nov 15', 'Dec 1', 'Dec 15', 'Jan 1', 'Jan 15', 'Jan 29'],
+                avgSuccess: '93%',
+                avgFail: '7%',
+                functions: [
+                    { name: 'swap(uint256,address,uint256,uint256)', calls: '12,450', pct: '35.2%', success: '96.5%', gas: '188,000', successColor: '#4ade80' },
+                    { name: 'addLiquidity(...)', calls: '6,820', pct: '19.3%', success: '98.8%', gas: '255,000', successColor: '#4ade80' },
+                    { name: 'removeLiquidity(...)', calls: '5,210', pct: '14.7%', success: '97.9%', gas: '215,000', successColor: '#4ade80' },
+                    { name: 'claim()', calls: '3,450', pct: '9.7%', success: '94.2%', gas: '98,000', successColor: '#facc15' },
+                    { name: 'getReserves()', calls: '2,890', pct: '8.2%', success: '100%', gas: '16,000', successColor: '#4ade80' }
+                ]
+            }
+        };
+
+        // Format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        // Update metrics
+        function updateMetrics(data) {
+            document.getElementById('totalTx').textContent = data.totalTx;
+            const txChange = document.getElementById('txChange');
+            txChange.textContent = data.txChange;
+            txChange.style.color = data.txChangeColor;
+
+            document.getElementById('successRate').textContent = data.successRate;
+            const successChange = document.getElementById('successChange');
+            successChange.textContent = data.successChange;
+            successChange.style.color = data.successChangeColor;
+
+            document.getElementById('uniqueCallers').textContent = data.uniqueCallers;
+            const callersChange = document.getElementById('callersChange');
+            callersChange.textContent = data.callersChange;
+            callersChange.style.color = data.callersChangeColor;
+
+            document.getElementById('avgGas').textContent = data.avgGas;
+            const gasChange = document.getElementById('gasChange');
+            gasChange.textContent = data.gasChange;
+            gasChange.style.color = data.gasChangeColor;
+        }
+
+        // Update volume chart
+        function updateVolumeChart(data) {
+            const chartContainer = document.getElementById('volumeChart');
+            const bars = chartContainer.querySelectorAll('.chart-bar');
+
+            bars.forEach((bar, index) => {
+                if (data.volume[index]) {
+                    bar.style.height = data.volume[index].height;
+                    bar.querySelector('.chart-value').textContent = data.volume[index].value;
+                }
+            });
+
+            // Update labels
+            const labelsContainer = document.getElementById('volumeLabels');
+            const labels = labelsContainer.querySelectorAll('span');
+            labels.forEach((label, index) => {
+                if (data.volumeLabels[index]) {
+                    label.textContent = data.volumeLabels[index];
+                }
+            });
+
+            // Update scale
+            const scaleContainer = document.getElementById('volumeScale');
+            const scaleValues = scaleContainer.querySelectorAll('span');
+            scaleValues[0].textContent = data.volumeScale[0];
+            scaleValues[1].textContent = data.volumeScale[1];
+        }
+
+        // Update success/fail chart
+        function updateSuccessFailChart(data) {
+            const chartContainer = document.getElementById('successFailChart');
+            const bars = chartContainer.querySelectorAll('.flex-1');
+
+            bars.forEach((bar, index) => {
+                if (data.successFail[index]) {
+                    const successBar = bar.querySelector('.success-bar');
+                    const failBar = bar.querySelector('.fail-bar');
+                    const total = data.successFail[index].success + data.successFail[index].fail;
+                    successBar.style.height = (data.successFail[index].success / total * 100) + '%';
+                    failBar.style.height = (data.successFail[index].fail / total * 100) + '%';
+                }
+            });
+
+            // Update labels
+            const labelsContainer = document.getElementById('successFailLabels');
+            const labels = labelsContainer.querySelectorAll('span');
+            labels.forEach((label, index) => {
+                if (data.successFailLabels[index]) {
+                    label.textContent = data.successFailLabels[index];
+                }
+            });
+
+            // Update averages
+            document.getElementById('avgSuccess').textContent = data.avgSuccess;
+            document.getElementById('avgFail').textContent = data.avgFail;
+        }
+
+        // Update functions table
+        function updateFunctionsTable(data) {
+            const tableBody = document.getElementById('functionsTable');
+            const rows = tableBody.querySelectorAll('tr');
+
+            rows.forEach((row, index) => {
+                if (data.functions[index]) {
+                    const func = data.functions[index];
+                    row.children[0].textContent = func.name;
+                    row.children[1].textContent = func.calls;
+                    row.children[2].textContent = func.pct;
+                    row.children[3].textContent = func.success;
+                    row.children[3].style.color = func.successColor;
+                    row.children[4].textContent = func.gas;
+                }
+            });
+        }
+
+        // Update all charts and data
+        function updatePeriod(period) {
+            const data = periodData[period];
+            if (!data) return;
+
+            updateMetrics(data.metrics);
+            updateVolumeChart(data);
+            updateSuccessFailChart(data);
+            updateFunctionsTable(data);
+        }
+
         // Tab navigation
-        const tabButtons = document.querySelectorAll('.flex.gap-1 button');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
         tabButtons.forEach(tab => {
             tab.addEventListener('click', function() {
+                // Update button styles
                 tabButtons.forEach(t => {
                     t.classList.remove('bg-[#E84142]');
                     t.classList.add('text-gray-400');
                 });
                 this.classList.add('bg-[#E84142]');
                 this.classList.remove('text-gray-400');
+
+                // Show/hide tab content
+                const tabId = this.dataset.tab;
+                tabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById('tab-' + tabId).classList.remove('hidden');
             });
         });
 
         // Period buttons (7d/30d/90d) - first group
-        const periodButtons = document.querySelectorAll('.card:first-of-type .flex.gap-2 button');
+        const periodButtons = document.querySelectorAll('.period-btn');
         periodButtons.forEach(btn => {
             btn.addEventListener('click', function() {
                 periodButtons.forEach(b => {
@@ -310,12 +725,16 @@
                 });
                 this.classList.remove('bg-gray-800');
                 this.classList.add('bg-[#E84142]');
+
+                // Update charts based on period
+                const period = this.dataset.period;
+                updatePeriod(period);
             });
         });
 
         // Sort dropdown functionality
         const sortSelect = document.querySelector('select');
-        const tableBody = document.querySelector('tbody');
+        const tableBody = document.getElementById('functionsTable');
 
         sortSelect.addEventListener('change', function() {
             const rows = Array.from(tableBody.querySelectorAll('tr'));
@@ -343,6 +762,46 @@
 
             rows.forEach(row => tableBody.appendChild(row));
         });
+
+        // Dropdown menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        menuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            dropdownMenu.classList.add('hidden');
+        });
+
+        // Copy Address button
+        const copyAddressBtn = document.getElementById('copyAddressBtn');
+        const contractAddress = '0x60aE616a2155Ee3d9A68541Ba4544862310933d4';
+
+        copyAddressBtn.addEventListener('click', function() {
+            navigator.clipboard.writeText(contractAddress).then(function() {
+                showToast('Address copied!');
+            }, function() {
+                showToast('Failed to copy address');
+            });
+            dropdownMenu.classList.add('hidden');
+        });
+
+        // Toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+            toast.classList.remove('hidden');
+            toast.classList.remove('hidden');
+
+            setTimeout(function() {
+                toast.classList.add('hidden');
+            }, 2000);
+        }
     </script>
 </body>
 </html>
