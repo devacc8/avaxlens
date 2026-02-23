@@ -168,30 +168,6 @@ export default function RoadmapPage() {
           })}
         </div>
 
-        {/* Hackathon timeline */}
-        <div className="mt-16 bg-bg-card border border-border rounded-xl p-6">
-          <h2 className="text-xl font-bold text-white mb-4">Hackathon Timeline</h2>
-          <p className="text-text-secondary text-sm mb-6">Avalanche Build Games 2026</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { date: 'Feb 25', task: '2-min video pitch', status: 'current' as const },
-              { date: 'Mar 9', task: 'MVP + demo video', status: 'planned' as const },
-              { date: 'Mar 19', task: 'Pitch deck + GTM plan', status: 'planned' as const },
-              { date: 'Mar 26', task: 'Final 5-min pitch', status: 'planned' as const },
-            ].map((item) => (
-              <div key={item.date} className="bg-bg-primary/50 border border-border rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className={`w-2 h-2 rounded-full ${
-                    item.status === 'current' ? 'bg-avax-red animate-pulse' : 'bg-text-muted'
-                  }`} />
-                  <span className="text-xs font-medium text-text-muted uppercase">{item.date}</span>
-                </div>
-                <p className="text-sm text-white font-medium">{item.task}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* CTA */}
         <div className="mt-16 text-center">
           <p className="text-text-secondary mb-4">
