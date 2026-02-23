@@ -227,7 +227,7 @@ const USE_CASES: UseCase[] = [
     bullets: [
       'Per-function gas breakdown',
       'Sort by gas, calls, or success rate',
-      'Compare against similar protocols',
+      'Sortable table on the Overview dashboard',
       'Track gas changes across periods',
     ],
     mockup: <GasMockup />,

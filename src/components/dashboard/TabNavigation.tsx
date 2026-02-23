@@ -82,8 +82,8 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
 
       <div className="relative">
         {loading && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-bg-secondary/60 backdrop-blur-[2px] rounded-lg">
-            <div className="flex flex-col items-center gap-3">
+          <div className="absolute inset-0 z-10 bg-bg-secondary/60 backdrop-blur-[2px] rounded-lg">
+            <div className="sticky top-1/2 flex flex-col items-center gap-3 py-8">
               <div className="loading-spinner" />
               <span className="text-sm text-text-secondary">Loading data...</span>
             </div>

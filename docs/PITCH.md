@@ -10,6 +10,9 @@
 
 Word-for-word script. Target: ~280 words at natural pace.
 
+**Voice:** record separately from screen. Calm, confident, no rush.
+**Screen:** recorded separately, synced in editing. See `SCREEN_RECORDING_PLAN.md`.
+
 ---
 
 ### HOOK (0:00 — 0:15)
@@ -42,7 +45,7 @@ Word-for-word script. Target: ~280 words at natural pace.
 >
 > Paste any C-Chain contract address — get instant analytics.
 > Transaction volume. Success rate. Gas usage.
-> Function breakdown with ABI decoding. Error logs.
+> Function breakdown with ABI decoding. Error logs with decoded revert reasons.
 > All in a clean dashboard. No signup. No API key. Completely free.
 >
 > Let me show you.
@@ -51,8 +54,8 @@ Word-for-word script. Target: ~280 words at natural pace.
 >
 > Here's Trader Joe — the biggest DEX on Avalanche.
 > In ten seconds we see: transaction volume over thirty days,
-> success versus fail trends, top functions being called,
-> and average gas usage. All decoded, all visual.
+> success versus fail trends, top functions sorted by calls,
+> average gas per function, and decoded error logs.
 >
 > Switch to seven days, ninety days — updates instantly.
 
@@ -69,9 +72,12 @@ Word-for-word script. Target: ~280 words at natural pace.
 
 > Free analytics today. AI-powered monitoring tomorrow.
 >
-> Our roadmap: AI-driven security scanning, anomaly detection
-> when something unusual happens on your contract,
+> Our roadmap: AI-driven security scanning with risk scoring,
+> anomaly detection when something unusual happens on your contract,
 > and real-time alerts to Telegram and Discord.
+>
+> We've already built real use cases — error investigation,
+> gas optimization, protocol monitoring — all live and working.
 >
 > AvaxLens — understand your contract in ten seconds.
 > Try it now at avaxlens.vercel.app.
@@ -111,15 +117,36 @@ Word-for-word script. Target: ~280 words at natural pace.
 
 > Here's what we show in ten seconds:
 > - Transaction volume trends — seven, thirty, or ninety days
-> - Success and fail rate with visual breakdown
-> - Top functions — ABI-decoded, sorted by call count
-> - Gas usage patterns
-> - Error logs with decoded revert reasons
-> - Unique callers count
+> - Success and fail rate with visual breakdown and averages
+> - Top functions — ABI-decoded, sorted by call count, with average gas
+> - Error logs with decoded revert reasons, error rate, and most common errors
+> - Unique callers count and gas metrics
 >
 > Zero setup. Zero cost. Works with any verified C-Chain contract.
 
-### Section 3: Competitive Advantage (1 min)
+### Section 3: Use Cases (1 min)
+
+> We built this for real problems developers face every day.
+
+*(Screen: navigate to /use-cases page)*
+
+> **Error Investigation** — your transactions are failing but you don't know why.
+> AvaxLens decodes every revert reason, groups errors by type, shows which functions are affected.
+> This is live right now.
+>
+> **Protocol Monitoring** — you deployed a contract last week. Is it being used?
+> Get a complete health dashboard in seconds. Volume trends, success rates, user growth.
+>
+> **Gas Optimization** — users complain about high gas costs.
+> See average gas per function, sorted by cost. Identify expensive operations at a glance.
+>
+> **AI Security Scanning** — coming next. We'll analyze ABI patterns and transaction behavior
+> to detect common vulnerabilities automatically. Instant security score, risk assessment,
+> anomaly alerts. This is where the product becomes a must-have.
+
+### Section 4: Competitive Advantage (30 sec)
+
+*(Screen: navigate to /compare page)*
 
 | Feature | AvaxLens | Snowtrace | Tenderly | Dune |
 |---------|:--------:|:---------:|:--------:|:----:|
@@ -132,36 +159,30 @@ Word-for-word script. Target: ~280 words at natural pace.
 
 > Our positioning: the only tool where you paste an Avalanche contract address
 > and get instant visual analytics. Free.
+>
+> Tenderly charges forty-nine dollars. Dune charges thirty-nine.
+> We're free — and Avalanche-native from day one.
 
-**Why it wins for enterprise:**
+### Section 5: AI Roadmap (30 sec)
 
-| Concern | How we address it |
-|---------|------------------|
-| Financial risk | Read-only tool, no transactions, no keys |
-| Easy to try | No signup, no API key, no project setup |
-| Compliance | Public blockchain data, fully auditable |
-| Data accuracy | Same APIs as Snowtrace Explorer |
-
-### Section 4: AI Roadmap (30 sec)
+*(Screen: navigate to /roadmap page)*
 
 > Free analytics today. AI-powered monitoring tomorrow.
 >
-> Phase 1 — where we are now — free instant analytics.
+> Phase 1 — shipped. Free instant analytics with everything you've just seen.
 >
 > Phase 2 — AI security scanning. We analyze ABI patterns
 > and transaction behavior to flag potential vulnerabilities.
 > Reentrancy patterns, abnormal gas spikes, suspicious call sequences.
+> Risk scoring from A to F for every contract.
 >
-> Phase 3 — anomaly detection and real-time alerts.
-> Your contract gets a sudden spike in failed transactions?
-> Gas usage doubles overnight? A new address starts making unusual calls?
-> You get a Telegram or Discord alert immediately.
+> Phase 3 — multi-chain. Avalanche L1s and Subnets: Beam, DFK, Dexalot.
 >
-> Phase 4 — trader and protocol insights.
-> For DEX contracts: token flow analysis, liquidity trends, top trading pairs.
-> For lending protocols: utilization rates, liquidation risk patterns.
+> Phase 4 — Pro tier. Ten to twenty dollars a month for AI scanning,
+> alerts, extended history, and API access.
+> For context: Tenderly charges forty-nine for similar features.
 
-### Section 5: Business Model (30 sec)
+### Section 6: Business Model (30 sec)
 
 > Free tier — always free. Unlimited contracts, basic analytics.
 >
@@ -172,34 +193,8 @@ Word-for-word script. Target: ~280 words at natural pace.
 > - API access
 > - CSV/PNG export
 >
-> For context: Tenderly charges forty-nine dollars for similar features.
-> Dune charges thirty-nine. We undercut both significantly.
->
 > Target market: every developer and team on Avalanche.
 > Revenue path: Avalanche Foundation grants + Pro subscriptions.
-
-### Section 6: Roadmap (30 sec)
-
-> What's done:
-> - Full MVP deployed and live on Vercel
-> - Contract analytics with ABI decoding
-> - Charts, tables, period switching
-> - Mobile responsive
->
-> Next two weeks:
-> - Functions tab, Callers tab, Transactions tab
-> - Share and export features
-> - OG images for social sharing
->
-> Next month:
-> - Backend with PostgreSQL
-> - AI security scanning prototype
-> - Anomaly detection MVP
->
-> Three months:
-> - Multi-chain (Avalanche L1s / Subnets)
-> - Pro tier launch
-> - Public API
 
 ### Section 7: Team (30 sec)
 
@@ -230,6 +225,20 @@ Word-for-word script. Target: ~280 words at natural pace.
 
 ---
 
+## Site Pages for Pitch Support
+
+These pages are live and can be shown during demos or shared with judges:
+
+| Page | URL | Purpose |
+|------|-----|---------|
+| Home | avaxlens.vercel.app | Landing + search |
+| Dashboard | avaxlens.vercel.app/contract/{address} | Live analytics demo |
+| Use Cases | avaxlens.vercel.app/use-cases | 4 use cases with visual mockups |
+| Roadmap | avaxlens.vercel.app/roadmap | 4-phase product timeline |
+| Compare | avaxlens.vercel.app/compare | Feature + pricing vs competitors |
+
+---
+
 ## Key Soundbites
 
 **For judges:**
@@ -237,6 +246,7 @@ Word-for-word script. Target: ~280 words at natural pace.
 - "Zero setup, zero cost — just paste an address"
 - "Free analytics today, AI-powered monitoring tomorrow"
 - "Avalanche-native from day one"
+- "Four real use cases, three already live"
 
 **For Twitter/social:**
 - "Understand your Avalanche contract in 10 seconds"
@@ -303,22 +313,6 @@ Word-for-word script. Target: ~280 words at natural pace.
 > and it's free without limits. Dune is powerful for custom analysis.
 > We're for the eighty percent of developers who just want to see what's happening.
 
----
-
-## Demo Script (for video recording)
-
-Steps to show on screen:
-
-1. Open avaxlens.vercel.app — show landing page (2 sec)
-2. Click "Trader Joe" from popular contracts OR paste address (3 sec)
-3. Dashboard loads — pause on metric cards (3 sec)
-4. Scroll to volume chart — point out the trend (3 sec)
-5. Show success/fail chart (2 sec)
-6. Scroll to functions table (3 sec)
-7. Click "7d" period — show data updates (2 sec)
-8. Click "90d" — show extended range (2 sec)
-9. Click Errors tab — show error data (2 sec)
-
-Total screen time: ~22 seconds. Leaves room for voiceover overlap.
-
-**Tip:** Record screen first, then record voiceover separately. Easier to sync and re-record.
+### "Show me Use Cases / Roadmap / Competitors"
+> *(Navigate to /use-cases, /roadmap, or /compare respectively)*
+> We have dedicated pages for each — they're live on the site right now.
