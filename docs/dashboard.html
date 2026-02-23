@@ -129,8 +129,8 @@
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 py-8">
-        <!-- Contract Info -->
-        <div class="mb-8">
+        <!-- Contract Info (hidden when no address) -->
+        <div id="contractInfo" class="mb-8 hidden">
             <div class="card rounded-xl p-6">
                 <div class="flex flex-col gap-3">
                         <div class="flex items-center gap-2">
@@ -437,7 +437,7 @@
             // Toggle hero/dashboard visibility based on address
             const heroSection = document.getElementById('heroSection');
             const headerSearchForm = document.getElementById('headerSearchForm');
-            const contractInfoSection = document.querySelector('.mb-8'); // Contract info div
+            const contractInfoSection = document.getElementById('contractInfo');
             const backLink = document.getElementById('backLink');
             const dashboardContent = document.getElementById('dashboardContent');
 
