@@ -26,7 +26,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-border mt-12 py-6">
-      <div className="max-w-7xl mx-auto px-4 flex items-center justify-between text-sm text-text-secondary">
+      <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-text-secondary">
         <p className="text-text-muted">
           AvaxLens — Understand your contract in 10 seconds
         </p>

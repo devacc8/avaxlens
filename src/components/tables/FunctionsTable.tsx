@@ -33,26 +33,26 @@ export default function FunctionsTable({ data }: FunctionsTableProps) {
         <p className="text-text-muted text-sm text-center py-8">No function data available</p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full text-xs sm:text-sm">
             <thead>
-              <tr className="text-text-secondary text-sm border-b border-border">
-                <th className="text-left py-3 px-4">Function</th>
-                <th className="text-right py-3 px-4">Calls</th>
-                <th className="text-right py-3 px-4">%</th>
-                <th className="text-right py-3 px-4">Success Rate</th>
-                <th className="text-right py-3 px-4">Avg Gas</th>
+              <tr className="text-text-secondary border-b border-border">
+                <th className="text-left py-2 sm:py-3 px-2 sm:px-4">Function</th>
+                <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Calls</th>
+                <th className="hidden sm:table-cell text-right py-3 px-4">%</th>
+                <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Success</th>
+                <th className="hidden md:table-cell text-right py-3 px-4">Avg Gas</th>
               </tr>
             </thead>
             <tbody>
               {sorted.map((func) => (
                 <tr key={func.selector} className="border-b border-border/50 hover:bg-bg-input/50 transition">
-                  <td className="py-3 px-4 font-mono text-sm">{func.name}</td>
-                  <td className="py-3 px-4 text-right font-medium">{func.calls.toLocaleString()}</td>
-                  <td className="py-3 px-4 text-right text-text-secondary">{formatPercentage(func.percentage)}</td>
-                  <td className={`py-3 px-4 text-right ${func.successRate >= 98 ? 'text-success' : func.successRate >= 95 ? 'text-warning' : 'text-error'}`}>
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 font-mono max-w-[120px] sm:max-w-none truncate">{func.name}</td>
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 text-right font-medium">{func.calls.toLocaleString()}</td>
+                  <td className="hidden sm:table-cell py-3 px-4 text-right text-text-secondary">{formatPercentage(func.percentage)}</td>
+                  <td className={`py-2 sm:py-3 px-2 sm:px-4 text-right ${func.successRate >= 98 ? 'text-success' : func.successRate >= 95 ? 'text-warning' : 'text-error'}`}>
                     {formatPercentage(func.successRate)}
                   </td>
-                  <td className="py-3 px-4 text-right">{formatGas(func.avgGas)}</td>
+                  <td className="hidden md:table-cell py-3 px-4 text-right">{formatGas(func.avgGas)}</td>
                 </tr>
               ))}
             </tbody>

@@ -112,7 +112,7 @@ export default function RoadmapPage() {
       <main className="flex-1 max-w-4xl mx-auto px-4 py-12 w-full">
         {/* Hero */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-avax-red to-accent-purple bg-clip-text text-transparent">
               Product Roadmap
             </span>

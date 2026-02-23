@@ -53,13 +53,13 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex gap-1 bg-bg-input p-1 rounded-lg">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
+        <div className="flex flex-wrap gap-1 bg-bg-input p-1 rounded-lg">
           {TABS.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition ${
+              className={`px-2.5 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition ${
                 activeTab === tab.id
                   ? 'bg-avax-red text-white'
                   : 'text-text-secondary hover:text-white'

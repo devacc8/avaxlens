@@ -10,12 +10,12 @@ export default function ContractHeader({ info }: ContractHeaderProps) {
   return (
     <div className="bg-bg-card border border-border rounded-xl p-6 mb-8">
       <div className="flex items-center gap-2 mb-3">
-        <span className="text-text-secondary font-mono text-sm">{info.address}</span>
+        <span className="text-text-secondary font-mono text-xs sm:text-sm truncate">{info.address}</span>
         <CopyButton text={info.address} />
       </div>
       <div className="flex flex-col lg:flex-row gap-4 items-start justify-between">
         <div className="flex flex-wrap items-center gap-3">
-          <h2 className="text-2xl font-bold">{info.name}</h2>
+          <h2 className="text-xl sm:text-2xl font-bold truncate max-w-[280px] sm:max-w-none">{info.name}</h2>
           {info.verified && (
             <span className="bg-success/20 text-success px-2 py-0.5 rounded text-xs font-medium">
               Verified

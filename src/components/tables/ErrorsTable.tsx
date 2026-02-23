@@ -44,22 +44,22 @@ export default function ErrorsTable({ data, totalErrors, errorRate }: ErrorsTabl
       <div className="bg-bg-card border border-border rounded-xl p-6">
         <h3 className="font-semibold mb-6">Error Log</h3>
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full text-xs sm:text-sm">
             <thead>
-              <tr className="text-text-secondary text-sm border-b border-border">
-                <th className="text-left py-3 px-4">Error</th>
-                <th className="text-right py-3 px-4">Count</th>
-                <th className="text-right py-3 px-4">Last Seen</th>
-                <th className="text-right py-3 px-4">Function</th>
+              <tr className="text-text-secondary border-b border-border">
+                <th className="text-left py-2 sm:py-3 px-2 sm:px-4">Error</th>
+                <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Count</th>
+                <th className="hidden sm:table-cell text-right py-3 px-4">Last Seen</th>
+                <th className="hidden md:table-cell text-right py-3 px-4">Function</th>
               </tr>
             </thead>
             <tbody>
               {data.map((err, i) => (
                 <tr key={i} className="border-b border-border/50 hover:bg-bg-input/50 transition">
-                  <td className="py-3 px-4 font-mono text-sm text-error">{err.error}</td>
-                  <td className="py-3 px-4 text-right font-medium">{err.count.toLocaleString()}</td>
-                  <td className="py-3 px-4 text-right text-text-secondary">{err.lastSeen}</td>
-                  <td className="py-3 px-4 text-right font-mono text-sm">{err.functionName}</td>
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 font-mono text-error max-w-[150px] sm:max-w-none truncate">{err.error}</td>
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 text-right font-medium">{err.count.toLocaleString()}</td>
+                  <td className="hidden sm:table-cell py-3 px-4 text-right text-text-secondary">{err.lastSeen}</td>
+                  <td className="hidden md:table-cell py-3 px-4 text-right font-mono">{err.functionName}</td>
                 </tr>
               ))}
             </tbody>

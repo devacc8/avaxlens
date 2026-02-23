@@ -93,7 +93,7 @@ export default function ComparePage() {
       <main className="flex-1 max-w-5xl mx-auto px-4 py-12 w-full">
         {/* Hero */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-avax-red to-accent-purple bg-clip-text text-transparent">
               How AvaxLens Compares
             </span>
@@ -106,24 +106,24 @@ export default function ComparePage() {
         {/* Feature comparison table */}
         <div className="bg-bg-card border border-border rounded-xl overflow-hidden mb-16">
           <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+            <table className="w-full text-xs sm:text-sm">
               <thead>
                 <tr className="border-b border-border">
-                  <th className="text-left p-4 text-text-secondary font-medium">Feature</th>
-                  <th className="p-4 text-center text-avax-red font-bold">AvaxLens</th>
-                  <th className="p-4 text-center text-text-secondary font-medium">Snowtrace</th>
-                  <th className="p-4 text-center text-text-secondary font-medium">Tenderly</th>
-                  <th className="p-4 text-center text-text-secondary font-medium">Dune</th>
+                  <th className="text-left p-2 sm:p-4 text-text-secondary font-medium">Feature</th>
+                  <th className="p-2 sm:p-4 text-center text-avax-red font-bold">AvaxLens</th>
+                  <th className="hidden sm:table-cell p-4 text-center text-text-secondary font-medium">Snowtrace</th>
+                  <th className="p-2 sm:p-4 text-center text-text-secondary font-medium">Tenderly</th>
+                  <th className="hidden md:table-cell p-4 text-center text-text-secondary font-medium">Dune</th>
                 </tr>
               </thead>
               <tbody>
                 {FEATURES.map((row) => (
                   <tr key={row.feature} className="border-b border-border/50 hover:bg-bg-primary/30 transition">
-                    <td className="p-4 text-white font-medium">{row.feature}</td>
-                    <td className="p-4 text-center"><CellValue value={row.avaxlens} /></td>
-                    <td className="p-4 text-center"><CellValue value={row.snowtrace} /></td>
-                    <td className="p-4 text-center"><CellValue value={row.tenderly} /></td>
-                    <td className="p-4 text-center"><CellValue value={row.dune} /></td>
+                    <td className="p-2 sm:p-4 text-white font-medium">{row.feature}</td>
+                    <td className="p-2 sm:p-4 text-center"><CellValue value={row.avaxlens} /></td>
+                    <td className="hidden sm:table-cell p-4 text-center"><CellValue value={row.snowtrace} /></td>
+                    <td className="p-2 sm:p-4 text-center"><CellValue value={row.tenderly} /></td>
+                    <td className="hidden md:table-cell p-4 text-center"><CellValue value={row.dune} /></td>
                   </tr>
                 ))}
               </tbody>
