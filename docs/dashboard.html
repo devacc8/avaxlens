@@ -92,17 +92,17 @@
     </header>
 
     <!-- Hero Section (shown when no address) -->
-    <section id="heroSection" class="text-center py-16 hidden">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+    <section id="heroSection" class="flex flex-col items-center justify-center py-20 hidden">
+        <h1 class="text-4xl md:text-5xl font-bold mb-8">
             Understand your contract
             <br />
             <span class="gradient-text">in 10 seconds</span>
         </h1>
-        <p class="text-xl text-gray-400 mb-10">
+        <p class="text-lg text-gray-400 mb-8">
             Paste any Avalanche C-Chain contract address and get instant analytics
         </p>
         <!-- Hero Search Form -->
-        <form id="heroSearchForm" class="max-w-2xl mx-auto mb-16">
+        <form id="heroSearchForm" class="w-full max-w-xl">
             <div class="bg-gray-900 rounded-xl p-2 flex flex-col md:flex-row gap-2">
                 <input
                     type="text"
@@ -112,7 +112,7 @@
                 />
                 <button
                     type="submit"
-                    class="px-8 py-3 rounded-lg font-medium transition hover:opacity-90"
+                    class="px-8 py-3 rounded-lg font-medium transition hover:opacity-90 whitespace-nowrap"
                     style="background: #E84142"
                 >
                     Analyze Contract
@@ -120,46 +120,6 @@
             </div>
             <p id="heroErrorMsg" class="text-red-400 text-sm mt-2 hidden"></p>
         </form>
-        <!-- Features -->
-        <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div class="card rounded-xl p-6">
-                <div class="text-3xl mb-3">🚀</div>
-                <h3 class="font-semibold mb-1">Instant Analytics</h3>
-                <p class="text-gray-400 text-sm">Get results in seconds, not minutes</p>
-            </div>
-            <div class="card rounded-xl p-6">
-                <div class="text-3xl mb-3">🔓</div>
-                <h3 class="font-semibold mb-1">No Signup</h3>
-                <p class="text-gray-400 text-sm">No API key required</p>
-            </div>
-            <div class="card rounded-xl p-6">
-                <div class="text-3xl mb-3">💸</div>
-                <h3 class="font-semibold mb-1">Free Forever</h3>
-                <p class="text-gray-400 text-sm">No hidden costs</p>
-            </div>
-        </div>
-        <!-- Popular Contracts -->
-        <div class="mt-16">
-            <h2 class="text-xl font-semibold mb-6">Popular Contracts</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-                <a href="dashboard.html?address=0x60aE616a2155Ee3d9A68541Ba4544862310933d4" class="card hover:bg-gray-800 rounded-xl p-4 text-left transition border border-gray-800 hover:border-gray-700">
-                    <div class="font-medium">Trader Joe</div>
-                    <div class="text-gray-500 text-sm">DEX</div>
-                </a>
-                <a href="dashboard.html?address=0xE54Ca86531e17Ef3616d22Ca28b0D86bC24b4eA3" class="card hover:bg-gray-800 rounded-xl p-4 text-left transition border border-gray-800 hover:border-gray-700">
-                    <div class="font-medium">Pangolin</div>
-                    <div class="text-gray-500 text-sm">DEX</div>
-                </a>
-                <a href="dashboard.html?address=0xfc5A1A6EB076a2C7ad06e22dc90Fb38d9E600c20" class="card hover:bg-gray-800 rounded-xl p-4 text-left transition border border-gray-800 hover:border-gray-700">
-                    <div class="font-medium">GMX</div>
-                    <div class="text-gray-500 text-sm">Perpetuals</div>
-                </a>
-                <a href="dashboard.html?address=0x4855d169D58B5C399Ca0D195C7B1FDC8Da1F35A4" class="card hover:bg-gray-800 rounded-xl p-4 text-left transition border border-gray-800 hover:border-gray-700">
-                    <div class="font-medium">Benqi</div>
-                    <div class="text-gray-500 text-sm">Lending</div>
-                </a>
-            </div>
-        </div>
     </section>
 
     <!-- Toast Notification -->
