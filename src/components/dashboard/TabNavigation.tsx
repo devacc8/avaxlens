@@ -70,7 +70,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
           ))}
         </div>
         {(activeTab === 'overview' || activeTab === 'transactions' || activeTab === 'functions' || activeTab === 'errors') && (
-          <PeriodSelector period={period} onChange={handlePeriodChange} />
+          <PeriodSelector period={period} onChange={handlePeriodChange} disabled={loading} />
         )}
       </div>
 
@@ -80,42 +80,53 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
         </div>
       )}
 
-      <div className={loading ? 'opacity-50 pointer-events-none transition-opacity' : 'transition-opacity'}>
-        {activeTab === 'overview' && (
-          <OverviewTab analytics={analytics} />
+      <div className="relative">
+        {loading && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-bg-secondary/60 backdrop-blur-[2px] rounded-lg">
+            <div className="flex flex-col items-center gap-3">
+              <div className="loading-spinner" />
+              <span className="text-sm text-text-secondary">Loading data...</span>
+            </div>
+          </div>
         )}
 
-        {activeTab === 'transactions' && (
-          <ComingSoon
-            icon="📋"
-            title="Transactions"
-            description="Detailed transaction list with filters and search"
-          />
-        )}
+        <div className={loading ? 'pointer-events-none' : ''}>
+          {activeTab === 'overview' && (
+            <OverviewTab analytics={analytics} />
+          )}
 
-        {activeTab === 'functions' && (
-          <ComingSoon
-            icon="⚡"
-            title="Functions"
-            description="Detailed breakdown by function with call trends"
-          />
-        )}
+          {activeTab === 'transactions' && (
+            <ComingSoon
+              icon="📋"
+              title="Transactions"
+              description="Detailed transaction list with filters and search"
+            />
+          )}
 
-        {activeTab === 'errors' && (
-          <ErrorsTable
-            data={analytics.errorBreakdown}
-            totalErrors={analytics.failCount}
-            errorRate={analytics.totalTransactions > 0 ? (analytics.failCount / analytics.totalTransactions) * 100 : 0}
-          />
-        )}
+          {activeTab === 'functions' && (
+            <ComingSoon
+              icon="⚡"
+              title="Functions"
+              description="Detailed breakdown by function with call trends"
+            />
+          )}
 
-        {activeTab === 'callers' && (
-          <ComingSoon
-            icon="👥"
-            title="Callers"
-            description="Top callers and usage distribution"
-          />
-        )}
+          {activeTab === 'errors' && (
+            <ErrorsTable
+              data={analytics.errorBreakdown}
+              totalErrors={analytics.failCount}
+              errorRate={analytics.totalTransactions > 0 ? (analytics.failCount / analytics.totalTransactions) * 100 : 0}
+            />
+          )}
+
+          {activeTab === 'callers' && (
+            <ComingSoon
+              icon="👥"
+              title="Callers"
+              description="Top callers and usage distribution"
+            />
+          )}
+        </div>
       </div>
     </div>
   );
