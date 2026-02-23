@@ -73,7 +73,7 @@
 - [ ] Three states: green (all OK), yellow (one API slow/down), red (backend unreachable)
 
 ### General Polish
-- [ ] Mobile responsive improvements
+- [ ] Mobile responsive improvements (truncate addresses with ellipsis, touch-friendly UI)
 - [ ] Empty state for contracts with zero transactions
 - [ ] Better error messages with retry buttons
 
@@ -130,9 +130,11 @@ Infrastructure evolution from in-memory cache to persistent storage.
 ### Phase 2: AI Features (Month 2-3)
 
 - [ ] Smart contract security audit (analyze source/bytecode for vulnerability patterns)
+- [ ] AI-powered security analysis (Pro tier) — vulnerability detection, risk scoring, exploit patterns
 - [ ] Anomaly detection (volume spikes, gas anomalies, suspicious calls)
 - [ ] Similar contract search (find contracts with similar behavior)
 - [ ] Vector embeddings for contract bytecode (zvec)
+- [ ] MCP server — AI assistants can query contracts programmatically (Claude, Cursor, Windsurf, etc.)
 
 ### Phase 3: Multi-Chain (Month 3-4)
 
@@ -146,7 +148,7 @@ Infrastructure evolution from in-memory cache to persistent storage.
 | Tier | Price | Features |
 |------|-------|----------|
 | Free | $0 | 3 contracts, 30d history, basic analytics |
-| Pro | $10-20/mo | Unlimited contracts, 90d+ history, alerts, API access, CSV export |
+| Pro | $10-20/mo | Unlimited contracts, 90d+ history, alerts, API access, CSV export, AI security analysis, MCP access |
 | Team | $50/mo | Shared dashboards, role-based access |
 
 Additional revenue streams:
