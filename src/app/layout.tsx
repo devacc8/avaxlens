@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "AvaxLens — Smart Contract Analytics for Avalanche",
   description:
-    "Free instant smart contract analytics for Avalanche developers. Paste any C-Chain contract address — get transaction volume, gas usage, function breakdown, and error logs.",
+    "Free smart contract analytics for Avalanche C-Chain. Paste any contract address — get transaction volume, gas usage, function breakdown, and error logs.",
 };
 
 export default function RootLayout({
