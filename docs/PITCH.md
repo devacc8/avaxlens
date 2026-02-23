@@ -28,7 +28,7 @@ Enterprise users care about **risk mitigation**, not innovation.
 | **What's the behavior change?** | Just paste an address — minimal |
 | **What's the worst case?** | Data is wrong — just look again, no financial loss |
 | **Who do they call?** | Documentation + support email |
-| **Is it better?** | Faster than Explorer, free vs Tenderly |
+| **Is it better?** | Faster than Explorer, free vs Tenderly ($49) + Dune ($39) |
 
 ### Why AvaxLens Fits Enterprise
 
@@ -49,8 +49,8 @@ Today the answer is buried in raw transaction lists. That's where AvaxLens comes
 
 ### Problem (30 sec)
 - Avalanche Explorer = raw tx list, no analytics
-- Tenderly = $50+/mo, complex setup
-- Dune = requires SQL
+- Tenderly = $49+/mo, complex setup, requires project setup
+- Dune = $39+/mo, requires SQL knowledge
 - **Gap: No free, instant, visual analytics**
 
 ### Solution (30 sec)
@@ -89,8 +89,8 @@ Avalanche has 0.5M+ transactions daily.
 But developers have NO way to quickly understand their contracts.
 
 Explorer shows:     [Tx #1] [Tx #2] [Tx #3] ...
-Tenderly costs:     $50+/month + project setup
-Dune requires:      SQL knowledge
+Tenderly costs:     $49/month + project setup + 100k limit
+Dune requires:      $39/month + SQL knowledge + 500 queries/mo
 
 What developers need:
 • Is my contract active?
@@ -122,13 +122,17 @@ Zero setup. Zero cost. All free APIs.
 
 **Competitive Advantage:**
 
-| Feature | AvaxLens | Explorer | Tenderly | Dune |
+| Feature | AvaxLens | Snowtrace | Tenderly | Dune |
 |---------|:--------:|:--------:|:--------:|:----:|
-| Free | ✅ | ✅ | ❌ | ⚠️ |
-| Instant | ✅ | ✅ | ⚠️ | ❌ |
-| Visual | ✅ | ❌ | ✅ | ⚠️ |
-| Avalanche-native | ✅ | ✅ | ❌ | ❌ |
+| Free | ✅ | ✅ | ⚠️ (100k/mo) | ⚠️ (100 queries/mo) |
+| Instant | ✅ | ✅ | ⚠️ Setup req | ❌ SQL required |
+| Visual | ✅ | ❌ | ✅ | ⚠️ Manual |
+| Avalanche-native | ✅ | ✅ | ❌ (multi-chain) | ❌ (multi-chain) |
 | No setup | ✅ | ✅ | ❌ | ❌ |
+| Price for more | **$0** | $0 | **$49/mo** | **$39/mo** |
+
+**Tenderly features:** Gas Profiler, Simulation, Transaction Tracing, API, Team Collab, Debugging
+**Dune features:** SQL queries, Charts, Private data, API access
 
 **Why It Wins for Enterprise:**
 
@@ -153,6 +157,10 @@ Pro tier (post-competition):
 • Alerts (Telegram/Discord)
 • API access
 • $10-20/month
+
+Competitors charge:
+• Tenderly: $49/mo for 100k requests
+• Dune: $39/mo for 500 queries
 
 Target: Avalanche teams, protocols, auditors
 TAM: Every developer on Avalanche
@@ -261,10 +269,10 @@ Thank you.
 ## Q&A Prep
 
 ### "Why not just use Tenderly?"
-> "Tenderly costs $50+/month and requires project setup. We're free and instant — perfect for quick checks."
+> "Tenderly costs $49/month for Team plan (100k requests limit), requires project setup, and is multi-chain — not optimized for Avalanche. We're free, instant, and Avalanche-native."
 
 ### "Why not Dune?"
-> "Dune requires SQL knowledge and isn't real-time. We're visual and instant."
+> "Dune costs $39/month for basic access, requires SQL knowledge, and limits you to 500 queries/mo on Team plan. We're visual, instant, and require zero query writing."
 
 ### "How do you make money?"
 > "Free tier always available. Pro tier for teams that need alerts and history."
