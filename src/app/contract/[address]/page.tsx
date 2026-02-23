@@ -30,7 +30,7 @@ export default async function ContractDashboard({ params, searchParams }: Props)
     notFound();
   }
 
-  const periodDays = period === '7d' ? 7 : 30;
+  const periodDays = period === '7d' ? 7 : period === '90d' ? 90 : 30;
 
   try {
     // Sequential calls to respect API rate limits

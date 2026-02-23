@@ -15,6 +15,7 @@ interface TabNavigationProps {
 
 const TABS: { id: TabId; label: string }[] = [
   { id: 'overview', label: 'Overview' },
+  { id: 'transactions', label: 'Transactions' },
   { id: 'functions', label: 'Functions' },
   { id: 'errors', label: 'Errors' },
   { id: 'callers', label: 'Callers' },
@@ -68,7 +69,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
             </button>
           ))}
         </div>
-        {(activeTab === 'overview' || activeTab === 'functions' || activeTab === 'errors') && (
+        {(activeTab === 'overview' || activeTab === 'transactions' || activeTab === 'functions' || activeTab === 'errors') && (
           <PeriodSelector period={period} onChange={handlePeriodChange} />
         )}
       </div>
@@ -82,6 +83,14 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
       <div className={loading ? 'opacity-50 pointer-events-none transition-opacity' : 'transition-opacity'}>
         {activeTab === 'overview' && (
           <OverviewTab analytics={analytics} />
+        )}
+
+        {activeTab === 'transactions' && (
+          <ComingSoon
+            icon="📋"
+            title="Transactions"
+            description="Detailed transaction list with filters and search"
+          />
         )}
 
         {activeTab === 'functions' && (

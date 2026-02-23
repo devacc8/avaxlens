@@ -28,7 +28,7 @@ export async function GET(
 
   const searchParams = request.nextUrl.searchParams;
   const period = searchParams.get('period') || '30d';
-  const periodDays = period === '7d' ? 7 : 30;
+  const periodDays = period === '7d' ? 7 : period === '90d' ? 90 : 30;
 
   const cacheKey = `analytics:${address}:${period}`;
   const cached = getCached<AnalyticsData>(cacheKey);

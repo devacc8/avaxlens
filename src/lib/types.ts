@@ -91,5 +91,5 @@ export interface ApiResponse<T> {
   error?: string;
 }
 
-export type Period = '7d' | '30d';
+export type Period = '7d' | '30d' | '90d';
 export type TabId = 'overview' | 'transactions' | 'functions' | 'errors' | 'callers';

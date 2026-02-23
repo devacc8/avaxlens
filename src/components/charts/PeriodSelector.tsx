@@ -8,7 +8,7 @@ interface PeriodSelectorProps {
 }
 
 export default function PeriodSelector({ period, onChange }: PeriodSelectorProps) {
-  const periods: Period[] = ['7d', '30d'];
+  const periods: Period[] = ['7d', '30d', '90d'];
 
   return (
     <div className="flex gap-2">
