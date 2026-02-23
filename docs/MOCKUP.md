@@ -8,32 +8,19 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  AVAXLENS                                      Docs    GitHub    Launch App │
+│  AVAXLENS                                                   GitHub          │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
 │                    Understand your contract                                  │
 │                         in 10 seconds                                       │
 │                                                                             │
 │         ┌─────────────────────────────────────────────────────────┐          │
-│         │  🔍  Paste any Avalanche C-Chain contract address    │          │
+│         │  Paste any Avalanche C-Chain contract address         │          │
 │         │                                                         │          │
-│         │  0x........................................          │          │
+│         │  0x........................................            │          │
 │         │                                                         │          │
 │         │              [ Analyze Contract ]                       │          │
 │         └─────────────────────────────────────────────────────────┘          │
-│                                                                             │
-│                                                                             │
-│  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐         │
-│  │  🚀 Instant      │  │  🔓 No Signup   │  │  💸 Free Forever │         │
-│  │  Analytics      │  │  No API Key     │  │  No Hidden Costs│         │
-│  └──────────────────┘  └──────────────────┘  └──────────────────┘         │
-│                                                                             │
-│                                                                             │
-│  Popular Contracts                                                          │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐          │
-│  │ Trader Joe  │ │   Pangolin  │ │    GMX     │ │   Benqi    │          │
-│  │  DEX        │ │   DEX        │ │ Perpetuals │ │  Lending   │          │
-│  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘          │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -53,10 +40,10 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│  ← Back     AVAXLENS                                          [Share] [⋮]  │
+│  AVAXLENS                                                   GitHub          │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  Contract: 0x60aE...9334                                           ✅ Verified│
+│  0x60aE...9334                                              [📋 Copy]      │
 │  Trader Joe Router                                                         │
 │  Created: Jan 15, 2024                                                    │
 │                                                                             │
@@ -69,7 +56,7 @@
 │  [Overview] [Transactions] [Functions] [Errors] [Callers]                │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                             │
-│  Transaction Volume (30 days)                               [7d] [30d]   │
+│  Transaction Volume                                                       │
 │                                                                             │
 │         ████████████████████████████████░░░░░░░░░░  ↑ 1.2M                 │
 │         ██████████████████████████████░░░░░░░░░░░░       │                  │
@@ -274,8 +261,8 @@ Secondary: transparent, #E84142 border
 
 ## Summary
 
-- **Home:** Input + popular contracts
-- **Dashboard:** 4 metric cards + charts + tabs
+- **Home:** Search input only
+- **Dashboard:** 4 metric cards + charts + tabs + search field
 - **Colors:** Avalanche red (#E84142) accent
 - **Style:** Clean, minimal, dark-first
 - **Mobile:** Responsive, scrollable charts

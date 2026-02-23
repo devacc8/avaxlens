@@ -62,7 +62,7 @@
 ### 2. Transaction Volume Chart
 
 - **Тип:** Area chart (Recharts)
-- **Периоды:** 7d / 30d toggle
+- **Периоды:** 7d / 30d / 90d toggle
 - **Данные:** Tx count per day
 - **Взаимодействие:** Hover → точное число
 

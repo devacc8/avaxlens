@@ -101,9 +101,8 @@
 **Actor:** Any user
 **Trigger:** Want to share contract analytics
 **Flow:**
-1. Click menu button (⋮)
-2. Select "Copy Address"
-3. Share URL with address param
+1. Copy address using copy button next to address
+2. Share URL with address param
 
 **Success:** Recipient sees same contract data
 
