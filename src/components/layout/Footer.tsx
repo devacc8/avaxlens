@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import packageJson from '../../../package.json';
 
 type StatusLevel = 'online' | 'degraded' | 'offline';
 
@@ -10,7 +11,7 @@ const STATUS_CONFIG: Record<StatusLevel, { color: string; label: string }> = {
   offline: { color: 'bg-error', label: 'Service disrupted' },
 };
 
-const APP_VERSION = 'v0.1.0';
+const APP_VERSION = `v${packageJson.version}`;
 
 export default function Footer() {
   const [status, setStatus] = useState<StatusLevel>('online');
