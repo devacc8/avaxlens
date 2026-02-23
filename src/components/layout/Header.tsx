@@ -11,6 +11,12 @@ export default function Header() {
             </span>
           </Link>
           <nav className="hidden md:flex gap-6 text-text-secondary">
+            <Link href="/roadmap" className="hover:text-white transition">
+              Roadmap
+            </Link>
+            <Link href="/compare" className="hover:text-white transition">
+              Compare
+            </Link>
             <a href="https://github.com/devacc8/avaxlens" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
               GitHub
             </a>

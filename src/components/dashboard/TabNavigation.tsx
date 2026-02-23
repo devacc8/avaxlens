@@ -102,7 +102,11 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
         )}
 
         {activeTab === 'errors' && (
-          <ErrorsTable data={analytics.errorBreakdown} />
+          <ErrorsTable
+            data={analytics.errorBreakdown}
+            totalErrors={analytics.failCount}
+            errorRate={analytics.totalTransactions > 0 ? (analytics.failCount / analytics.totalTransactions) * 100 : 0}
+          />
         )}
 
         {activeTab === 'callers' && (

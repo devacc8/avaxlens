@@ -16,7 +16,14 @@ export default function SuccessFailChart({ data }: SuccessFailChartProps) {
     );
   }
 
+  const totalSuccess = data.reduce((s, d) => s + d.success, 0);
+  const totalFail = data.reduce((s, d) => s + d.fail, 0);
+  const total = totalSuccess + totalFail;
+  const avgSuccess = total > 0 ? Math.round((totalSuccess / total) * 100) : 0;
+  const avgFail = total > 0 ? 100 - avgSuccess : 0;
+
   return (
+    <>
     <ResponsiveContainer width="100%" height={180}>
       <BarChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
         <XAxis
@@ -48,5 +55,12 @@ export default function SuccessFailChart({ data }: SuccessFailChartProps) {
         <Bar dataKey="fail" stackId="a" fill="#f87171" name="Failed" radius={[2, 2, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
+    <div className="flex justify-center mt-2 text-sm font-medium">
+      <span className="text-success">{avgSuccess}%</span>
+      <span className="text-text-muted mx-2">&bull;</span>
+      <span className="text-error">{avgFail}%</span>
+      <span className="text-text-secondary ml-2">Avg</span>
+    </div>
+    </>
   );
 }
