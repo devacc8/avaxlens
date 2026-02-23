@@ -68,8 +68,7 @@
                     <span class="gradient-text">AVAXLENS</span>
                 </a>
                 <nav class="hidden md:flex gap-6 text-gray-400">
-                    <a href="#" class="hover:text-white transition">Docs</a>
-                    <a href="#" class="hover:text-white transition">GitHub</a>
+                    <a href="https://github.com/devacc8/avaxlens" target="_blank" class="hover:text-white transition">GitHub</a>
                 </nav>
             </div>
         </div>
@@ -178,12 +177,20 @@
         </div>
 
         <!-- Tabs -->
-        <div class="flex gap-1 mb-6 bg-gray-900 p-1 rounded-lg w-fit">
-            <button class="tab-btn bg-[#E84142] px-4 py-2 rounded-md text-sm font-medium" data-tab="overview">Overview</button>
-            <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="transactions">Transactions</button>
-            <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="functions">Functions</button>
-            <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="errors">Errors</button>
-            <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="callers">Callers</button>
+        <div class="flex flex-col md:flex-row gap-4 md:items-center md:justify-between mb-6">
+            <div class="flex gap-1 bg-gray-900 p-1 rounded-lg w-fit">
+                <button class="tab-btn bg-[#E84142] px-4 py-2 rounded-md text-sm font-medium" data-tab="overview">Overview</button>
+                <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="transactions">Transactions</button>
+                <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="functions">Functions</button>
+                <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="errors">Errors</button>
+                <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-400 hover:text-white transition" data-tab="callers">Callers</button>
+            </div>
+            <!-- Period Buttons -->
+            <div class="flex gap-2" id="periodButtons">
+                <button class="bg-gray-800 px-3 py-1 rounded text-sm period-btn" data-period="7d">7d</button>
+                <button class="bg-[#E84142] px-3 py-1 rounded text-sm period-btn" data-period="30d">30d</button>
+                <button class="bg-gray-800 px-3 py-1 rounded text-sm period-btn" data-period="90d">90d</button>
+            </div>
         </div>
 
         <!-- Tab Content: Overview -->
@@ -193,49 +200,68 @@
         <div class="grid lg:grid-cols-2 gap-6" id="overview-charts">
             <!-- Transaction Volume Chart -->
             <div class="card rounded-xl p-6">
-                <div class="flex items-center justify-between mb-6">
-                    <h3 class="font-semibold">Transaction Volume</h3>
-                    <div class="flex gap-2" id="periodButtons">
-                        <button class="bg-gray-800 px-3 py-1 rounded text-sm period-btn" data-period="7d">7d</button>
-                        <button class="bg-[#E84142] px-3 py-1 rounded text-sm period-btn" data-period="30d">30d</button>
-                        <button class="bg-gray-800 px-3 py-1 rounded text-sm period-btn" data-period="90d">90d</button>
+                <h3 class="font-semibold mb-4">Transaction Volume</h3>
+                <div class="flex">
+                    <!-- Y-axis with 5 divisions -->
+                    <div class="flex flex-col justify-between pr-3 text-xs text-gray-500" style="height: 200px; padding-top: 8px;">
+                        <span>1.2M</span>
+                        <span>900K</span>
+                        <span>600K</span>
+                        <span>300K</span>
+                        <span>0</span>
                     </div>
-                </div>
-                <div class="h-40 flex items-end justify-between gap-2" id="volumeChart">
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 85%">
-                        <span class="chart-value">1.0M</span>
+                    <!-- Line Chart -->
+                    <div class="flex-1 relative">
+                        <svg class="w-full" viewBox="0 0 700 200" preserveAspectRatio="none" id="volumeLineChart">
+                            <!-- Grid lines -->
+                            <line x1="0" y1="0" x2="700" y2="0" stroke="#374151" stroke-width="1" stroke-dasharray="4"/>
+                            <line x1="0" y1="50" x2="700" y2="50" stroke="#374151" stroke-width="1" stroke-dasharray="4"/>
+                            <line x1="0" y1="100" x2="700" y2="100" stroke="#374151" stroke-width="1" stroke-dasharray="4"/>
+                            <line x1="0" y1="150" x2="700" y2="150" stroke="#374151" stroke-width="1" stroke-dasharray="4"/>
+                            <line x1="0" y1="200" x2="700" y2="200" stroke="#374151" stroke-width="1"/>
+                            <!-- Line (straight, not curved) -->
+                            <polyline
+                                fill="none"
+                                stroke="#818cf8"
+                                stroke-width="3"
+                                points="0,67 117,83 233,50 350,100 467,75 583,42 700,17"
+                            />
+                            <!-- Area under line -->
+                            <polygon
+                                fill="url(#volumeGradient)"
+                                points="0,200 0,67 117,83 233,50 350,100 467,75 583,42 700,17 700,200"
+                            />
+                            <!-- Data points -->
+                            <circle cx="0" cy="67" r="5" fill="#6366f1" class="cursor-pointer" data-index="0"/>
+                            <circle cx="117" cy="83" r="5" fill="#6366f1" class="cursor-pointer" data-index="1"/>
+                            <circle cx="233" cy="50" r="5" fill="#6366f1" class="cursor-pointer" data-index="2"/>
+                            <circle cx="350" cy="100" r="5" fill="#6366f1" class="cursor-pointer" data-index="3"/>
+                            <circle cx="467" cy="75" r="5" fill="#6366f1" class="cursor-pointer" data-index="4"/>
+                            <circle cx="583" cy="42" r="5" fill="#6366f1" class="cursor-pointer" data-index="5"/>
+                            <circle cx="700" cy="17" r="5" fill="#6366f1" class="cursor-pointer" data-index="6"/>
+                            <!-- Gradient -->
+                            <defs>
+                                <linearGradient id="volumeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#818cf8" stop-opacity="0.3"/>
+                                    <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <!-- X-axis labels -->
+                        <div class="flex justify-between mt-2 text-xs text-gray-500 px-1">
+                            <span>Feb 1</span>
+                            <span>Feb 5</span>
+                            <span>Feb 10</span>
+                            <span>Feb 15</span>
+                            <span>Feb 20</span>
+                            <span>Feb 25</span>
+                        </div>
+                        <!-- Tooltip -->
+                        <div id="volumeTooltip" class="absolute hidden bg-gray-800 border border-gray-700 px-3 py-2 rounded-lg text-xs shadow-lg z-10">
+                            <div class="font-medium text-white" id="tooltipDate">Feb 1</div>
+                            <div class="text-gray-400" id="tooltipValue">1.0M transactions</div>
+                        </div>
                     </div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 72%">
-                        <span class="chart-value">860K</span>
-                    </div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 90%">
-                        <span class="chart-value">1.1M</span>
-                    </div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 65%">
-                        <span class="chart-value">780K</span>
-                    </div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 78%">
-                        <span class="chart-value">940K</span>
-                    </div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 95%">
-                        <span class="chart-value">1.1M</span>
-                    </div>
-                    <div class="chart-bar flex-1 bg-gradient-to-t from-[#6366f1] to-[#818cf8] rounded-t" style="height: 100%">
-                        <span class="chart-value">1.2M</span>
-                    </div>
-                </div>
-                <div class="flex justify-between mt-3 text-xs text-gray-500" id="volumeLabels">
-                    <span>Jan 1</span>
-                    <span>Jan 5</span>
-                    <span>Jan 10</span>
-                    <span>Jan 15</span>
-                    <span>Jan 20</span>
-                    <span>Jan 25</span>
-                    <span>Jan 29</span>
-                </div>
-                <div class="flex justify-between mt-1 text-xs text-gray-600 font-medium" id="volumeScale">
-                    <span>800K</span>
-                    <span>1.2M</span>
                 </div>
             </div>
 
@@ -254,44 +280,55 @@
                         </span>
                     </div>
                 </div>
-                <div class="h-40 flex items-end justify-between gap-1" id="successFailChart">
-                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 88%">
-                        <div class="w-full bg-green-500 success-bar" style="height: 88%"></div>
-                        <div class="w-full bg-red-500 fail-bar" style="height: 12%"></div>
+                <div class="flex">
+                    <!-- Y-axis -->
+                    <div class="flex flex-col justify-between pr-3 text-xs text-gray-500" style="height: 160px; padding-top: 8px;">
+                        <span>100%</span>
+                        <span>75%</span>
+                        <span>50%</span>
                     </div>
-                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 90%">
-                        <div class="w-full bg-green-500 success-bar" style="height: 90%"></div>
-                        <div class="w-full bg-red-500 fail-bar" style="height: 10%"></div>
+                    <!-- Chart -->
+                    <div class="flex-1">
+                        <div class="h-40 flex items-end justify-between gap-1" id="successFailChart">
+                            <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 88%">
+                                <div class="w-full bg-green-500 success-bar" style="height: 88%"></div>
+                                <div class="w-full bg-red-500 fail-bar" style="height: 12%"></div>
+                            </div>
+                            <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 90%">
+                                <div class="w-full bg-green-500 success-bar" style="height: 90%"></div>
+                                <div class="w-full bg-red-500 fail-bar" style="height: 10%"></div>
+                            </div>
+                            <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 85%">
+                                <div class="w-full bg-green-500 success-bar" style="height: 85%"></div>
+                                <div class="w-full bg-red-500 fail-bar" style="height: 15%"></div>
+                            </div>
+                            <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 92%">
+                                <div class="w-full bg-green-500 success-bar" style="height: 92%"></div>
+                                <div class="w-full bg-red-500 fail-bar" style="height: 8%"></div>
+                            </div>
+                            <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 87%">
+                                <div class="w-full bg-green-500 success-bar" style="height: 87%"></div>
+                                <div class="w-full bg-red-500 fail-bar" style="height: 13%"></div>
+                            </div>
+                            <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 94%">
+                                <div class="w-full bg-green-500 success-bar" style="height: 94%"></div>
+                                <div class="w-full bg-red-500 fail-bar" style="height: 6%"></div>
+                            </div>
+                            <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 91%">
+                                <div class="w-full bg-green-500 success-bar" style="height: 91%"></div>
+                                <div class="w-full bg-red-500 fail-bar" style="height: 9%"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between mt-3 text-xs text-gray-500" id="successFailLabels">
+                            <span>Jan 1</span>
+                            <span>Jan 5</span>
+                            <span>Jan 10</span>
+                            <span>Jan 15</span>
+                            <span>Jan 20</span>
+                            <span>Jan 25</span>
+                            <span>Jan 29</span>
+                        </div>
                     </div>
-                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 85%">
-                        <div class="w-full bg-green-500 success-bar" style="height: 85%"></div>
-                        <div class="w-full bg-red-500 fail-bar" style="height: 15%"></div>
-                    </div>
-                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 92%">
-                        <div class="w-full bg-green-500 success-bar" style="height: 92%"></div>
-                        <div class="w-full bg-red-500 fail-bar" style="height: 8%"></div>
-                    </div>
-                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 87%">
-                        <div class="w-full bg-green-500 success-bar" style="height: 87%"></div>
-                        <div class="w-full bg-red-500 fail-bar" style="height: 13%"></div>
-                    </div>
-                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 94%">
-                        <div class="w-full bg-green-500 success-bar" style="height: 94%"></div>
-                        <div class="w-full bg-red-500 fail-bar" style="height: 6%"></div>
-                    </div>
-                    <div class="flex-1 flex flex-col-reverse rounded-t overflow-hidden" style="height: 91%">
-                        <div class="w-full bg-green-500 success-bar" style="height: 91%"></div>
-                        <div class="w-full bg-red-500 fail-bar" style="height: 9%"></div>
-                    </div>
-                </div>
-                <div class="flex justify-between mt-3 text-xs text-gray-500" id="successFailLabels">
-                    <span>Jan 1</span>
-                    <span>Jan 5</span>
-                    <span>Jan 10</span>
-                    <span>Jan 15</span>
-                    <span>Jan 20</span>
-                    <span>Jan 25</span>
-                    <span>Jan 29</span>
                 </div>
                 <div class="flex justify-center mt-4 text-sm font-medium">
                     <span style="color: #4ade80" id="avgSuccess">94%</span>
@@ -566,6 +603,7 @@
                 ],
                 volumeLabels: ['Jan 23', 'Jan 24', 'Jan 25', 'Jan 26', 'Jan 27', 'Jan 28', 'Jan 29'],
                 volumeScale: ['200K', '500K'],
+                volumeYScale: ['500K', '375K', '250K', '125K', '0'],
                 successFail: [
                     { success: 96, fail: 4 },
                     { success: 95, fail: 5 },
@@ -612,6 +650,7 @@
                 ],
                 volumeLabels: ['Jan 1', 'Jan 5', 'Jan 10', 'Jan 15', 'Jan 20', 'Jan 25', 'Jan 29'],
                 volumeScale: ['800K', '1.2M'],
+                volumeYScale: ['1.2M', '900K', '600K', '300K', '0'],
                 successFail: [
                     { success: 88, fail: 12 },
                     { success: 90, fail: 10 },
@@ -658,6 +697,7 @@
                 ],
                 volumeLabels: ['Nov 1', 'Nov 15', 'Dec 1', 'Dec 15', 'Jan 1', 'Jan 15', 'Jan 29'],
                 volumeScale: ['1.5M', '5M'],
+                volumeYScale: ['5M', '3.75M', '2.5M', '1.25M', '0'],
                 successFail: [
                     { success: 91, fail: 9 },
                     { success: 93, fail: 7 },
@@ -708,32 +748,66 @@
             gasChange.style.color = data.gasChangeColor;
         }
 
-        // Update volume chart
+        // Update volume chart (line chart)
         function updateVolumeChart(data) {
-            const chartContainer = document.getElementById('volumeChart');
-            const bars = chartContainer.querySelectorAll('.chart-bar');
-
-            bars.forEach((bar, index) => {
-                if (data.volume[index]) {
-                    bar.style.height = data.volume[index].height;
-                    bar.querySelector('.chart-value').textContent = data.volume[index].value;
-                }
-            });
-
             // Update labels
-            const labelsContainer = document.getElementById('volumeLabels');
-            const labels = labelsContainer.querySelectorAll('span');
-            labels.forEach((label, index) => {
-                if (data.volumeLabels[index]) {
-                    label.textContent = data.volumeLabels[index];
-                }
-            });
+            const labelsContainer = document.querySelector('#volumeLineChart').parentElement.querySelector('#volumeLabels');
+            if (labelsContainer) {
+                const labels = labelsContainer.querySelectorAll('span');
+                labels.forEach((label, index) => {
+                    if (data.volumeLabels[index]) {
+                        label.textContent = data.volumeLabels[index];
+                    }
+                });
+            }
 
-            // Update scale
-            const scaleContainer = document.getElementById('volumeScale');
-            const scaleValues = scaleContainer.querySelectorAll('span');
-            scaleValues[0].textContent = data.volumeScale[0];
-            scaleValues[1].textContent = data.volumeScale[1];
+            // Update Y-axis labels
+            const yAxis = document.querySelector('#volumeLineChart').parentElement.parentElement.querySelector('.flex-col');
+            if (yAxis) {
+                const yLabels = yAxis.querySelectorAll('span');
+                if (yLabels.length === 5) {
+                    yLabels[0].textContent = data.volumeYScale ? data.volumeYScale[0] : '1.2M';
+                    yLabels[1].textContent = data.volumeYScale ? data.volumeYScale[1] : '900K';
+                    yLabels[2].textContent = data.volumeYScale ? data.volumeYScale[2] : '600K';
+                    yLabels[3].textContent = data.volumeYScale ? data.volumeYScale[3] : '300K';
+                    yLabels[4].textContent = '0';
+                }
+            }
+
+            // Parse volume values and calculate Y coordinates
+            const parseValue = (val) => {
+                if (val.includes('M')) return parseFloat(val) * 1000000;
+                if (val.includes('K')) return parseFloat(val) * 1000;
+                return parseFloat(val);
+            };
+
+            const volumeValues = data.volume.map(v => parseValue(v.value));
+            const maxVal = Math.max(...volumeValues) * 1.2;
+            const height = 200;
+
+            // Calculate Y positions (inverted - 0 is at bottom)
+            const getY = (val) => height - (val / maxVal * height);
+
+            const yPositions = volumeValues.map(v => getY(v));
+            const points = yPositions.map((y, i) => `${i * (700 / 6)},${y}`).join(' ');
+            const areaPoints = `0,200 ` + yPositions.map((y, i) => `${i * (700 / 6)},${y}`).join(' ') + ` 700,200`;
+
+            // Update line and area
+            const volumeLineChart = document.getElementById('volumeLineChart');
+            const polyline = volumeLineChart.querySelector('polyline');
+            const polygon = volumeLineChart.querySelector('polygon');
+
+            if (polyline) polyline.setAttribute('points', points);
+            if (polygon) polygon.setAttribute('points', areaPoints);
+
+            // Update circles
+            const dates = data.volumeLabels;
+            const values = data.volume.map(v => v.value);
+            volumeLineChart.querySelectorAll('circle').forEach((circle, index) => {
+                circle.setAttribute('cy', yPositions[index]);
+                circle.dataset.value = values[index];
+                circle.dataset.date = dates[index];
+            });
         }
 
         // Update success/fail chart
@@ -887,6 +961,44 @@
             setTimeout(function() {
                 toast.classList.add('hidden');
             }, 2000);
+        }
+
+        // Line chart tooltip
+        const volumeLineChart = document.getElementById('volumeLineChart');
+        const volumeTooltip = document.getElementById('volumeTooltip');
+        const tooltipDate = document.getElementById('tooltipDate');
+        const tooltipValue = document.getElementById('tooltipValue');
+
+        if (volumeLineChart) {
+            const dataPoints = [
+                { x: 0, date: 'Feb 1', value: '1.0M' },
+                { x: 117, date: 'Feb 5', value: '860K' },
+                { x: 233, date: 'Feb 10', value: '1.1M' },
+                { x: 350, date: 'Feb 15', value: '780K' },
+                { x: 467, date: 'Feb 20', value: '940K' },
+                { x: 583, date: 'Feb 25', value: '1.1M' },
+                { x: 700, date: 'Feb 28', value: '1.2M' }
+            ];
+
+            volumeLineChart.querySelectorAll('circle').forEach((circle, index) => {
+                circle.addEventListener('mouseenter', function(e) {
+                    tooltipDate.textContent = circle.dataset.date || dataPoints[index].date;
+                    tooltipValue.textContent = (circle.dataset.value || dataPoints[index].value) + ' transactions';
+                    volumeTooltip.classList.remove('hidden');
+                });
+
+                circle.addEventListener('mousemove', function(e) {
+                    const rect = volumeLineChart.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    volumeTooltip.style.left = (x + 10) + 'px';
+                    volumeTooltip.style.top = (y + 15) + 'px';
+                });
+
+                circle.addEventListener('mouseleave', function() {
+                    volumeTooltip.classList.add('hidden');
+                });
+            });
         }
         });
     </script>
