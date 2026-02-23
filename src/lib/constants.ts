@@ -3,9 +3,9 @@ export const ROUTESCAN_API = 'https://api.routescan.io/v2/network/mainnet/evm/43
 
 export const POPULAR_CONTRACTS = [
   { name: 'Trader Joe', address: '0x60aE616a2155Ee3d9A68541Ba4544862310933d4', category: 'DEX' },
-  { name: 'Pangolin', address: '0xE54Ca86531e17Ef3616d22Ca28b0D86bC2b4f3dF', category: 'DEX' },
-  { name: 'GMX', address: '0x9ab2De34A33f710D1a921aBb06f9093fEFeC4d6b', category: 'Perpetuals' },
-  { name: 'Benqi', address: '0x486Af40119B0cf6c91F560d4B0B8f4A3A7C2E5B1', category: 'Lending' },
+  { name: 'Trader Joe V2', address: '0xb4315e873dBcf96Ffd0acd8EA43f689D8c20fB30', category: 'DEX' },
+  { name: 'Aave V3', address: '0x794a61358D6845594F94dc1DB02A252b5b4814aD', category: 'Lending' },
+  { name: 'WAVAX', address: '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7', category: 'Token' },
 ];
 
 export const CACHE_TTL = {

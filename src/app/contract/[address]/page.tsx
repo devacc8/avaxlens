@@ -43,18 +43,37 @@ export default async function ContractDashboard({ params, searchParams }: Props)
     }
 
     const analytics = processTransactions(transactions, contractInfo.abi, periodDays);
+    const hasData = transactions.length > 0;
 
     return (
       <>
         <Header />
         <main className="max-w-7xl mx-auto px-4 py-8">
           <ContractHeader info={contractInfo} />
-          <MetricCards analytics={analytics} />
-          <TabNavigation
-            analytics={analytics}
-            contractInfo={contractInfo}
-            address={address}
-          />
+          {hasData ? (
+            <>
+              <MetricCards analytics={analytics} />
+              <TabNavigation
+                analytics={analytics}
+                contractInfo={contractInfo}
+                address={address}
+              />
+            </>
+          ) : (
+            <div className="bg-bg-card border border-border rounded-xl p-12 text-center">
+              <div className="text-5xl mb-4">📭</div>
+              <h2 className="text-xl font-semibold mb-2">No transaction data available</h2>
+              <p className="text-text-secondary mb-1">
+                The API returned no transactions for this contract.
+              </p>
+              <p className="text-text-muted text-sm mb-6">
+                This can happen with older contracts, proxy contracts, or contracts with very low activity.
+              </p>
+              <a href="/" className="text-avax-red hover:underline">
+                Try another contract
+              </a>
+            </div>
+          )}
         </main>
         <Footer />
       </>
