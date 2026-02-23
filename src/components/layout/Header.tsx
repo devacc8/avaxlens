@@ -16,6 +16,9 @@ export default function Header() {
             </span>
           </Link>
           <nav className="hidden md:flex gap-6 text-text-secondary">
+            <Link href="/use-cases" className="hover:text-white transition">
+              Use Cases
+            </Link>
             <Link href="/roadmap" className="hover:text-white transition">
               Roadmap
             </Link>
@@ -45,6 +48,9 @@ export default function Header() {
       {/* Mobile nav */}
       {menuOpen && (
         <nav className="md:hidden border-t border-border px-4 py-3 flex flex-col gap-3 text-text-secondary">
+          <Link href="/use-cases" className="hover:text-white transition" onClick={() => setMenuOpen(false)}>
+            Use Cases
+          </Link>
           <Link href="/roadmap" className="hover:text-white transition" onClick={() => setMenuOpen(false)}>
             Roadmap
           </Link>
