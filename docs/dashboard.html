@@ -648,7 +648,7 @@
                 <!-- CTA -->
                 <div class="mt-16 text-center">
                     <p class="text-gray-400 mb-4">Free analytics today. AI-powered monitoring tomorrow.</p>
-                    <button class="bg-[#E84142] hover:opacity-90 text-white font-semibold px-6 py-3 rounded-lg transition" onclick="showPage('home')">Try AvaxLens Now</button>
+                    <button class="bg-[#E84142] hover:opacity-90 text-white font-semibold px-6 py-3 rounded-lg transition" onclick="goToHome()">Try AvaxLens Now</button>
                 </div>
             </div>
         </section>
@@ -904,7 +904,7 @@
                 <div class="mt-24 text-center">
                     <h2 class="text-2xl font-bold text-white mb-3">Ready to understand your contract?</h2>
                     <p class="text-gray-400 mb-6">Paste any Avalanche C-Chain address and get instant analytics. Free, no signup.</p>
-                    <button class="bg-[#E84142] hover:opacity-90 text-white font-semibold px-8 py-3 rounded-lg transition text-lg" onclick="showPage('home')">Try AvaxLens Now</button>
+                    <button class="bg-[#E84142] hover:opacity-90 text-white font-semibold px-8 py-3 rounded-lg transition text-lg" onclick="goToHome()">Try AvaxLens Now</button>
                 </div>
             </div>
         </section>
@@ -1080,7 +1080,7 @@
                 <!-- CTA -->
                 <div class="text-center">
                     <p class="text-gray-400 mb-4">See the difference for yourself.</p>
-                    <button class="bg-[#E84142] hover:opacity-90 text-white font-semibold px-6 py-3 rounded-lg transition" onclick="showPage('home')">Try AvaxLens Free</button>
+                    <button class="bg-[#E84142] hover:opacity-90 text-white font-semibold px-6 py-3 rounded-lg transition" onclick="goToHome()">Try AvaxLens Free</button>
                 </div>
             </div>
         </section>
@@ -1139,42 +1139,43 @@
             window.scrollTo(0, 0);
         }
 
+        // Go to home and clear all inputs
+        function goToHome() {
+            const homeInput = document.querySelector('#section-home input[type="text"]');
+            if (homeInput) homeInput.value = '';
+            const dashboardInput = document.querySelector('#section-dashboard input[type="text"]');
+            if (dashboardInput) dashboardInput.value = '';
+            showPage('home');
+        }
+
         // Function to select a popular contract and go to dashboard
         function selectContract(element) {
-            const address = element.getAttribute('data-address');
-            const name = element.getAttribute('data-name');
-            if (address) {
-                // Set the address in the input field on dashboard
-                const dashboardInput = document.querySelector('#section-dashboard input[type="text"]');
-                if (dashboardInput) {
-                    dashboardInput.value = address;
-                }
-                showPage('dashboard');
-            }
+            showPage('dashboard');
         }
 
         // Function to analyze contract with validation
         function analyzeContract() {
-            // Try to find input in home section first, then dashboard
+            // Check home input first
             let input = document.querySelector('#section-home input[type="text"]');
             let address = input ? input.value.trim() : '';
 
-            // If not found or empty, try dashboard section
-            if (!address) {
+            // If home input is empty, check dashboard input
+            if (address === '') {
                 input = document.querySelector('#section-dashboard input[type="text"]');
                 address = input ? input.value.trim() : '';
             }
 
-            if (address !== '') {
-                // Copy address to dashboard input if we're on home page
-                const dashboardInput = document.querySelector('#section-dashboard input[type="text"]');
-                if (dashboardInput) {
-                    dashboardInput.value = address;
-                }
-                showPage('dashboard');
-            } else {
+            // If both are empty, show error
+            if (address === '') {
                 alert('Please enter a contract address');
+                return;
             }
+
+            // Clear the input we used
+            if (input) {
+                input.value = '';
+            }
+            showPage('dashboard');
         }
 
         document.addEventListener('DOMContentLoaded', function() {
