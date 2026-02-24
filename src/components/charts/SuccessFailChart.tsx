@@ -38,6 +38,7 @@ export default function SuccessFailChart({ data }: SuccessFailChartProps) {
           tickLine={false}
         />
         <Tooltip
+          cursor={false}
           contentStyle={{
             backgroundColor: '#1e293b',
             border: '1px solid #334155',

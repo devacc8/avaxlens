@@ -1,10 +1,18 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+
+const NAV_LINKS = [
+  { href: '/use-cases', label: 'Use Cases' },
+  { href: '/roadmap', label: 'Roadmap' },
+  { href: '/compare', label: 'Compare' },
+];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="border-b border-border">
@@ -16,18 +24,15 @@ export default function Header() {
             </span>
           </Link>
           <nav className="hidden md:flex gap-6 text-text-secondary">
-            <Link href="/use-cases" className="hover:text-white transition">
-              Use Cases
-            </Link>
-            <Link href="/roadmap" className="hover:text-white transition">
-              Roadmap
-            </Link>
-            <Link href="/compare" className="hover:text-white transition">
-              Compare
-            </Link>
-            <a href="https://github.com/devacc8/avaxlens" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-              GitHub
-            </a>
+            {NAV_LINKS.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`transition ${pathname === href ? 'text-white' : 'hover:text-white'}`}
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
         </div>
         {/* Mobile menu button */}
@@ -48,18 +53,16 @@ export default function Header() {
       {/* Mobile nav */}
       {menuOpen && (
         <nav className="md:hidden border-t border-border px-4 py-3 flex flex-col gap-3 text-text-secondary">
-          <Link href="/use-cases" className="hover:text-white transition" onClick={() => setMenuOpen(false)}>
-            Use Cases
-          </Link>
-          <Link href="/roadmap" className="hover:text-white transition" onClick={() => setMenuOpen(false)}>
-            Roadmap
-          </Link>
-          <Link href="/compare" className="hover:text-white transition" onClick={() => setMenuOpen(false)}>
-            Compare
-          </Link>
-          <a href="https://github.com/devacc8/avaxlens" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
-            GitHub
-          </a>
+          {NAV_LINKS.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className={`transition ${pathname === href ? 'text-white' : 'hover:text-white'}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              {label}
+            </Link>
+          ))}
         </nav>
       )}
     </header>

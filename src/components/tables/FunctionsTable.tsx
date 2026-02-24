@@ -22,7 +22,7 @@ export default function FunctionsTable({ data }: FunctionsTableProps) {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as SortKey)}
-          className="bg-bg-input border border-border px-3 py-2 rounded-lg text-sm text-text-secondary focus:outline-none"
+          className="bg-bg-input border border-border px-3 py-2 rounded-lg text-sm text-white focus:outline-none cursor-pointer"
         >
           <option value="calls">Sort by Calls</option>
           <option value="successRate">Sort by Success Rate</option>

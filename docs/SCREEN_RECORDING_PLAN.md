@@ -25,7 +25,7 @@
 | **Screen** | avaxlens.vercel.app — landing page visible, search bar in center |
 | **Duration** | ~15 sec |
 | **Mouse** | Idle on the page. Slow scroll down slightly to show the full hero section, then back up |
-| **Audio** | *"Every Avalanche developer asks the same questions: Is my contract working? Who's calling it? Why are transactions failing? Today, the answer is buried in raw transaction lists on the Explorer. There has to be a better way. And now there is."* |
+| **Audio** | *"Hello Avalanche. Alex and Mark here. We are building AvaxLens that helps every Avalanche developer to understand if their contract is working? Now, the answer is buried in raw transaction lists on the Explorer. And we know how to fix it."* |
 
 ---
 
@@ -65,7 +65,7 @@
 | 1:08 | Click "Errors" tab. Error summary cards appear (Total Errors, Error Rate), then error table below |
 | 1:10 | Pause on errors view |
 
-| **Audio** | *"That's AvaxLens. Paste any C-Chain contract address — get instant analytics. Transaction volume. Success rate. Gas usage. Function breakdown with ABI decoding. Error logs with decoded revert reasons. All in a clean dashboard. No signup. No API key. Completely free. Let me show you. Here's Trader Joe — the biggest DEX on Avalanche. In ten seconds we see: transaction volume over thirty days, success versus fail trends, top functions sorted by calls, average gas per function, and decoded error logs. Switch to seven days, ninety days — updates instantly."* |
+| **Audio** | *"That's AvaxLens. Paste any C-Chain contract address — get instant analytics. Transaction and gas volume. Success rate and function breakdown. All in a clean dashboard. No signup. No API key. Completely free. Let me show you. Here's Trader Joe — the biggest DEX on Avalanche. And here its data, we will add more data in the future, but you can already see it working live"* |
 
 ---
 
@@ -76,7 +76,7 @@
 | **Screen** | Stay on dashboard, then navigate to `/use-cases` |
 | **Duration** | ~20 sec |
 | **Mouse** | (1:10) Still on Errors tab — pause 2 sec. (1:12) Click "Use Cases" in header nav. (1:14) Page loads. Slow scroll down through the 4 use case sections. Mouse highlights "Live" badges on Error Investigation, Protocol Monitoring, Gas Optimization. (1:25) Pause on AI Security Scan section — mouse circles the "Coming Soon" badge and the security score mockup |
-| **Audio** | *"Why build this on Avalanche? After Avalanche9000, there are over eighty L1s in the ecosystem. Developer tooling hasn't caught up. Every team deploying contracts needs analytics — and right now there's nothing free and instant. AvaxLens fills that gap."* |
+| **Audio** | *"Avalanche network is getting bigger — there are over eighty L1s in the ecosystem. Every team deploying contracts needs analytics — and right now there's nothing free and instant. AvaxLens fills that gap."* |
 
 ---
 
@@ -101,7 +101,31 @@
 | 1:50 | Pause — let the landing page breathe for the final words |
 | 2:00 | End |
 
-| **Audio** | *"Free analytics today. AI-powered monitoring tomorrow. Our roadmap: AI-driven security scanning with risk scoring, anomaly detection when something unusual happens on your contract, and real-time alerts to Telegram and Discord. We've already built real use cases — error investigation, gas optimization, protocol monitoring — all live and working. AvaxLens — understand your contract in ten seconds. Try it now at avaxlens.vercel.app. Built for Avalanche developers, by Avalanche developers."* |
+| **Audio** | *"But AvaxLens is not only free analytics. Our goal is to build AI-powered monitoring tools that even ordinary users can use. Here's our roadmap: AI-driven security scanning with risk scoring, anomaly detection when something unusual happens on your contract. We've already built real use cases — error investigation, gas optimization, protocol monitoring — all live and working. Try it now at avaxlens.vercel.app. Built for Avalanche developers, by Avalanche developers."* |
+
+---
+
+## Full Voice Script (copy-paste ready)
+
+### Block 1 — Hook (15 sec)
+
+Hello Avalanche. Alex and Mark here. We are building AvaxLens that helps every Avalanche developer to understand if their contract is working? Now, the answer is buried in raw transaction lists on the Explorer. And we know how to fix it.
+
+### Block 2 — Problem (25 sec)
+
+Right now, if you deploy a smart contract on Avalanche, you have three options. One — Snowtrace. Free, but just a raw list of transactions. No charts, no analytics. Two — Tenderly. Powerful, but forty-nine dollars a month. Three — Dune. Requires SQL, thirty-nine dollars a month. There's a gap. No free, instant, visual analytics for Avalanche contracts.
+
+### Block 3 — Solution (30 sec)
+
+That's AvaxLens. Paste any C-Chain contract address — get instant analytics. Transaction and gas volume. Success rate and function breakdown. All in a clean dashboard. No signup. No API key. Completely free. Let me show you. Here's Trader Joe — the biggest DEX on Avalanche. And here its data, we will add more data in the future, but you can already see it working live.
+
+### Block 4 — Why Avalanche (20 sec)
+
+Avalanche network is getting bigger — there are over eighty L1s in the ecosystem. Every team deploying contracts needs analytics — and right now there's nothing free and instant. AvaxLens fills that gap.
+
+### Block 5 — Close (30 sec)
+
+But AvaxLens is not only free analytics. Our goal is to build AI-powered monitoring tools that even ordinary users can use. Here's our roadmap: AI-driven security scanning with risk scoring, anomaly detection when something unusual happens on your contract. We've already built real use cases — error investigation, gas optimization, protocol monitoring — all live and working. Try it now at avaxlens.vercel.app. Built for Avalanche developers, by Avalanche developers.
 
 ---
 

@@ -38,6 +38,7 @@ export default function VolumeChart({ data }: VolumeChartProps) {
           tickFormatter={(v: number) => v >= 1000 ? `${(v / 1000).toFixed(0)}K` : String(v)}
         />
         <Tooltip
+          cursor={false}
           contentStyle={{
             backgroundColor: '#1e293b',
             border: '1px solid #334155',
@@ -53,6 +54,7 @@ export default function VolumeChart({ data }: VolumeChartProps) {
           stroke="#818cf8"
           strokeWidth={2}
           fill="url(#volumeGradient)"
+          activeDot={false}
         />
       </AreaChart>
     </ResponsiveContainer>

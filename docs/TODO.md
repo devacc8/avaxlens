@@ -1,112 +1,26 @@
-# AvaxLens — Задачи для разработчика
+# AvaxLens — Developer Tasks
 
-> Список задач по исправлению UI/UX багов и улучшений
-
----
-
-## Mobile & Responsive
-
-### 1. Горизонтальный скролл на странице Compare
-
-**Файл:** `src/app/compare/page.tsx`
-
-- Добавить контейнеру `overflow-x-auto` для таблицы
-- Добавить визуальный индикатор (тень или стрелки по бокам) что таблица скролится
-- Проверить что все колонки помещаются при скролле
-
-**Ожидаемый результат:** На мобильных можно скролить таблицу влево-вправо, все колонки доступны
+> UI/UX bug fixes and improvements tracker.
 
 ---
 
-### 2. Горизонтальный скролл для Top Functions таблицы
+## Completed (v0.3.5)
 
-**Файл:** `src/app/contract/[address]/page.tsx` (или компонент таблицы)
-
-- Обернуть таблицу в контейнер с `overflow-x-auto`
-- Добавить минимальную ширину для корректного скролла
-
-**Ожидаемый результат:** На мобильных таблица скролится, все колонки видны
-
----
-
-### 3. Цвет кнопки сортировки в Top Functions
-
-**Файл:** `src/app/contract/[address]/page.tsx` или `src/components/`
-
-- Найти select/dropdown для сортировки
-- Изменить цвет текста на белый (`text-white`)
-- Проверить фон выпадающего списка
-
-**Текущее:** Чёрный текст на тёмном фоне - не видно
-**Ожидаемый:** Белый текст, хорошо читается
+- [x] Compare table horizontal scroll on mobile (`overflow-x-auto`)
+- [x] Top Functions table horizontal scroll on mobile (`overflow-x-auto`)
+- [x] Sort select color — changed to `text-white` for readability
+- [x] Chart hover highlight removed — `cursor={false}`, `activeDot={false}`, tooltip only
+- [x] Error names truncated with `truncate` + `title` attribute for full text on hover
+- [x] GitHub link moved from Header to Footer (SVG icon)
+- [x] Active page highlight in Header navigation (`usePathname`)
 
 ---
 
-## Charts & Interactions
+## Backlog
 
-### 4. Убрать highlight при наведении на графики
-
-**Файл:** `src/components/dashboard/charts/` (или где Recharts компоненты)
-
-**Transaction Volume:**
-- При наведении убрать белую линию/подсветку
-- Оставить только tooltip с датой и количеством транзакций
-
-**Success/Fail Trend:**
-- При наведении убрать белые столбики
-- Оставить только tooltip с датой и success/fail count
-
-**Ожидаемый результат:**Tooltip появляется, но график не меняет цвет
-
----
-
-### 5. Truncating Error Names в Errors табе
-
-**Файл:** `src/app/contract/[address]/page.tsx` (Errors tab)
-
-- Обрезать длинные названия ошибок с `text-overflow: ellipsis`
-- Добавить `title` атрибут или tooltip при наведении
-- Для мобильных: сделать ячейку скроллимой при тапе/наведении
-
-**Текущее:** Текст вылезает за границы
-**Ожидаемый:** Полное название видно при наведении/тапе
-
----
-
-## Navigation & Layout
-
-### 6. Переместить GitHub в footer
-
-**Файл:** `src/components/layout/Header.tsx`
-
-- Убрать GitHub ссылку из хедера
-- Добавить GitHub иконку в Footer (`src/components/layout/Footer.tsx`)
-- Разместить в правом нижнем углу
-- Использовать иконку (SVG или react-icons)
-
-**Ожидаемый результат:** GitHub доступен в футере как иконка
-
----
-
-### 7. Подсветка активной страницы в навигации
-
-**Файл:** `src/components/layout/Header.tsx`
-
-- Определить текущий путь (`usePathname` из Next.js)
-- Добавить класс `text-white` или `border-b` для активной ссылки
-- Остальные ссылки: `text-gray-400`
-
-**Ожидаемый результат:** Пользователь видит на какой странице находится
-
----
-
-## Проверка
-
-После выполнения проверить:
-- [ ] Compare таблица скролится на мобильных
-- [ ] Top Functions скролится на мобильных
-- [ ] Кнопка сортировки белая и читаемая
-- [ ] Графики не подсвечиваются при наведении, только tooltip
-- [ ] Ошибки видны полностью при наведении
-- [ ] GitHub в футере как иконка
-- [ ] Активная страница подсвечена
+- [ ] Error names: add expandable row on tap for mobile (currently truncated)
+- [ ] Status indicator: health check endpoint (`/api/health`) with real API monitoring
+- [ ] Empty state for contracts with zero transactions
+- [ ] Shareable dashboard URLs with period param
+- [ ] Export analytics as CSV
+- [ ] Export charts as PNG
