@@ -35,14 +35,36 @@
 - [x] Vercel deployment
 - [x] Audit completed (6.5/10, all findings fixed)
 
+## Done (v0.4.0)
+
+- [x] **Functions Tab** — summary cards, function calls chart, gas chart, extended table
+- [x] **Callers Tab** — summary cards, caller distribution chart, sortable callers table with pagination
+- [x] **Transactions Tab** — lazy fetch, status filters, period filtering, paginated table, retry button
+- [x] All 5 dashboard tabs fully functional (no more "Coming Soon")
+- [x] Enhanced processing layer: caller breakdown, min/max gas tracking
+- [x] New utilities: formatAvaxValue, formatTimeAgo
+
+## Done (v0.4.1)
+
+- [x] Security audit (9/10 score) — 12 of 13 findings fixed
+- [x] Cache hardening: MAX_CACHE_SIZE=500, expired cleanup, LRU eviction
+- [x] Rate limiting: sliding window 30 req/min per IP on all API routes
+- [x] Security headers: X-Content-Type-Options, X-Frame-Options, Referrer-Policy
+- [x] Query parameter validation with bounds checking
+- [x] Client-side fetch timeouts (AbortController, 15s)
+- [x] Race condition fix on rapid period changes
+- [x] Response schema validation (Array.isArray guards)
+- [x] Error logging in API clients (console.error)
+- [x] npm audit — 0 vulnerabilities
+
 ---
 
 ## Hackathon Deadlines
 
 | Date | Deliverable | Status |
 |------|-------------|--------|
-| Feb 25 | 2-min video pitch + idea | In Progress |
-| Mar 9 | MVP + demo video | Planned |
+| Feb 25 | 2-min video pitch + idea | Done |
+| Mar 9 | MVP + demo video | In Progress |
 | Mar 19 | Pitch deck + GTM plan | Planned |
 | Mar 26/27 | Final 5-min pitch + live demo | Planned |
 
@@ -51,18 +73,18 @@
 ## Planned — MVP Polish (Mar 9)
 
 ### Functions Tab
-- [ ] Dedicated functions view with call count trends
-- [ ] Per-function success rate bar
-- [ ] Function gas usage comparison
+- [x] Dedicated functions view with call count trends
+- [x] Per-function success rate bar
+- [x] Function gas usage comparison
 
 ### Callers Tab
-- [ ] Top callers ranked by tx count
-- [ ] Caller distribution pie/bar chart
+- [x] Top callers ranked by tx count
+- [x] Caller distribution bar chart
 - [ ] New vs returning callers
 
 ### Transactions Tab
-- [ ] Paginated transaction list with decoded function names
-- [ ] Filter by status (success/fail)
+- [x] Paginated transaction list with decoded function names
+- [x] Filter by status (success/fail)
 - [ ] Search by tx hash
 
 ### Status Indicator (Footer)
@@ -73,9 +95,10 @@
 - [ ] Three states: green (all OK), yellow (one API slow/down), red (backend unreachable)
 
 ### General Polish
-- [ ] Mobile responsive improvements (truncate addresses with ellipsis, touch-friendly UI)
+- [x] Mobile responsive improvements (truncate addresses, touch-friendly UI)
 - [ ] Empty state for contracts with zero transactions
-- [ ] Better error messages with retry buttons
+- [x] Better error messages with retry buttons
+- [ ] Light / dark theme toggle (respect system preference, manual override)
 
 ### Testing
 - [ ] Test with Trader Joe, Pangolin, GMX, Benqi
@@ -176,7 +199,7 @@ Zero vendor lock-in: everything is Docker + standard PostgreSQL.
 
 ### Status Indicator Evolution
 
-Current (v0.1.0):
+Current (v0.4.1):
 ```
 Footer -> hardcoded "online" status -> green dot
 ```
@@ -195,7 +218,7 @@ Backend -> monitors all dependencies (DB, APIs, RPC) -> pushes status changes
 
 ### Backend Evolution
 
-Current: Next.js API routes with in-memory cache.
+Current (v0.4.1): Next.js API routes with in-memory cache (500 max, LRU eviction), rate limiting (30 req/min per IP), security headers.
 
 Next: Add PostgreSQL for persistent storage, background jobs for indexing.
 
