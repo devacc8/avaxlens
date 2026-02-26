@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import type { ContractAnalytics, ContractInfo, Period, TabId } from '@/lib/types';
 import PeriodSelector from '@/components/charts/PeriodSelector';
 import OverviewTab from '@/components/dashboard/OverviewTab';
@@ -29,27 +29,42 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
   const [analytics, setAnalytics] = useState(initialAnalytics);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
   const handlePeriodChange = useCallback(async (newPeriod: Period) => {
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
     setPeriod(newPeriod);
     setLoading(true);
     setError(null);
+
+    const timeout = setTimeout(() => controller.abort(), 15_000);
     try {
-      const res = await fetch(`/api/contract/${address}/analytics?period=${newPeriod}`);
+      const res = await fetch(`/api/contract/${address}/analytics?period=${newPeriod}`, {
+        signal: controller.signal,
+      });
+      if (controller.signal.aborted) return;
       if (!res.ok) {
         setError('Failed to load data. Please try again.');
         return;
       }
       const json = await res.json();
+      if (controller.signal.aborted) return;
       if (json.success) {
         setAnalytics(json.data.analytics);
       } else {
         setError('Failed to load data. Please try again.');
       }
-    } catch {
-      setError('Network error. Please check your connection.');
+    } catch (err) {
+      if (controller.signal.aborted) return;
+      setError(err instanceof DOMException && err.name === 'AbortError'
+        ? 'Request timed out. Please try again.'
+        : 'Network error. Please check your connection.');
     } finally {
-      setLoading(false);
+      clearTimeout(timeout);
+      if (!controller.signal.aborted) setLoading(false);
     }
   }, [address]);
 

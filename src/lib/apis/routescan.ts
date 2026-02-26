@@ -23,8 +23,8 @@ export async function getTransactions(
       setCache(cacheKey, json.result, CACHE_TTL.TRANSACTIONS);
       return json.result;
     }
-  } catch {
-    // Network error or timeout
+  } catch (error) {
+    console.error(`[Routescan] getTransactions failed for ${address}:`, error instanceof Error ? error.message : error);
   }
   return [];
 }
@@ -44,8 +44,8 @@ export async function getFirstTransaction(address: string): Promise<RawTransacti
       setCache(cacheKey, json.result[0], CACHE_TTL.CONTRACT_INFO);
       return json.result[0];
     }
-  } catch {
-    // Network error or timeout
+  } catch (error) {
+    console.error(`[Routescan] getFirstTransaction failed for ${address}:`, error instanceof Error ? error.message : error);
   }
   return null;
 }

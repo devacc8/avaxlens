@@ -20,8 +20,8 @@ export async function getContractSource(address: string): Promise<SnowtraceContr
       setCache(cacheKey, data, CACHE_TTL.CONTRACT_INFO);
       return data;
     }
-  } catch {
-    // Network error or timeout — return null gracefully
+  } catch (error) {
+    console.error(`[Snowtrace] getContractSource failed for ${address}:`, error instanceof Error ? error.message : error);
   }
   return null;
 }
@@ -43,8 +43,8 @@ export async function getContractABI(address: string): Promise<unknown[] | null>
       setCache(cacheKey, abi, CACHE_TTL.ABI);
       return abi;
     }
-  } catch {
-    // Parse error, network error, or timeout
+  } catch (error) {
+    console.error(`[Snowtrace] getContractABI failed for ${address}:`, error instanceof Error ? error.message : error);
   }
   return null;
 }

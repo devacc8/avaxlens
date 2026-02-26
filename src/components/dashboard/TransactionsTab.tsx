@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import type { RawTransaction, Period, ProcessedTransaction } from '@/lib/types';
+import { useState, useEffect, useRef } from 'react';
+import type { Period, ProcessedTransaction } from '@/lib/types';
 import { processRawTransactions } from '@/lib/processing/transactions';
 import { shortenAddress, formatGas, formatTimeAgo } from '@/lib/utils';
 
@@ -13,39 +13,51 @@ interface TransactionsTabProps {
 type StatusFilter = 'all' | 'success' | 'failed';
 const PAGE_SIZE = 25;
 
+const FETCH_TIMEOUT = 15_000;
+
 export default function TransactionsTab({ address, period }: TransactionsTabProps) {
   const [transactions, setTransactions] = useState<ProcessedTransaction[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [page, setPage] = useState(0);
-
-  const fetchTransactions = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch(`/api/contract/${address}/transactions`);
-      if (!res.ok) {
-        setError('Failed to load transactions');
-        return;
-      }
-      const json = await res.json();
-      if (json.success) {
-        const processed = processRawTransactions(json.data.transactions);
-        setTransactions(processed);
-      } else {
-        setError('Failed to load transactions');
-      }
-    } catch {
-      setError('Network error. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  }, [address]);
+  const [retryCount, setRetryCount] = useState(0);
+  const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
-    fetchTransactions();
-  }, [fetchTransactions]);
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
+    setLoading(true);
+    setError(null);
+
+    const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT);
+
+    fetch(`/api/contract/${address}/transactions`, { signal: controller.signal })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load transactions');
+        return res.json();
+      })
+      .then(json => {
+        if (controller.signal.aborted) return;
+        if (json.success && Array.isArray(json.data?.transactions)) {
+          setTransactions(processRawTransactions(json.data.transactions));
+        } else {
+          setError('Failed to load transactions');
+        }
+      })
+      .catch(err => {
+        if (controller.signal.aborted) return;
+        setError(err.name === 'AbortError' ? 'Request timed out. Please retry.' : 'Network error. Please try again.');
+      })
+      .finally(() => {
+        clearTimeout(timeout);
+        if (!controller.signal.aborted) setLoading(false);
+      });
+
+    return () => controller.abort();
+  }, [address, retryCount]);
 
   // Filter by period
   const periodDays = period === '7d' ? 7 : period === '30d' ? 30 : 90;
@@ -76,7 +88,7 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
       <div className="bg-bg-card border border-border rounded-xl p-12 text-center">
         <p className="text-error text-sm mb-3">{error}</p>
         <button
-          onClick={fetchTransactions}
+          onClick={() => setRetryCount(c => c + 1)}
           className="px-4 py-2 bg-avax-red hover:bg-avax-red-hover text-white text-sm rounded-lg transition"
         >
           Retry

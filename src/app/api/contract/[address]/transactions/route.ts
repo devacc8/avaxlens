@@ -16,9 +16,9 @@ export async function GET(
   }
 
   const searchParams = request.nextUrl.searchParams;
-  const page = parseInt(searchParams.get('page') || '1');
-  const offset = parseInt(searchParams.get('offset') || '10000');
-  const sort = searchParams.get('sort') || 'desc';
+  const page = Math.max(1, parseInt(searchParams.get('page') || '1') || 1);
+  const offset = Math.min(10000, Math.max(1, parseInt(searchParams.get('offset') || '10000') || 10000));
+  const sort = searchParams.get('sort') === 'asc' ? 'asc' : 'desc';
 
   try {
     const transactions = await getTransactions(address, page, offset, sort);
