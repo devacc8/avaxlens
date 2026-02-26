@@ -32,7 +32,7 @@ export default function OverviewTab({ analytics }: OverviewTabProps) {
         </div>
       </div>
 
-      <FunctionsTable data={analytics.functionBreakdown} />
+      <FunctionsTable data={analytics.functionBreakdown.slice(0, 10)} />
     </div>
   );
 }

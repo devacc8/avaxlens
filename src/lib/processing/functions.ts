@@ -11,6 +11,8 @@ export function buildFunctionBreakdown(
     count: number;
     successCount: number;
     totalGas: number;
+    minGas: number;
+    maxGas: number;
   }>();
 
   for (const tx of transactions) {
@@ -29,15 +31,20 @@ export function buildFunctionBreakdown(
       }
     }
 
+    const gasUsed = parseInt(tx.gasUsed || '0');
     const existing = groups.get(selector) || {
       name: funcName,
       count: 0,
       successCount: 0,
       totalGas: 0,
+      minGas: Infinity,
+      maxGas: 0,
     };
     existing.count++;
     if (tx.isError === '0') existing.successCount++;
-    existing.totalGas += parseInt(tx.gasUsed || '0');
+    existing.totalGas += gasUsed;
+    if (gasUsed < existing.minGas) existing.minGas = gasUsed;
+    if (gasUsed > existing.maxGas) existing.maxGas = gasUsed;
     groups.set(selector, existing);
   }
 
@@ -51,7 +58,9 @@ export function buildFunctionBreakdown(
       percentage: total > 0 ? (stats.count / total) * 100 : 0,
       successRate: stats.count > 0 ? (stats.successCount / stats.count) * 100 : 0,
       avgGas: stats.count > 0 ? Math.round(stats.totalGas / stats.count) : 0,
+      totalGas: stats.totalGas,
+      minGas: stats.minGas === Infinity ? 0 : stats.minGas,
+      maxGas: stats.maxGas,
     }))
-    .sort((a, b) => b.calls - a.calls)
-    .slice(0, 20);
+    .sort((a, b) => b.calls - a.calls);
 }

@@ -4,8 +4,10 @@ import { useState, useCallback } from 'react';
 import type { ContractAnalytics, ContractInfo, Period, TabId } from '@/lib/types';
 import PeriodSelector from '@/components/charts/PeriodSelector';
 import OverviewTab from '@/components/dashboard/OverviewTab';
+import FunctionsTab from '@/components/dashboard/FunctionsTab';
+import CallersTab from '@/components/dashboard/CallersTab';
+import TransactionsTab from '@/components/dashboard/TransactionsTab';
 import ErrorsTable from '@/components/tables/ErrorsTable';
-import ComingSoon from '@/components/ui/ComingSoon';
 
 interface TabNavigationProps {
   analytics: ContractAnalytics;
@@ -69,7 +71,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
             </button>
           ))}
         </div>
-        {(activeTab === 'overview' || activeTab === 'transactions' || activeTab === 'functions' || activeTab === 'errors') && (
+        {(activeTab === 'overview' || activeTab === 'transactions' || activeTab === 'functions' || activeTab === 'errors' || activeTab === 'callers') && (
           <PeriodSelector period={period} onChange={handlePeriodChange} disabled={loading} />
         )}
       </div>
@@ -96,19 +98,11 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
           )}
 
           {activeTab === 'transactions' && (
-            <ComingSoon
-              icon="📋"
-              title="Transactions"
-              description="Detailed transaction list with filters and search"
-            />
+            <TransactionsTab address={address} period={period} />
           )}
 
           {activeTab === 'functions' && (
-            <ComingSoon
-              icon="⚡"
-              title="Functions"
-              description="Detailed breakdown by function with call trends"
-            />
+            <FunctionsTab data={analytics.functionBreakdown} />
           )}
 
           {activeTab === 'errors' && (
@@ -120,11 +114,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
           )}
 
           {activeTab === 'callers' && (
-            <ComingSoon
-              icon="👥"
-              title="Callers"
-              description="Top callers and usage distribution"
-            />
+            <CallersTab data={analytics.callerBreakdown} />
           )}
         </div>
       </div>

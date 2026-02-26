@@ -6,11 +6,12 @@ import { formatPercentage, formatGas } from '@/lib/utils';
 
 interface FunctionsTableProps {
   data: FunctionStats[];
+  extended?: boolean;
 }
 
 type SortKey = 'calls' | 'successRate' | 'avgGas';
 
-export default function FunctionsTable({ data }: FunctionsTableProps) {
+export default function FunctionsTable({ data, extended }: FunctionsTableProps) {
   const [sortBy, setSortBy] = useState<SortKey>('calls');
 
   const sorted = [...data].sort((a, b) => b[sortBy] - a[sortBy]);
@@ -41,6 +42,7 @@ export default function FunctionsTable({ data }: FunctionsTableProps) {
                 <th className="hidden sm:table-cell text-right py-3 px-4">%</th>
                 <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Success</th>
                 <th className="hidden md:table-cell text-right py-3 px-4">Avg Gas</th>
+                {extended && <th className="hidden lg:table-cell text-right py-3 px-4">Total Gas</th>}
               </tr>
             </thead>
             <tbody>
@@ -53,6 +55,7 @@ export default function FunctionsTable({ data }: FunctionsTableProps) {
                     {formatPercentage(func.successRate)}
                   </td>
                   <td className="hidden md:table-cell py-3 px-4 text-right">{formatGas(func.avgGas)}</td>
+                  {extended && <td className="hidden lg:table-cell py-3 px-4 text-right">{formatGas(func.totalGas)}</td>}
                 </tr>
               ))}
             </tbody>

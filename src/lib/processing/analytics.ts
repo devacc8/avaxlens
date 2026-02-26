@@ -1,6 +1,7 @@
 import type { RawTransaction, ContractAnalytics, DailyVolume, DailySuccessFail } from '@/lib/types';
 import { buildFunctionBreakdown } from './functions';
 import { buildErrorBreakdown } from './errors';
+import { buildCallerBreakdown } from './callers';
 import { formatShortDate } from '@/lib/utils';
 
 export function processTransactions(
@@ -30,6 +31,7 @@ export function processTransactions(
   const successFailByDay = groupSuccessFailByDay(filtered);
   const functionBreakdown = buildFunctionBreakdown(filtered, abi);
   const errorBreakdown = buildErrorBreakdown(filtered);
+  const callerBreakdown = buildCallerBreakdown(filtered);
 
   return {
     totalTransactions,
@@ -42,6 +44,7 @@ export function processTransactions(
     successFailByDay,
     functionBreakdown,
     errorBreakdown,
+    callerBreakdown,
     periodDays,
   };
 }

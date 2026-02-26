@@ -52,3 +52,23 @@ export function formatPercentage(value: number): string {
   if (isNaN(value)) return '0.0%';
   return value.toFixed(1) + '%';
 }
+
+export function formatAvaxValue(weiStr: string): string {
+  const wei = Number(weiStr || '0');
+  if (wei === 0) return '0';
+  const avax = wei / 1e18;
+  if (avax < 0.001) return '<0.001';
+  if (avax < 1) return avax.toFixed(3);
+  if (avax < 1000) return avax.toFixed(2);
+  return avax.toLocaleString('en-US', { maximumFractionDigits: 1 });
+}
+
+export function formatTimeAgo(timestamp: number): string {
+  const now = Math.floor(Date.now() / 1000);
+  const diff = now - timestamp;
+  if (diff < 60) return 'just now';
+  if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+  if (diff < 2592000) return `${Math.floor(diff / 86400)}d ago`;
+  return formatShortDate(timestamp);
+}

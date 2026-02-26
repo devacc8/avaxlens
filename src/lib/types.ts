@@ -54,6 +54,7 @@ export interface ContractAnalytics {
   successFailByDay: DailySuccessFail[];
   functionBreakdown: FunctionStats[];
   errorBreakdown: ErrorStats[];
+  callerBreakdown: CallerStats[];
   periodDays: number;
 }
 
@@ -76,6 +77,9 @@ export interface FunctionStats {
   percentage: number;
   successRate: number;
   avgGas: number;
+  totalGas: number;
+  minGas: number;
+  maxGas: number;
 }
 
 export interface ErrorStats {
@@ -83,6 +87,25 @@ export interface ErrorStats {
   count: number;
   lastSeen: string;
   functionName: string;
+}
+
+export interface CallerStats {
+  address: string;
+  txCount: number;
+  percentage: number;
+  successRate: number;
+  totalGasUsed: number;
+  lastActive: string;
+}
+
+export interface ProcessedTransaction {
+  hash: string;
+  functionName: string;
+  from: string;
+  value: string;
+  gasUsed: number;
+  isError: boolean;
+  timestamp: number;
 }
 
 export interface ApiResponse<T> {
