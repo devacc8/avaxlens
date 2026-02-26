@@ -20,6 +20,7 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
+  const [search, setSearch] = useState('');
   const [page, setPage] = useState(0);
   const [retryCount, setRetryCount] = useState(0);
   const abortRef = useRef<AbortController | null>(null);
@@ -64,8 +65,14 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
   const cutoff = Math.floor(Date.now() / 1000) - periodDays * 86400;
   const periodFiltered = transactions.filter(tx => tx.timestamp >= cutoff);
 
+  // Filter by search
+  const searchLower = search.toLowerCase();
+  const searchFiltered = searchLower
+    ? periodFiltered.filter(tx => tx.hash.toLowerCase().includes(searchLower))
+    : periodFiltered;
+
   // Filter by status
-  const filtered = periodFiltered.filter(tx => {
+  const filtered = searchFiltered.filter(tx => {
     if (statusFilter === 'success') return !tx.isError;
     if (statusFilter === 'failed') return tx.isError;
     return true;
@@ -101,20 +108,29 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
     <div className="space-y-4">
       {/* Filters */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-        <div className="flex gap-1 bg-bg-input p-1 rounded-lg">
-          {(['all', 'success', 'failed'] as StatusFilter[]).map(f => (
-            <button
-              key={f}
-              onClick={() => { setStatusFilter(f); setPage(0); }}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition capitalize ${
-                statusFilter === f
-                  ? 'bg-avax-red text-white'
-                  : 'text-text-secondary hover:text-white'
-              }`}
-            >
-              {f === 'all' ? `All (${periodFiltered.length})` : f === 'success' ? `Success (${periodFiltered.filter(t => !t.isError).length})` : `Failed (${periodFiltered.filter(t => t.isError).length})`}
-            </button>
-          ))}
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex gap-1 bg-bg-input p-1 rounded-lg">
+            {(['all', 'success', 'failed'] as StatusFilter[]).map(f => (
+              <button
+                key={f}
+                onClick={() => { setStatusFilter(f); setPage(0); }}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition capitalize ${
+                  statusFilter === f
+                    ? 'bg-avax-red text-white'
+                    : 'text-text-secondary hover:text-white'
+                }`}
+              >
+                {f === 'all' ? `All (${periodFiltered.length})` : f === 'success' ? `Success (${periodFiltered.filter(t => !t.isError).length})` : `Failed (${periodFiltered.filter(t => t.isError).length})`}
+              </button>
+            ))}
+          </div>
+          <input
+            type="text"
+            placeholder="Search by tx hash..."
+            value={search}
+            onChange={e => { setSearch(e.target.value); setPage(0); }}
+            className="px-3 py-1.5 text-xs sm:text-sm bg-bg-input border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:border-border-hover w-48 sm:w-56 transition"
+          />
         </div>
         <p className="text-text-muted text-sm">
           {filtered.length.toLocaleString()} transaction{filtered.length !== 1 ? 's' : ''}
