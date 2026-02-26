@@ -81,9 +81,14 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
               className={`px-2.5 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition ${
                 activeTab === tab.id
                   ? 'bg-avax-red text-white'
-                  : 'text-text-secondary hover:text-white'
+                  : tab.id === 'audit'
+                    ? 'text-accent-purple-light hover:text-white'
+                    : 'text-text-secondary hover:text-white'
               }`}
             >
+              {tab.id === 'audit' && activeTab !== 'audit' && (
+                <span className="inline-block w-1.5 h-1.5 bg-accent-purple-light rounded-full animate-pulse mr-1.5 align-middle" />
+              )}
               {tab.label}
             </button>
           ))}
