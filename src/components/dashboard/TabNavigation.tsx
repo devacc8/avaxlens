@@ -78,11 +78,11 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`relative px-2.5 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition ${
+              className={`relative px-2.5 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition cursor-pointer ${
                 activeTab === tab.id
                   ? 'bg-avax-red text-white'
                   : 'text-text-secondary hover:text-white'
-              }`}
+              } ${tab.id === 'audit' && activeTab !== 'audit' ? 'bg-white/5' : ''}`}
             >
               {tab.label}
               {tab.id === 'audit' && activeTab !== 'audit' && (
