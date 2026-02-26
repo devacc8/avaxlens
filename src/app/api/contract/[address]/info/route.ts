@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { isValidAddress } from '@/lib/validation';
+import { isRateLimited } from '@/lib/rate-limit';
 import { getContractInfo } from '@/lib/apis/snowtrace';
 import { getFirstTransaction } from '@/lib/apis/routescan';
 import { formatDate } from '@/lib/utils';
 
 export async function GET(
-  _request: NextRequest,
+  request: NextRequest,
   { params }: { params: Promise<{ address: string }> }
 ) {
   const { address } = await params;
@@ -14,6 +15,14 @@ export async function GET(
     return NextResponse.json(
       { success: false, error: 'Invalid Avalanche address' },
       { status: 400 }
+    );
+  }
+
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { success: false, error: 'Too many requests. Please try again later.' },
+      { status: 429 }
     );
   }
 
