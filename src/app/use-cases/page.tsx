@@ -49,8 +49,8 @@ function SecurityMockup() {
 
       {/* Badge */}
       <div className="mt-4 flex items-center gap-2 text-xs text-text-muted">
-        <span className="w-2 h-2 bg-avax-red rounded-full animate-pulse" />
-        AI-Powered &middot; Coming Soon
+        <span className="w-2 h-2 bg-warning rounded-full" />
+        AI-Powered &middot; Beta
       </div>
     </div>
   );
@@ -173,11 +173,11 @@ interface UseCase {
 const USE_CASES: UseCase[] = [
   {
     id: 'security',
-    badge: 'Coming Soon',
-    badgeColor: 'bg-avax-red/15 text-avax-red border-avax-red/30',
+    badge: 'Beta',
+    badgeColor: 'bg-warning/15 text-warning border-warning/30',
     title: 'AI Security Scan',
     problem: 'Auditing a smart contract costs $5,000–$50,000 and takes weeks. Most developers deploy without any security review.',
-    solution: 'AvaxLens will analyze ABI patterns and transaction behavior to detect common vulnerabilities automatically.',
+    solution: 'AvaxLens analyzes smart contract source code to detect common vulnerabilities. Currently available for select popular contracts.',
     bullets: [
       'Instant security score (A–F rating)',
       'Reentrancy, overflow, and access control detection',

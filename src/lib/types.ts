@@ -115,4 +115,27 @@ export interface ApiResponse<T> {
 }
 
 export type Period = '7d' | '30d' | '90d';
-export type TabId = 'overview' | 'transactions' | 'functions' | 'errors' | 'callers';
+export type TabId = 'overview' | 'transactions' | 'functions' | 'errors' | 'callers' | 'audit';
+
+// AI Audit types
+export type AuditSeverity = 'critical' | 'warning' | 'info';
+
+export interface AiAuditFinding {
+  id: string;
+  severity: AuditSeverity;
+  title: string;
+  description: string;
+  location?: string;
+}
+
+export interface AiAuditData {
+  contractAddress: string;
+  contractName: string;
+  score: number;
+  grade: string;
+  summary: string;
+  findings: AiAuditFinding[];
+  recommendations: string[];
+  auditedAt: string;
+  compilerVersion: string;
+}

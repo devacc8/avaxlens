@@ -7,6 +7,7 @@ import OverviewTab from '@/components/dashboard/OverviewTab';
 import FunctionsTab from '@/components/dashboard/FunctionsTab';
 import CallersTab from '@/components/dashboard/CallersTab';
 import TransactionsTab from '@/components/dashboard/TransactionsTab';
+import AiAuditTab from '@/components/dashboard/AiAuditTab';
 import ErrorsTable from '@/components/tables/ErrorsTable';
 
 interface TabNavigationProps {
@@ -21,6 +22,7 @@ const TABS: { id: TabId; label: string }[] = [
   { id: 'functions', label: 'Functions' },
   { id: 'errors', label: 'Errors' },
   { id: 'callers', label: 'Callers' },
+  { id: 'audit', label: 'AI Audit' },
 ];
 
 export default function TabNavigation({ analytics: initialAnalytics, contractInfo, address }: TabNavigationProps) {
@@ -86,7 +88,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
             </button>
           ))}
         </div>
-        {(activeTab === 'overview' || activeTab === 'transactions' || activeTab === 'functions' || activeTab === 'errors' || activeTab === 'callers') && (
+        {activeTab !== 'audit' && (
           <PeriodSelector period={period} onChange={handlePeriodChange} disabled={loading} />
         )}
       </div>
@@ -130,6 +132,10 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
 
           {activeTab === 'callers' && (
             <CallersTab data={analytics.callerBreakdown} />
+          )}
+
+          {activeTab === 'audit' && (
+            <AiAuditTab address={address} />
           )}
         </div>
       </div>
