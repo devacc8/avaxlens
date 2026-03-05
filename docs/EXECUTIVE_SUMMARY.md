@@ -10,7 +10,7 @@ AvaxLens is a free, instant analytics dashboard for Avalanche C-Chain smart cont
 
 ## What We Built
 
-Our product is live at avaxlens.vercel.app with six dashboard tabs and fifteen core features:
+Our product is live at avaxlens.vercel.app with six dashboard tabs and eighteen core features:
 
 - **Overview** — transaction volume charts, success/fail visualization, gas metrics, top functions
 - **Transactions** — paginated list with decoded function names, status filters, tx hash search
@@ -19,7 +19,7 @@ Our product is live at avaxlens.vercel.app with six dashboard tabs and fifteen c
 - **Callers** — top callers ranked by activity, distribution charts, sortable tables
 - **AI Audit** — pre-generated security analysis with risk scoring (A-F grade) for popular contracts
 
-Plus: rate limiting, security headers, cache hardening, health check endpoint with live status indicator, contract comparison page, and mobile-responsive design. The entire stack is Next.js on Vercel, reading data from Snowtrace and Routescan APIs with intelligent caching.
+Plus: CSV export per tab, shareable dashboard URLs, rate limiting, 5 security headers (CSP, HSTS), LRU cache hardening, health check endpoint with live status indicator, contract comparison page, and mobile-responsive design. Two security audits completed — score 9.5/10. The entire stack is Next.js on Vercel, reading data from Snowtrace and Routescan APIs with intelligent caching.
 
 ## Market Opportunity
 
@@ -42,7 +42,7 @@ Free tier — always free, unlimited contracts, full analytics dashboard. Pro ti
 
 ## Traction
 
-MVP deployed and fully functional with 15 shipped features. Live demo with real contract data from Trader Joe, Aave V3, and WAVAX. AI security audits operational for select contracts. Security audit score: 9/10. Full pitch and demo materials ready for Build Games 2026.
+MVP deployed and fully functional with 18 shipped features across 6 dashboard tabs. Live demo with real contract data from Trader Joe, Aave V3, and WAVAX. AI security audits operational for 4 popular contracts. Two independent security audits completed — score 9.5/10 with 0 critical vulnerabilities. CSV export and shareable URLs for team collaboration. Full pitch and demo materials ready for Build Games 2026.
 
 ## Ask
 

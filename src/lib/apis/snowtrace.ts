@@ -40,6 +40,7 @@ export async function getContractABI(address: string): Promise<unknown[] | null>
     const json = await res.json();
     if (json.status === '1' && json.result) {
       const abi = JSON.parse(json.result);
+      if (!Array.isArray(abi)) return null;
       setCache(cacheKey, abi, CACHE_TTL.ABI);
       return abi;
     }

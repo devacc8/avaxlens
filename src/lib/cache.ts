@@ -8,6 +8,9 @@ export function getCached<T>(key: string): T | null {
     cache.delete(key);
     return null;
   }
+  // Move to end of Map for LRU behavior
+  cache.delete(key);
+  cache.set(key, entry);
   return entry.data as T;
 }
 

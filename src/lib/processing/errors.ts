@@ -12,7 +12,7 @@ export function buildErrorBreakdown(transactions: RawTransaction[]): ErrorStats[
 
   for (const tx of failedTxs) {
     const errorKey = extractErrorReason(tx);
-    const ts = parseInt(tx.timeStamp);
+    const ts = parseInt(tx.timeStamp, 10);
     const funcName = tx.functionName?.split('(')[0] || tx.input?.slice(0, 10) || 'unknown';
 
     const existing = groups.get(errorKey) || {

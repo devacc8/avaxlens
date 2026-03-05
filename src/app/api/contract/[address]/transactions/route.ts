@@ -25,20 +25,20 @@ export async function GET(
   }
 
   const searchParams = request.nextUrl.searchParams;
-  const page = Math.max(1, parseInt(searchParams.get('page') || '1') || 1);
-  const offset = Math.min(10000, Math.max(1, parseInt(searchParams.get('offset') || '10000') || 10000));
+  const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10) || 1);
+  const offset = Math.min(10000, Math.max(1, parseInt(searchParams.get('offset') || '10000', 10) || 10000));
   const sort = searchParams.get('sort') === 'asc' ? 'asc' : 'desc';
 
   try {
     const transactions = await getTransactions(address, page, offset, sort);
-    return NextResponse.json({
-      success: true,
-      data: { transactions, total: transactions.length },
-    });
+    return NextResponse.json(
+      { success: true, data: { transactions, total: transactions.length } },
+      { headers: { 'Cache-Control': 'private, max-age=60' } }
+    );
   } catch {
     return NextResponse.json(
       { success: false, error: 'Failed to fetch transactions' },
-      { status: 500 }
+      { status: 500, headers: { 'Cache-Control': 'no-store' } }
     );
   }
 }

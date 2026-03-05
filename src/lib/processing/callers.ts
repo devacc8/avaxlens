@@ -21,8 +21,8 @@ export function buildCallerBreakdown(transactions: RawTransaction[]): CallerStat
     };
     existing.txCount++;
     if (tx.isError === '0') existing.successCount++;
-    existing.totalGasUsed += parseInt(tx.gasUsed || '0');
-    const ts = parseInt(tx.timeStamp);
+    existing.totalGasUsed += parseInt(tx.gasUsed || '0', 10);
+    const ts = parseInt(tx.timeStamp, 10);
     if (ts > existing.lastTimestamp) existing.lastTimestamp = ts;
     groups.set(caller, existing);
   }

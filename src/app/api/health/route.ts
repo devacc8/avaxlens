@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { SNOWTRACE_API, ROUTESCAN_API } from '@/lib/constants';
+import { isRateLimited } from '@/lib/rate-limit';
 
 interface ServiceStatus {
   ok: boolean;
@@ -19,7 +20,12 @@ async function checkService(url: string, timeoutMs = 5000): Promise<ServiceStatu
   }
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+  if (isRateLimited(ip)) {
+    return NextResponse.json({ status: 'rate_limited' }, { status: 429 });
+  }
+
   const [snowtrace, routescan] = await Promise.all([
     checkService(`${SNOWTRACE_API}?module=stats&action=ping`),
     checkService(`${ROUTESCAN_API}?module=stats&action=ping`),

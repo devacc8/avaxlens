@@ -1,6 +1,6 @@
 # Screen Recording Plan — 5-Min Product Walkthrough
 
-> Updated for Phase 2 Build Games 2026 (v0.5.0)
+> Updated for Phase 2 Build Games 2026 (v0.5.1)
 > Record screen and voice SEPARATELY, then sync in editor.
 > Total: ~5:00. Record extra seconds at each step for editing flexibility.
 
@@ -53,8 +53,9 @@
 | 1:32 | Unique Callers card | Hover | "Unique callers — over 180,000 unique addresses interacting with this contract." |
 | 1:38 | Avg Gas card | Hover | "Average gas usage — helpful for understanding cost patterns." |
 | 1:45 | Volume Chart | Scroll to chart, hover over trend | "Transaction volume over time. Seven, thirty, or ninety days." |
-| 1:50 | Period switch | Click "7d", then "90d" | "Switch periods — updates instantly." |
-| 1:55 | Success/Fail Chart | Scroll down | "Success versus fail breakdown. Visual and clear." |
+| 1:50 | Period switch | Click "7d", then "90d" | "Switch periods — updates instantly. Notice the URL updates too." |
+| 1:53 | URL bar | Point to URL with ?period=90d | "Every view is shareable — copy the URL and send it to your team." |
+| 1:57 | Success/Fail Chart | Scroll down | "Success versus fail breakdown. Visual and clear." |
 
 ---
 
@@ -66,7 +67,8 @@
 | 2:05 | Function calls chart | Hover chart bars | "Top functions by call count — see exactly what's being used most." |
 | 2:12 | Gas chart | Scroll to gas chart | "Gas usage per function — find the expensive operations at a glance." |
 | 2:18 | Functions table | Scroll to table | "Full breakdown with success rate, min and max gas for each function." |
-| 2:25 | Click Callers tab | Click "Callers" | "Callers tab — who's using this contract?" |
+| 2:22 | Export CSV button | Click "Export CSV" | "One click — export any tab as CSV for your own analysis." |
+| 2:27 | Click Callers tab | Click "Callers" | "Callers tab — who's using this contract?" |
 | 2:30 | Caller distribution chart | Hover chart | "Top callers ranked by transaction count. See the power users." |
 | 2:38 | Callers table | Scroll to table | "Sortable table with success rates and last active time." |
 | 2:45 | Click Transactions tab | Click "Transactions" | "Transactions tab — the full transaction history." |
@@ -97,8 +99,9 @@
 | Time | Screen | Mouse | Audio |
 |------|--------|-------|-------|
 | 4:00 | Navigate to Roadmap | Click "Roadmap" | "What's next? Our roadmap." |
-| 4:05 | Phase 1 — Shipped | Hover over Phase 1 badge | "Phase 1 — shipped. Everything you've seen is live today. Six tabs, fifteen features." |
-| 4:12 | Phase 2 — AI Security | Scroll to Phase 2 | "Phase 2 — AI security scanning for any verified contract. PostgreSQL for persistence." |
+| 4:05 | Phase 1 — Shipped | Hover over Phase 1 badge | "Phase 1 — shipped. Everything you've seen is live today. Six tabs, eighteen features." |
+| 4:10 | Stay on Phase 1 | Pause | "We've also completed two security audits — score nine point five out of ten. CSP headers, rate limiting, input validation, cache hardening — all built in." |
+| 4:18 | Phase 2 — AI Security | Scroll to Phase 2 | "Phase 2 — AI security scanning for any verified contract. PostgreSQL for persistence." |
 | 4:20 | Phase 3 — Multi-chain | Scroll | "Phase 3 — multi-chain. Support for Avalanche L1s and Subnets." |
 | 4:28 | Phase 4 — Pro Tier | Scroll | "Phase 4 — Pro tier. Ten to twenty dollars a month for AI alerts, extended history, API access." |
 | 4:40 | Footer status | Point to green dot | "Live health monitoring — we check our API dependencies every thirty seconds." |
@@ -117,16 +120,16 @@
 "Let me show you the current options. Snowtrace — free, but just a raw list of transactions. No charts, no analytics. Tenderly — powerful, but forty-nine dollars a month, requires project setup. Dune — requires SQL knowledge, thirty-nine dollars a month. You need to write queries just to see basic metrics. There's a gap. No free, instant, visual analytics for Avalanche contracts."
 
 **Block 3 — Solution: Overview (60 sec)**
-"That's why we built AvaxLens. Paste any C-Chain contract address — get instant analytics. No signup. No API key. No setup. Here's Trader Joe — the biggest DEX on Avalanche. Total transactions — over 2 million. Success rate — ninety-seven percent. Unique callers — over 180,000 addresses. Transaction volume over time — switch periods instantly. Success versus fail breakdown — visual and clear."
+"That's why we built AvaxLens. Paste any C-Chain contract address — get instant analytics. No signup. No API key. No setup. Here's Trader Joe — the biggest DEX on Avalanche. Total transactions — over 2 million. Success rate — ninety-seven percent. Unique callers — over 180,000 addresses. Transaction volume over time — switch periods instantly. Notice the URL updates — every view is shareable. Copy the link and send it to your team. Success versus fail breakdown — visual and clear."
 
 **Block 4 — Deep Dive: Tabs (75 sec)**
-"Let's dive deeper. Functions tab — every function decoded from the ABI. Top functions by call count, gas usage per function. Full breakdown with success rates. Callers tab — who's using this contract? Top callers ranked by activity, sortable table with last active time. Transactions tab — full paginated history. Filter by status, search by transaction hash. Errors tab — every revert reason decoded, grouped by error type."
+"Let's dive deeper. Functions tab — every function decoded from the ABI. Top functions by call count, gas usage per function. Full breakdown with success rates. And one click to export as CSV — take the data with you. Callers tab — who's using this contract? Top callers ranked by activity, sortable table with last active time. Transactions tab — full paginated history. Filter by status, search by transaction hash. Errors tab — every revert reason decoded, grouped by error type."
 
 **Block 5 — AI Audit (45 sec)**
 "And now our standout feature — AI Security Audit. Instant security score — Trader Joe gets a B-plus, seventy-two out of a hundred. Every finding categorized by severity — critical, warning, info. Detailed descriptions with affected functions. Actionable recommendations. This typically costs five to fifty thousand dollars from professional auditors. We provide it free."
 
 **Block 6 — Roadmap (40 sec)**
-"What's next? Phase 1 — shipped. Everything you've seen is live today. Six tabs, fifteen features. Phase 2 — AI security for any verified contract, PostgreSQL for persistence. Phase 3 — multi-chain, Avalanche L1s and Subnets. Phase 4 — Pro tier, ten to twenty dollars a month. Live health monitoring — we check our APIs every thirty seconds. Free analytics today. AI-powered security tomorrow. Try it now — avaxlens.vercel.app."
+"What's next? Phase 1 — shipped. Everything you've seen is live today. Six tabs, eighteen features. We've completed two security audits — score nine point five out of ten. CSP headers, rate limiting, input validation, cache hardening — all built in from day one. Phase 2 — AI security for any verified contract, PostgreSQL for persistence. Phase 3 — multi-chain, Avalanche L1s and Subnets. Phase 4 — Pro tier, ten to twenty dollars a month. Live health monitoring — we check our APIs every thirty seconds. Free analytics today. AI-powered security tomorrow. Try it now — avaxlens.vercel.app."
 
 ---
 
@@ -149,6 +152,8 @@
 - [ ] Period switching works (7d / 30d / 90d)
 - [ ] Tx hash search works in Transactions tab
 - [ ] AI Audit shows real data for Trader Joe
+- [ ] Export CSV button works on Functions tab
+- [ ] URL updates on period/tab switch (?period=7d&tab=functions)
 - [ ] Health indicator shows green dot in footer
 - [ ] Clean browser (no extensions, no bookmarks)
 - [ ] Microphone tested

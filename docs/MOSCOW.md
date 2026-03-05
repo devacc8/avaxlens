@@ -3,7 +3,7 @@
 ## Overview
 
 This document outlines feature priorities using the MoSCoW framework for AvaxLens development.
-Updated to reflect v0.5.0 state (March 2026).
+Updated to reflect v0.5.2 state (March 2026).
 
 ---
 
@@ -28,6 +28,9 @@ Core functionality required for initial release:
 | Tx Hash Search | Search transactions by hash | Shipped v0.4.2 |
 | Health Check | /api/health endpoint, live status indicator in footer | Shipped v0.4.2 |
 | AI Security Audit | Pre-generated security audits for popular contracts | Shipped v0.5.0 |
+| CSV Export | Export analytics data per tab as CSV | Shipped v0.5.1 |
+| Shareable Links | Share dashboard via URL with period and tab params | Shipped v0.5.1 |
+| Security Audit v2 | CSP, HSTS, LRU cache, period validation, ABI validation — 9/9 fixed | Shipped v0.5.2 |
 
 ---
 
@@ -55,12 +58,13 @@ Desirable but not critical for hackathon:
 |---------|-------------|----------|
 | PostgreSQL Storage | Persistent cache, query history, faster lookups | High |
 | Search History | Remember recently viewed contracts | High |
-| Shareable Links | Share dashboard via URL with period param | Medium |
-| CSV Export | Export analytics data for external analysis | Medium |
+| ~~Shareable Links~~ | ~~Share dashboard via URL with period param~~ | Moved to Must Have |
+| ~~CSV Export~~ | ~~Export analytics data for external analysis~~ | Moved to Must Have |
 | PNG Export | Export charts as images | Medium |
 | Unit Tests | Tests for processing functions | Medium |
 | New vs Returning Callers | Track caller retention (requires DB) | Low |
 | Open Graph Tags | Dynamic OG images with contract stats | Low |
+| Light Theme | Light/dark toggle respecting system preference | Low |
 
 ---
 
@@ -76,16 +80,15 @@ Out of scope for now:
 | Custom Dashboards | Single contract view for now |
 | Real-time WebSocket | Polling sufficient for current use cases |
 | Mobile App | Web-based responsive design sufficient |
-| Light/Dark Toggle | Dark theme only by design |
 | Real-time AI Audit | Pre-generated audits sufficient, no AI API cost |
 
 ---
 
 ## Summary
 
-- **Must Have:** 15 features — all shipped (v0.1.0 through v0.5.0)
+- **Must Have:** 18 features — all shipped (v0.1.0 through v0.5.2)
 - **Should Have:** 7 items — 4 done, 3 remaining (demo video, testing)
-- **Could Have:** 8 features — PostgreSQL, exports, tests, OG tags
-- **Won't Have:** 8 features — wallet, NFT, mobile app, light theme
+- **Could Have:** 7 features — PostgreSQL, PNG export, tests, OG tags, light theme
+- **Won't Have:** 7 features — wallet, NFT, mobile app, real-time AI
 
 **MVP is complete.** Focus for Phase 2 demo is on testing and recording the demo video.

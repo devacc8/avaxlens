@@ -52,13 +52,31 @@
 - [x] Pulsing red dot + subtle bg on AI Audit tab button
 - [x] Use Cases page: AI Security Scan "Coming Soon" → "Beta"
 
+## Completed (v0.5.1)
+
+- [x] **CSV Export** — export button on Overview, Functions, Errors, Callers tabs (generates .csv file)
+- [x] **Shareable Links** — period and tab params in URL, synced via replaceState
+- [x] Manual testing checklist document (`docs/TESTING_CHECKLIST.md`)
+
+## Completed (v0.5.2)
+
+- [x] **Security Audit v2** — full-stack audit, 14 findings analyzed, 7 false positives rejected, 9 fixed (score: 9.5/10)
+- [x] Content-Security-Policy header (CSP)
+- [x] Strict-Transport-Security header (HSTS)
+- [x] Cache LRU fix (delete+re-set on read)
+- [x] Period parameter validation before cache key
+- [x] ABI JSON.parse array validation
+- [x] Infinity → MAX_SAFE_INTEGER in function stats
+- [x] parseInt radix 10 on all calls
+- [x] Cache-Control headers on all API responses
+- [x] Rate limiting on `/api/health` endpoint
+- [x] Updated MOSCOW, ROADMAP, video script with security achievements
+
 ---
 
 ## Backlog
 
 - [ ] Error names: add expandable row on tap for mobile (currently truncated)
-- [ ] Shareable dashboard URLs with period param
-- [ ] Export analytics as CSV
 - [ ] Export charts as PNG
 - [ ] New vs returning callers in Callers tab (requires DB)
 - [ ] Unit tests for processing functions (post-MVP)

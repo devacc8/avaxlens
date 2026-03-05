@@ -12,7 +12,7 @@ import TabNavigation from '@/components/dashboard/TabNavigation';
 
 interface Props {
   params: Promise<{ address: string }>;
-  searchParams: Promise<{ period?: string }>;
+  searchParams: Promise<{ period?: string; tab?: string }>;
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ContractDashboard({ params, searchParams }: Props) {
   const { address } = await params;
-  const { period = '30d' } = await searchParams;
+  const { period = '30d', tab } = await searchParams;
 
   if (!isValidAddress(address)) {
     notFound();
@@ -39,7 +39,7 @@ export default async function ContractDashboard({ params, searchParams }: Props)
     const firstTx = await getFirstTransaction(address);
 
     if (firstTx) {
-      contractInfo.creationDate = formatDate(parseInt(firstTx.timeStamp));
+      contractInfo.creationDate = formatDate(parseInt(firstTx.timeStamp, 10));
     }
 
     const analytics = processTransactions(transactions, contractInfo.abi, periodDays);
@@ -57,6 +57,8 @@ export default async function ContractDashboard({ params, searchParams }: Props)
                 analytics={analytics}
                 contractInfo={contractInfo}
                 address={address}
+                initialPeriod={period === '7d' || period === '90d' ? period : '30d'}
+                initialTab={tab}
               />
             </>
           ) : (

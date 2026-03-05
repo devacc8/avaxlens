@@ -12,7 +12,7 @@ export function processTransactions(
   const now = Math.floor(Date.now() / 1000);
   const cutoff = now - periodDays * 86400;
   const filtered = transactions.filter(tx => {
-    const ts = parseInt(tx.timeStamp);
+    const ts = parseInt(tx.timeStamp, 10);
     return !isNaN(ts) && ts >= cutoff;
   });
 
@@ -24,7 +24,7 @@ export function processTransactions(
   const callerSet = new Set(filtered.map(tx => (tx.from || '').toLowerCase()));
   const uniqueCallers = callerSet.size;
 
-  const totalGas = filtered.reduce((sum, tx) => sum + parseInt(tx.gasUsed || '0'), 0);
+  const totalGas = filtered.reduce((sum, tx) => sum + parseInt(tx.gasUsed || '0', 10), 0);
   const avgGasUsed = totalTransactions > 0 ? Math.round(totalGas / totalTransactions) : 0;
 
   const volumeByDay = groupByDay(filtered);
@@ -53,7 +53,7 @@ function groupByDay(transactions: RawTransaction[]): DailyVolume[] {
   const groups = new Map<string, number>();
 
   for (const tx of transactions) {
-    const ts = parseInt(tx.timeStamp) * 1000;
+    const ts = parseInt(tx.timeStamp, 10) * 1000;
     if (isNaN(ts)) continue;
     const date = new Date(ts);
     const key = date.toISOString().split('T')[0];
@@ -73,7 +73,7 @@ function groupSuccessFailByDay(transactions: RawTransaction[]): DailySuccessFail
   const groups = new Map<string, { success: number; fail: number }>();
 
   for (const tx of transactions) {
-    const ts = parseInt(tx.timeStamp) * 1000;
+    const ts = parseInt(tx.timeStamp, 10) * 1000;
     if (isNaN(ts)) continue;
     const date = new Date(ts);
     const key = date.toISOString().split('T')[0];

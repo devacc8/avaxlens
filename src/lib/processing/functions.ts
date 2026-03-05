@@ -31,13 +31,13 @@ export function buildFunctionBreakdown(
       }
     }
 
-    const gasUsed = parseInt(tx.gasUsed || '0');
+    const gasUsed = parseInt(tx.gasUsed || '0', 10);
     const existing = groups.get(selector) || {
       name: funcName,
       count: 0,
       successCount: 0,
       totalGas: 0,
-      minGas: Infinity,
+      minGas: Number.MAX_SAFE_INTEGER,
       maxGas: 0,
     };
     existing.count++;
@@ -59,7 +59,7 @@ export function buildFunctionBreakdown(
       successRate: stats.count > 0 ? (stats.successCount / stats.count) * 100 : 0,
       avgGas: stats.count > 0 ? Math.round(stats.totalGas / stats.count) : 0,
       totalGas: stats.totalGas,
-      minGas: stats.minGas === Infinity ? 0 : stats.minGas,
+      minGas: stats.minGas === Number.MAX_SAFE_INTEGER ? 0 : stats.minGas,
       maxGas: stats.maxGas,
     }))
     .sort((a, b) => b.calls - a.calls);

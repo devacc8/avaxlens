@@ -7,8 +7,8 @@ export function processRawTransactions(txs: RawTransaction[]): ProcessedTransact
     functionName: tx.functionName?.split('(')[0] || tx.input?.slice(0, 10) || 'transfer',
     from: tx.from,
     value: formatAvaxValue(tx.value),
-    gasUsed: parseInt(tx.gasUsed || '0'),
+    gasUsed: parseInt(tx.gasUsed || '0', 10),
     isError: tx.isError === '1',
-    timestamp: parseInt(tx.timeStamp),
+    timestamp: parseInt(tx.timeStamp, 10),
   }));
 }

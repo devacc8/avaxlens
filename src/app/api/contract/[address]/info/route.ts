@@ -31,14 +31,17 @@ export async function GET(
     const firstTx = await getFirstTransaction(address);
 
     if (firstTx) {
-      contractInfo.creationDate = formatDate(parseInt(firstTx.timeStamp));
+      contractInfo.creationDate = formatDate(parseInt(firstTx.timeStamp, 10));
     }
 
-    return NextResponse.json({ success: true, data: contractInfo });
+    return NextResponse.json(
+      { success: true, data: contractInfo },
+      { headers: { 'Cache-Control': 'private, max-age=300' } }
+    );
   } catch {
     return NextResponse.json(
       { success: false, error: 'Failed to fetch contract info' },
-      { status: 500 }
+      { status: 500, headers: { 'Cache-Control': 'no-store' } }
     );
   }
 }

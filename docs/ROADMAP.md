@@ -72,6 +72,22 @@
 - [x] Pulsing indicator on AI Audit tab button
 - [x] Use Cases page updated: AI Security Scan badge "Coming Soon" → "Beta"
 
+## Done (v0.5.1)
+
+- [x] **CSV Export** — export analytics per tab as downloadable CSV file
+- [x] **Shareable Links** — period and tab persisted in URL query params
+- [x] Manual testing checklist document
+
+## Done (v0.5.2)
+
+- [x] **Security Audit v2** — score 9.5/10 (up from 9/10), 9 of 11 findings fixed
+- [x] CSP + HSTS security headers
+- [x] Cache LRU eviction fix
+- [x] Period param validation (cache pollution prevention)
+- [x] ABI array validation, parseInt radix, Infinity fix
+- [x] Cache-Control headers on all API responses
+- [x] Rate limiting on health endpoint
+
 ---
 
 ## Hackathon Deadlines
@@ -130,8 +146,8 @@
 ## Planned — GTM Sprint (Mar 19)
 
 ### Share & Export
-- [ ] Shareable dashboard URLs with period param
-- [ ] Export analytics as CSV
+- [x] Shareable dashboard URLs with period param
+- [x] Export analytics as CSV
 - [ ] Export charts as PNG
 
 ### SEO & Meta
@@ -234,7 +250,7 @@ Backend -> monitors all dependencies (DB, APIs, RPC) -> pushes status changes
 
 ### Backend Evolution
 
-Current (v0.5.0): Next.js API routes with in-memory cache (500 max, LRU eviction), rate limiting (30 req/min per IP), security headers, health check endpoint. Static AI audit data (no runtime AI costs).
+Current (v0.5.2): Next.js API routes with in-memory cache (500 max, LRU eviction), rate limiting (30 req/min per IP), 5 security headers (CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy), health check endpoint. Static AI audit data (no runtime AI costs). CSV export, shareable dashboard URLs. Security audit score: 9.5/10.
 
 Next: Add PostgreSQL for persistent storage, background jobs for indexing.
 

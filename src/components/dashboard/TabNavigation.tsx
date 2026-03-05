@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from 'react';
 import type { ContractAnalytics, ContractInfo, Period, TabId } from '@/lib/types';
+import { generateCsv, downloadCsv } from '@/lib/export-csv';
 import PeriodSelector from '@/components/charts/PeriodSelector';
 import OverviewTab from '@/components/dashboard/OverviewTab';
 import FunctionsTab from '@/components/dashboard/FunctionsTab';
@@ -10,10 +11,18 @@ import TransactionsTab from '@/components/dashboard/TransactionsTab';
 import AiAuditTab from '@/components/dashboard/AiAuditTab';
 import ErrorsTable from '@/components/tables/ErrorsTable';
 
+const VALID_TABS: TabId[] = ['overview', 'transactions', 'functions', 'errors', 'callers', 'audit'];
+
+function isValidTab(tab: string | undefined): tab is TabId {
+  return !!tab && VALID_TABS.includes(tab as TabId);
+}
+
 interface TabNavigationProps {
   analytics: ContractAnalytics;
   contractInfo: ContractInfo;
   address: string;
+  initialPeriod?: string;
+  initialTab?: string;
 }
 
 const TABS: { id: TabId; label: string }[] = [
@@ -25,13 +34,31 @@ const TABS: { id: TabId; label: string }[] = [
   { id: 'audit', label: 'AI Audit' },
 ];
 
-export default function TabNavigation({ analytics: initialAnalytics, contractInfo, address }: TabNavigationProps) {
-  const [activeTab, setActiveTab] = useState<TabId>('overview');
-  const [period, setPeriod] = useState<Period>('30d');
+function updateUrl(address: string, period: string, tab: string) {
+  const params = new URLSearchParams();
+  if (period !== '30d') params.set('period', period);
+  if (tab !== 'overview') params.set('tab', tab);
+  const qs = params.toString();
+  const url = `/contract/${address}${qs ? '?' + qs : ''}`;
+  window.history.replaceState(null, '', url);
+}
+
+export default function TabNavigation({ analytics: initialAnalytics, contractInfo, address, initialPeriod, initialTab }: TabNavigationProps) {
+  const [activeTab, setActiveTab] = useState<TabId>(isValidTab(initialTab) ? initialTab : 'overview');
+  const [period, setPeriod] = useState<Period>(initialPeriod === '7d' || initialPeriod === '90d' ? initialPeriod : '30d');
   const [analytics, setAnalytics] = useState(initialAnalytics);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
+
+  const canExport = activeTab !== 'transactions' && activeTab !== 'audit';
+
+  const handleExport = useCallback(() => {
+    const csv = generateCsv(analytics, activeTab);
+    if (!csv) return;
+    const name = contractInfo.name || address.slice(0, 10);
+    downloadCsv(csv, `${name}_${activeTab}_${period}.csv`);
+  }, [analytics, activeTab, contractInfo.name, address, period]);
 
   const handlePeriodChange = useCallback(async (newPeriod: Period) => {
     abortRef.current?.abort();
@@ -41,6 +68,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
     setPeriod(newPeriod);
     setLoading(true);
     setError(null);
+    updateUrl(address, newPeriod, activeTab);
 
     const timeout = setTimeout(() => controller.abort(), 15_000);
     try {
@@ -68,7 +96,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
       clearTimeout(timeout);
       if (!controller.signal.aborted) setLoading(false);
     }
-  }, [address]);
+  }, [address, activeTab]);
 
   return (
     <div>
@@ -77,7 +105,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
           {TABS.map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => { setActiveTab(tab.id); updateUrl(address, period, tab.id); }}
               className={`relative px-2.5 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition cursor-pointer ${
                 activeTab === tab.id
                   ? 'bg-avax-red text-white'
@@ -94,9 +122,22 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
             </button>
           ))}
         </div>
-        {activeTab !== 'audit' && (
-          <PeriodSelector period={period} onChange={handlePeriodChange} disabled={loading} />
-        )}
+        <div className="flex items-center gap-2">
+          {canExport && (
+            <button
+              onClick={handleExport}
+              disabled={loading}
+              className="px-3 py-1.5 text-xs sm:text-sm bg-bg-input border border-border rounded-lg text-text-secondary hover:text-white hover:border-border-hover transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Export as CSV"
+            >
+              <span className="hidden sm:inline">Export CSV</span>
+              <span className="sm:hidden">CSV</span>
+            </button>
+          )}
+          {activeTab !== 'audit' && (
+            <PeriodSelector period={period} onChange={handlePeriodChange} disabled={loading} />
+          )}
+        </div>
       </div>
 
       {error && (

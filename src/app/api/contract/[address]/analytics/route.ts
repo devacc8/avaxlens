@@ -37,12 +37,21 @@ export async function GET(
 
   const searchParams = request.nextUrl.searchParams;
   const period = searchParams.get('period') || '30d';
+  if (!['7d', '30d', '90d'].includes(period)) {
+    return NextResponse.json(
+      { success: false, error: 'Invalid period. Use 7d, 30d, or 90d.' },
+      { status: 400 }
+    );
+  }
   const periodDays = period === '7d' ? 7 : period === '90d' ? 90 : 30;
 
   const cacheKey = `analytics:${address}:${period}`;
   const cached = getCached<AnalyticsData>(cacheKey);
   if (cached) {
-    return NextResponse.json({ success: true, data: cached });
+    return NextResponse.json(
+      { success: true, data: cached },
+      { headers: { 'Cache-Control': 'private, max-age=300' } }
+    );
   }
 
   try {
@@ -54,7 +63,7 @@ export async function GET(
     const firstTx = await getFirstTransaction(address);
 
     if (firstTx) {
-      contractInfo.creationDate = formatDate(parseInt(firstTx.timeStamp));
+      contractInfo.creationDate = formatDate(parseInt(firstTx.timeStamp, 10));
     }
 
     const analytics = processTransactions(transactions, contractInfo.abi, periodDays);
@@ -62,11 +71,14 @@ export async function GET(
     const data: AnalyticsData = { contractInfo, analytics };
     setCache(cacheKey, data, CACHE_TTL.ANALYTICS);
 
-    return NextResponse.json({ success: true, data });
+    return NextResponse.json(
+      { success: true, data },
+      { headers: { 'Cache-Control': 'private, max-age=300' } }
+    );
   } catch {
     return NextResponse.json(
       { success: false, error: 'Failed to compute analytics' },
-      { status: 500 }
+      { status: 500, headers: { 'Cache-Control': 'no-store' } }
     );
   }
 }
