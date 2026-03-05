@@ -1,6 +1,6 @@
 # Screen Recording Plan — 5-Min Product Walkthrough
 
-> Updated for Phase 2 Build Games 2026
+> Updated for Phase 2 Build Games 2026 (v0.5.0)
 > Record screen and voice SEPARATELY, then sync in editor.
 > Total: ~5:00. Record extra seconds at each step for editing flexibility.
 
@@ -41,41 +41,54 @@
 
 ---
 
-### Block 3: THE SOLUTION — Live Demo (1:00 — 2:45)
+### Block 3: THE SOLUTION — Live Demo (1:00 — 2:00)
 
 | Time | Screen | Mouse | Audio |
 |------|--------|-------|-------|
 | 1:00 | Back to home page | Click logo | "That's why we built AvaxLens." |
 | 1:03 | Search input | Click into input, paste Trader Joe address | "Paste any C-Chain contract address — get instant analytics." |
-| 1:10 | Dashboard loads | Pause on loading → show metrics cards | "No signup. No API key. No setup. Let me show you." |
+| 1:10 | Dashboard loads | Pause on loading, then show metrics cards | "No signup. No API key. No setup. Let me show you." |
 | 1:20 | Total Transactions | Hover over the card | "Total transaction count — here's Trader Joe with over 2 million transactions." |
 | 1:28 | Success Rate card | Hover | "Success rate — ninety-seven percent." |
 | 1:32 | Unique Callers card | Hover | "Unique callers — over 180,000 unique addresses interacting with this contract." |
 | 1:38 | Avg Gas card | Hover | "Average gas usage — helpful for understanding cost patterns." |
+| 1:45 | Volume Chart | Scroll to chart, hover over trend | "Transaction volume over time. Seven, thirty, or ninety days." |
+| 1:50 | Period switch | Click "7d", then "90d" | "Switch periods — updates instantly." |
+| 1:55 | Success/Fail Chart | Scroll down | "Success versus fail breakdown. Visual and clear." |
 
 ---
 
-### Block 4: CHARTS (2:45 — 3:30)
+### Block 4: TABS — Functions, Callers, Transactions (2:00 — 3:15)
 
 | Time | Screen | Mouse | Audio |
 |------|--------|-------|-------|
-| 2:45 | Volume Chart | Scroll to chart, hover over trend | "Transaction volume over time. We show you seven, thirty, or ninety days — pick any range." |
-| 2:55 | Change to 7d | Click "7d" | "Switch to seven days — updates instantly." |
-| 3:00 | Change to 90d | Click "90d" | "Ninety days — see the full picture." |
-| 3:08 | Success/Fail Chart | Scroll down, pause | "Success versus fail breakdown. Visual and clear." |
-| 3:18 | Functions Table | Scroll to table | "Top functions — ABI-decoded. See exactly which functions are being called most." |
-| 3:25 | Scroll table | Move down rows | "Call counts, average gas per function — everything you need to optimize." |
+| 2:00 | Click Functions tab | Click "Functions" | "Let's dive deeper. Functions tab — every function decoded from the ABI." |
+| 2:05 | Function calls chart | Hover chart bars | "Top functions by call count — see exactly what's being used most." |
+| 2:12 | Gas chart | Scroll to gas chart | "Gas usage per function — find the expensive operations at a glance." |
+| 2:18 | Functions table | Scroll to table | "Full breakdown with success rate, min and max gas for each function." |
+| 2:25 | Click Callers tab | Click "Callers" | "Callers tab — who's using this contract?" |
+| 2:30 | Caller distribution chart | Hover chart | "Top callers ranked by transaction count. See the power users." |
+| 2:38 | Callers table | Scroll to table | "Sortable table with success rates and last active time." |
+| 2:45 | Click Transactions tab | Click "Transactions" | "Transactions tab — the full transaction history." |
+| 2:50 | Transaction list | Scroll through | "Paginated list with decoded function names, values, gas used." |
+| 2:55 | Status filter | Click "Failed" | "Filter by status — show only failed transactions." |
+| 3:00 | Search input | Type part of a tx hash | "Search by transaction hash — find any specific transaction instantly." |
+| 3:08 | Click Errors tab | Click "Errors" | "Errors tab — every revert reason decoded." |
+| 3:12 | Error table | Scroll | "Grouped by error type. See exactly why transactions are failing." |
 
 ---
 
-### Block 5: ERRORS (3:30 — 4:00)
+### Block 5: AI AUDIT — Key Feature (3:15 — 4:00)
 
 | Time | Screen | Mouse | Audio |
 |------|--------|-------|-------|
-| 3:30 | Click Errors tab | Click "Errors" | "Now let's look at errors — this is where it gets powerful." |
-| 3:35 | Error summary | Hover over error count | "Every revert reason decoded. See exactly why transactions are failing." |
-| 3:42 | Error table | Scroll to table | "Grouped by error type. Click any row to see affected transactions." |
-| 3:52 | Back to Overview | Click "Overview" tab | "All this in seconds. Zero friction." |
+| 3:15 | Click AI Audit tab | Click "AI Audit" (notice the pulsing dot) | "And now our standout feature — AI Security Audit." |
+| 3:20 | Score header | Pause on score circle | "Instant security score. Trader Joe gets a B-plus — seventy-two out of a hundred." |
+| 3:28 | Score bar | Point to gradient bar | "Visual score distribution from critical to safe." |
+| 3:32 | Findings | Scroll through findings | "Every finding categorized by severity — critical, warning, info." |
+| 3:40 | Finding detail | Hover a warning finding | "Detailed descriptions with affected function locations." |
+| 3:45 | Recommendations | Scroll to recommendations | "Actionable recommendations — not just problems, but solutions." |
+| 3:52 | Footer metadata | Point to date | "Static analysis powered by AI. Typically costs five to fifty thousand dollars from professional auditors. We provide it free." |
 
 ---
 
@@ -84,12 +97,13 @@
 | Time | Screen | Mouse | Audio |
 |------|--------|-------|-------|
 | 4:00 | Navigate to Roadmap | Click "Roadmap" | "What's next? Our roadmap." |
-| 4:05 | Phase 1 — Shipped | Hover over Phase 1 badge | "Phase 1 — shipped. Everything you've seen is live today." |
-| 4:12 | Phase 2 — AI Security | Scroll to Phase 2 | "Phase 2 — AI security scanning. Pattern-based vulnerability detection, risk scoring." |
+| 4:05 | Phase 1 — Shipped | Hover over Phase 1 badge | "Phase 1 — shipped. Everything you've seen is live today. Six tabs, fifteen features." |
+| 4:12 | Phase 2 — AI Security | Scroll to Phase 2 | "Phase 2 — AI security scanning for any verified contract. PostgreSQL for persistence." |
 | 4:20 | Phase 3 — Multi-chain | Scroll | "Phase 3 — multi-chain. Support for Avalanche L1s and Subnets." |
 | 4:28 | Phase 4 — Pro Tier | Scroll | "Phase 4 — Pro tier. Ten to twenty dollars a month for AI alerts, extended history, API access." |
-| 4:40 | Back to home | Click logo | "Free analytics today. AI-powered monitoring tomorrow." |
-| 4:48 | Home page | Pause on search bar | "Try it now — avaxlens.vercel.app" |
+| 4:40 | Footer status | Point to green dot | "Live health monitoring — we check our API dependencies every thirty seconds." |
+| 4:45 | Back to home | Click logo | "Free analytics today. AI-powered security tomorrow." |
+| 4:50 | Home page | Pause on search bar | "Try it now — avaxlens.vercel.app" |
 | 4:55 | End screen | Hold for 5 sec silence | [End] |
 
 ---
@@ -102,17 +116,17 @@
 **Block 2 — Problem (35 sec)**
 "Let me show you the current options. Snowtrace — free, but just a raw list of transactions. No charts, no analytics. Tenderly — powerful, but forty-nine dollars a month, requires project setup. Dune — requires SQL knowledge, thirty-nine dollars a month. You need to write queries just to see basic metrics. There's a gap. No free, instant, visual analytics for Avalanche contracts."
 
-**Block 3 — Solution: Metrics (60 sec)**
-"That's why we built AvaxLens. Paste any C-Chain contract address — get instant analytics. No signup. No API key. No setup. Let me show you. Here's Trader Joe — the biggest DEX on Avalanche. Total transactions — over 2 million. Success rate — ninety-seven percent. Unique callers — over 180,000 addresses. Average gas — you see the cost patterns immediately."
+**Block 3 — Solution: Overview (60 sec)**
+"That's why we built AvaxLens. Paste any C-Chain contract address — get instant analytics. No signup. No API key. No setup. Here's Trader Joe — the biggest DEX on Avalanche. Total transactions — over 2 million. Success rate — ninety-seven percent. Unique callers — over 180,000 addresses. Transaction volume over time — switch periods instantly. Success versus fail breakdown — visual and clear."
 
-**Block 4 — Charts (45 sec)**
-"Transaction volume over time. We show you seven, thirty, or ninety days — pick any range. Switch to seven days — updates instantly. Ninety days — see the full picture. Success versus fail breakdown — visual and clear. Top functions — ABI-decoded. See exactly which functions are being called most. Call counts, average gas per function — everything you need to optimize."
+**Block 4 — Deep Dive: Tabs (75 sec)**
+"Let's dive deeper. Functions tab — every function decoded from the ABI. Top functions by call count, gas usage per function. Full breakdown with success rates. Callers tab — who's using this contract? Top callers ranked by activity, sortable table with last active time. Transactions tab — full paginated history. Filter by status, search by transaction hash. Errors tab — every revert reason decoded, grouped by error type."
 
-**Block 5 — Errors (30 sec)**
-"Now let's look at errors — this is where it gets powerful. Every revert reason decoded. See exactly why transactions are failing. Grouped by error type. Click any row to see affected transactions. All this in seconds. Zero friction."
+**Block 5 — AI Audit (45 sec)**
+"And now our standout feature — AI Security Audit. Instant security score — Trader Joe gets a B-plus, seventy-two out of a hundred. Every finding categorized by severity — critical, warning, info. Detailed descriptions with affected functions. Actionable recommendations. This typically costs five to fifty thousand dollars from professional auditors. We provide it free."
 
-**Block 6 — Roadmap (60 sec)**
-"What's next? Our roadmap. Phase 1 — shipped. Everything you've seen is live today. Phase 2 — AI security scanning. Pattern-based vulnerability detection, risk scoring from A to F. Phase 3 — multi-chain. Support for Avalanche L1s and Subnets like Beam, DFK, Dexalot. Phase 4 — Pro tier. Ten to twenty dollars a month for AI alerts, extended history, API access. Free analytics today. AI-powered monitoring tomorrow. Try it now — avaxlens.vercel.app."
+**Block 6 — Roadmap (40 sec)**
+"What's next? Phase 1 — shipped. Everything you've seen is live today. Six tabs, fifteen features. Phase 2 — AI security for any verified contract, PostgreSQL for persistence. Phase 3 — multi-chain, Avalanche L1s and Subnets. Phase 4 — Pro tier, ten to twenty dollars a month. Live health monitoring — we check our APIs every thirty seconds. Free analytics today. AI-powered security tomorrow. Try it now — avaxlens.vercel.app."
 
 ---
 
@@ -131,8 +145,11 @@
 - [ ] avaxlens.vercel.app loads correctly
 - [ ] Trader Joe address in clipboard
 - [ ] All nav links work (Compare, Use Cases, Roadmap)
-- [ ] Period switching works (7d → 30d → 90d)
-- [ ] Errors tab loads
+- [ ] All 6 tabs work (Overview, Transactions, Functions, Errors, Callers, AI Audit)
+- [ ] Period switching works (7d / 30d / 90d)
+- [ ] Tx hash search works in Transactions tab
+- [ ] AI Audit shows real data for Trader Joe
+- [ ] Health indicator shows green dot in footer
 - [ ] Clean browser (no extensions, no bookmarks)
 - [ ] Microphone tested
 - [ ] Screen recording software ready

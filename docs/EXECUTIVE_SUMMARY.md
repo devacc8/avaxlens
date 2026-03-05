@@ -6,11 +6,20 @@ Avalanche processes over half a million smart contract transactions daily. Yet d
 
 ## The Solution
 
-AvaxLens is a free, instant analytics dashboard for Avalanche C-Chain smart contracts. Paste any contract address and get immediate insights: transaction volume, success rates, gas usage, function breakdown with ABI decoding, and decoded error logs. No signup. No API key. No setup required. Zero cost.
+AvaxLens is a free, instant analytics dashboard for Avalanche C-Chain smart contracts. Paste any contract address and get immediate insights: transaction volume, success rates, gas usage, function breakdown with ABI decoding, caller analysis, full transaction history, and AI security audits. No signup. No API key. No setup required. Zero cost.
 
 ## What We Built
 
-Our MVP is live at avaxlens.vercel.app with eight core features: contract search, transaction volume charts, success/fail rate visualization, gas metrics, function breakdown with ABI decoding, error log analysis, period selection (7d/30d/90d), and mobile-responsive design. The entire stack is Next.js on Vercel, reading data from Snowtrace and Routescan APIs with intelligent caching.
+Our product is live at avaxlens.vercel.app with six dashboard tabs and fifteen core features:
+
+- **Overview** — transaction volume charts, success/fail visualization, gas metrics, top functions
+- **Transactions** — paginated list with decoded function names, status filters, tx hash search
+- **Functions** — call count charts, gas usage comparison, per-function success rates
+- **Errors** — decoded revert reasons, error distribution, affected function mapping
+- **Callers** — top callers ranked by activity, distribution charts, sortable tables
+- **AI Audit** — pre-generated security analysis with risk scoring (A-F grade) for popular contracts
+
+Plus: rate limiting, security headers, cache hardening, health check endpoint with live status indicator, contract comparison page, and mobile-responsive design. The entire stack is Next.js on Vercel, reading data from Snowtrace and Routescan APIs with intelligent caching.
 
 ## Market Opportunity
 
@@ -18,22 +27,22 @@ With Avalanche9000 launching over 80 L1s, the ecosystem is expanding rapidly. Ev
 
 ## Competitive Advantage
 
-AvaxLens is the only free, instant, visual analytics tool built specifically for Avalanche C-Chain. Competitors are multi-chain tools that charge premium prices and require setup. We're Avalanche-native from day one — zero friction, zero cost.
+AvaxLens is the only free, instant, visual analytics tool built specifically for Avalanche C-Chain. Competitors are multi-chain tools that charge premium prices and require setup. We're Avalanche-native from day one — zero friction, zero cost. Our AI security audit feature provides instant vulnerability scanning that typically costs $5,000–$50,000 from professional auditors.
 
 ## Business Model
 
-Free tier — always free, unlimited contracts, basic analytics. Pro tier ($10-20/month) — AI security scanning, anomaly alerts to Telegram/Discord, extended 90+ day history, API access, CSV/PNG export. Revenue path: Pro subscriptions plus Avalanche Foundation grants.
+Free tier — always free, unlimited contracts, full analytics dashboard. Pro tier ($10-20/month) — AI security scanning for any contract, anomaly alerts to Telegram/Discord, extended 90+ day history, API access, CSV/PNG export. Revenue path: Pro subscriptions plus Avalanche Foundation grants.
 
 ## Roadmap
 
-- **Phase 1 (Shipped):** Free instant analytics — live now
-- **Phase 2 (Q2 2026):** AI security scanning with risk scoring
+- **Phase 1 (Shipped):** Free instant analytics with 6 dashboard tabs — live now
+- **Phase 2 (Q2 2026):** AI security scanning for all verified contracts, PostgreSQL persistence
 - **Phase 3 (Q3 2026):** Multi-chain support for Avalanche L1s/Subnets
-- **Phase 4 (Q4 2026):** Pro tier launch
+- **Phase 4 (Q4 2026):** Pro tier launch, API access, team dashboards
 
 ## Traction
 
-MVP deployed and functional. Live demo with real contract data. Full pitch and screen recording plan ready for Build Games 2026.
+MVP deployed and fully functional with 15 shipped features. Live demo with real contract data from Trader Joe, Aave V3, and WAVAX. AI security audits operational for select contracts. Security audit score: 9/10. Full pitch and demo materials ready for Build Games 2026.
 
 ## Ask
 

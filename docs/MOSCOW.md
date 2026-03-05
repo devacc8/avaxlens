@@ -3,53 +3,64 @@
 ## Overview
 
 This document outlines feature priorities using the MoSCoW framework for AvaxLens development.
+Updated to reflect v0.5.0 state (March 2026).
 
 ---
 
-## Must Have (MVP — Already Shipped)
+## Must Have (MVP — All Shipped)
 
 Core functionality required for initial release:
 
 | Feature | Description | Status |
 |---------|-------------|--------|
-| Contract Search | Paste any C-Chain address and get instant analytics | ✅ Live |
-| Transaction Volume | Total tx count, volume over time chart | ✅ Live |
-| Success/Fail Rate | Visual breakdown of successful vs failed transactions | ✅ Live |
-| Gas Metrics | Average gas usage, gas trends | ✅ Live |
-| Function Breakdown | ABI-decoded function calls with counts | ✅ Live |
-| Error Logs | Decoded revert reasons with error distribution | ✅ Live |
-| Period Selection | 7d, 30d, 90d time ranges | ✅ Live |
-| Mobile Responsive | Works on mobile devices | ✅ Live |
+| Contract Search | Paste any C-Chain address and get instant analytics | Shipped v0.1.0 |
+| Transaction Volume | Total tx count, volume over time chart | Shipped v0.1.0 |
+| Success/Fail Rate | Visual breakdown of successful vs failed transactions | Shipped v0.1.0 |
+| Gas Metrics | Average gas usage, gas trends | Shipped v0.1.0 |
+| Function Breakdown | ABI-decoded function calls with counts, gas analysis | Shipped v0.1.0 |
+| Error Logs | Decoded revert reasons with error distribution | Shipped v0.1.0 |
+| Period Selection | 7d, 30d, 90d time ranges | Shipped v0.1.0 |
+| Mobile Responsive | Works on mobile devices | Shipped v0.1.0 |
+| Functions Tab | Dedicated view: call charts, gas charts, extended table | Shipped v0.4.0 |
+| Callers Tab | Top callers, distribution chart, sortable table | Shipped v0.4.0 |
+| Transactions Tab | Paginated list, status filters, period filtering | Shipped v0.4.0 |
+| Security Hardening | Rate limiting, cache limits, security headers, input validation | Shipped v0.4.1 |
+| Tx Hash Search | Search transactions by hash | Shipped v0.4.2 |
+| Health Check | /api/health endpoint, live status indicator in footer | Shipped v0.4.2 |
+| AI Security Audit | Pre-generated security audits for popular contracts | Shipped v0.5.0 |
 
 ---
 
-## Should Have (Post-MVP — Q2 2026)
+## Should Have (Pre-Demo Polish — Mar 9)
 
-Important features to add after MVP:
+Important items to complete before MVP demo:
+
+| Feature | Description | Priority |
+|---------|-------------|----------|
+| Empty State | Graceful UI for contracts with zero transactions | High (done) |
+| Compare Page | Side-by-side contract comparison | High (done) |
+| Use Cases Page | Marketing page showing key features | High (done) |
+| Roadmap Page | Public roadmap for users | High (done) |
+| Demo Video | 5-min screen recording with voice-over | High |
+| Manual Testing | Test all tabs with Trader Joe, Aave V3, WAVAX | High |
+| Edge Case Testing | Invalid address, unverified contract, empty results | Medium |
+
+---
+
+## Could Have (Post-MVP — Q2-Q3 2026)
+
+Desirable but not critical for hackathon:
 
 | Feature | Description | Priority |
 |---------|-------------|----------|
 | PostgreSQL Storage | Persistent cache, query history, faster lookups | High |
 | Search History | Remember recently viewed contracts | High |
-| Contract Verification | Auto-detect if contract is verified on Snowtrace | Medium |
-| Shareable Links | Share dashboard via URL with embedded address | Medium |
-| Multiple Addresses | Compare 2+ contracts side by side | Medium |
+| Shareable Links | Share dashboard via URL with period param | Medium |
 | CSV Export | Export analytics data for external analysis | Medium |
-
----
-
-## Could Have (Nice to Have — Q3-Q4 2026)
-
-Desirable but not critical:
-
-| Feature | Description | Priority |
-|---------|-------------|----------|
-| AI Security Scan | Pattern-based vulnerability detection | Low |
-| Risk Scoring | A-F security score for contracts | Low |
-| Anomaly Detection | Alert on unusual transaction patterns | Low |
-| Telegram Alerts | Real-time notifications for monitored contracts | Low |
-| Multi-chain Support | Avalanche L1s and Subnets (Beam, DFK, Dexalot) | Low |
-| API Access | Programmatic access for teams | Low |
+| PNG Export | Export charts as images | Medium |
+| Unit Tests | Tests for processing functions | Medium |
+| New vs Returning Callers | Track caller retention (requires DB) | Low |
+| Open Graph Tags | Dynamic OG images with contract stats | Low |
 
 ---
 
@@ -65,14 +76,16 @@ Out of scope for now:
 | Custom Dashboards | Single contract view for now |
 | Real-time WebSocket | Polling sufficient for current use cases |
 | Mobile App | Web-based responsive design sufficient |
+| Light/Dark Toggle | Dark theme only by design |
+| Real-time AI Audit | Pre-generated audits sufficient, no AI API cost |
 
 ---
 
 ## Summary
 
-- **Must Have:** 8 features — all shipped and live
-- **Should Have:** 6 features — PostgreSQL, history, sharing, comparison, export
-- **Could Have:** 6 features — AI security, alerts, multi-chain, API
-- **Won't Have:** 6 features — wallet connection, NFT, real-time WS, mobile app
+- **Must Have:** 15 features — all shipped (v0.1.0 through v0.5.0)
+- **Should Have:** 7 items — 4 done, 3 remaining (demo video, testing)
+- **Could Have:** 8 features — PostgreSQL, exports, tests, OG tags
+- **Won't Have:** 8 features — wallet, NFT, mobile app, light theme
 
-**MVP is complete.** Focus for Phase 2 is on Should Have items to improve persistence and user experience.
+**MVP is complete.** Focus for Phase 2 demo is on testing and recording the demo video.

@@ -35,16 +35,31 @@
 - [x] Error logging: console.error in snowtrace.ts + routescan.ts catch blocks
 - [x] npm audit fix: 0 vulnerabilities
 
+## Completed (v0.4.2)
+
+- [x] Search by tx hash in Transactions tab (client-side filter)
+- [x] Health check endpoint (`/api/health`) — Snowtrace + Routescan ping
+- [x] Live status indicator in Footer — polls every 30s, 3 states (online/degraded/offline)
+
+## Completed (v0.5.0)
+
+- [x] **AI Audit tab** — 6th dashboard tab with pre-generated security audits
+- [x] 4 contracts audited: Trader Joe (B+, 72), Trader Joe V2 (A, 85), Aave V3 (A+, 92), WAVAX (B, 68)
+- [x] Score header with circular indicator + gradient bar + findings count
+- [x] Severity-colored findings list (critical/warning/info)
+- [x] Numbered recommendations section
+- [x] "Coming Soon" placeholder for non-audited contracts with links
+- [x] Pulsing red dot + subtle bg on AI Audit tab button
+- [x] Use Cases page: AI Security Scan "Coming Soon" → "Beta"
+
 ---
 
 ## Backlog
 
 - [ ] Error names: add expandable row on tap for mobile (currently truncated)
-- [ ] Status indicator: health check endpoint (`/api/health`) with real API monitoring
-- [ ] Empty state for contracts with zero transactions
 - [ ] Shareable dashboard URLs with period param
 - [ ] Export analytics as CSV
 - [ ] Export charts as PNG
-- [ ] Search by tx hash in Transactions tab
-- [ ] New vs returning callers in Callers tab
+- [ ] New vs returning callers in Callers tab (requires DB)
 - [ ] Unit tests for processing functions (post-MVP)
+- [ ] Demo video recording (5-min walkthrough)

@@ -57,6 +57,21 @@
 - [x] Error logging in API clients (console.error)
 - [x] npm audit — 0 vulnerabilities
 
+## Done (v0.4.2)
+
+- [x] Search by tx hash in Transactions tab (client-side filter)
+- [x] Health check endpoint (`/api/health`) — checks Snowtrace + Routescan
+- [x] Live status indicator in Footer — polls every 30s, green/yellow/red dot
+
+## Done (v0.5.0)
+
+- [x] **AI Audit tab** — 6th dashboard tab with pre-generated security analysis
+- [x] Audited 4 contracts: Trader Joe (B+), Trader Joe V2 (A), Aave V3 (A+), WAVAX (B)
+- [x] Score header, severity-colored findings, numbered recommendations
+- [x] "Coming Soon" placeholder for non-audited contracts with links
+- [x] Pulsing indicator on AI Audit tab button
+- [x] Use Cases page updated: AI Security Scan badge "Coming Soon" → "Beta"
+
 ---
 
 ## Hackathon Deadlines
@@ -85,20 +100,25 @@
 ### Transactions Tab
 - [x] Paginated transaction list with decoded function names
 - [x] Filter by status (success/fail)
-- [ ] Search by tx hash
+- [x] Search by tx hash
 
 ### Status Indicator (Footer)
-- [ ] Health check endpoint (`/api/health`)
-- [ ] Periodic polling from footer (every 30s)
-- [ ] Check Snowtrace API reachability
-- [ ] Check Routescan API reachability
-- [ ] Three states: green (all OK), yellow (one API slow/down), red (backend unreachable)
+- [x] Health check endpoint (`/api/health`)
+- [x] Periodic polling from footer (every 30s)
+- [x] Check Snowtrace API reachability
+- [x] Check Routescan API reachability
+- [x] Three states: green (all OK), yellow (one API slow/down), red (backend unreachable)
+
+### AI Security Audit
+- [x] AI Audit tab with pre-generated security analysis
+- [x] Security score, grade, findings, recommendations
+- [x] 4 contracts audited (Trader Joe, Trader Joe V2, Aave V3, WAVAX)
+- [x] Coming Soon placeholder for non-audited contracts
 
 ### General Polish
 - [x] Mobile responsive improvements (truncate addresses, touch-friendly UI)
-- [ ] Empty state for contracts with zero transactions
+- [x] Empty state for contracts with zero transactions
 - [x] Better error messages with retry buttons
-- [ ] Light / dark theme toggle (respect system preference, manual override)
 
 ### Testing
 - [ ] Test with Trader Joe, Pangolin, GMX, Benqi
@@ -199,15 +219,11 @@ Zero vendor lock-in: everything is Docker + standard PostgreSQL.
 
 ### Status Indicator Evolution
 
-Current (v0.4.1):
-```
-Footer -> hardcoded "online" status -> green dot
-```
-
-Next iteration:
+Current (v0.5.0):
 ```
 Footer -> useEffect polls /api/health every 30s -> updates dot color
 /api/health -> checks Snowtrace + Routescan reachability -> returns status
+Three states: online (green), degraded (yellow), offline (red)
 ```
 
 Future:
@@ -218,7 +234,7 @@ Backend -> monitors all dependencies (DB, APIs, RPC) -> pushes status changes
 
 ### Backend Evolution
 
-Current (v0.4.1): Next.js API routes with in-memory cache (500 max, LRU eviction), rate limiting (30 req/min per IP), security headers.
+Current (v0.5.0): Next.js API routes with in-memory cache (500 max, LRU eviction), rate limiting (30 req/min per IP), security headers, health check endpoint. Static AI audit data (no runtime AI costs).
 
 Next: Add PostgreSQL for persistent storage, background jobs for indexing.
 
