@@ -3,7 +3,7 @@
 ## Overview
 
 This document outlines feature priorities using the MoSCoW framework for AvaxLens development.
-Updated to reflect v0.5.2 state (March 2026).
+Updated to reflect v0.5.3 state (March 2026).
 
 ---
 
@@ -44,6 +44,9 @@ Important items to complete before MVP demo:
 | Compare Page | Side-by-side contract comparison | High (done) |
 | Use Cases Page | Marketing page showing key features | High (done) |
 | Roadmap Page | Public roadmap for users | High (done) |
+| Feature Bento Grid | 4 feature cards with icons on landing page | High (done) |
+| Recent Searches | Recently viewed contracts on landing (localStorage) | High (done) |
+| OG Tags / SEO | Open Graph + Twitter meta tags for social sharing | High (done) |
 | Demo Video | 5-min screen recording with voice-over | High |
 | Manual Testing | Test all tabs with Trader Joe, Aave V3, WAVAX | High |
 | Edge Case Testing | Invalid address, unverified contract, empty results | Medium |
@@ -57,13 +60,13 @@ Desirable but not critical for hackathon:
 | Feature | Description | Priority |
 |---------|-------------|----------|
 | PostgreSQL Storage | Persistent cache, query history, faster lookups | High |
-| Search History | Remember recently viewed contracts | High |
+| Search History | Remember recently viewed contracts | Done (v0.5.3) |
 | Shareable Links | Share dashboard via URL with period param | Done (v0.5.1) |
 | CSV Export | Export analytics data for external analysis | Done (v0.5.1) |
 | PNG Export | Export charts as images | Medium |
 | Unit Tests | Tests for processing functions | Medium |
 | New vs Returning Callers | Track caller retention (requires DB) | Low |
-| Open Graph Tags | Dynamic OG images with contract stats | Low |
+| Open Graph Tags | Dynamic OG images with contract stats | Done (v0.5.3) |
 | Light Theme | Light/dark toggle respecting system preference | Low |
 
 ---
@@ -87,8 +90,8 @@ Out of scope for now:
 ## Summary
 
 - **Must Have:** 18 features — all shipped (v0.1.0 through v0.5.2)
-- **Should Have:** 7 items — 4 done, 3 remaining (demo video, testing)
-- **Could Have:** 7 features — 2 done (CSV Export, Shareable Links), 5 remaining (PostgreSQL, PNG export, tests, OG tags, light theme)
+- **Should Have:** 10 items — 7 done, 3 remaining (demo video, testing)
+- **Could Have:** 7 features — 4 done (CSV Export, Shareable Links, Search History, OG Tags), 3 remaining (PostgreSQL, PNG export, light theme)
 - **Won't Have:** 7 features — wallet, NFT, mobile app, real-time AI
 
-**MVP is complete.** Focus for Phase 2 demo is on testing and recording the demo video.
+**MVP is complete.** Focus for demo: testing and recording the 5-min video.

@@ -17,8 +17,22 @@ interface Props {
 
 export async function generateMetadata({ params }: Props) {
   const { address } = await params;
+  const short = `${address.slice(0, 6)}...${address.slice(-4)}`;
+  const title = `${short} — AvaxLens`;
+  const description = `Analytics for Avalanche contract ${short}. Transaction volume, gas usage, function breakdown, caller analysis.`;
   return {
-    title: `${address.slice(0, 10)}... — AvaxLens`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `https://avaxlens.vercel.app/contract/${address}`,
+    },
+    twitter: {
+      card: 'summary' as const,
+      title,
+      description,
+    },
   };
 }
 

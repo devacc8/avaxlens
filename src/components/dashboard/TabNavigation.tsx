@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import type { ContractAnalytics, ContractInfo, Period, TabId } from '@/lib/types';
 import { generateCsv, downloadCsv } from '@/lib/export-csv';
+import { saveRecentSearch } from '@/lib/recent-searches';
 import PeriodSelector from '@/components/charts/PeriodSelector';
 import OverviewTab from '@/components/dashboard/OverviewTab';
 import FunctionsTab from '@/components/dashboard/FunctionsTab';
@@ -50,6 +51,10 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    saveRecentSearch(address, contractInfo.name);
+  }, [address, contractInfo.name]);
 
   const canExport = activeTab !== 'transactions' && activeTab !== 'audit';
 
