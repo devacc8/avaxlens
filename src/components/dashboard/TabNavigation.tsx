@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { ContractAnalytics, ContractInfo, Period, TabId } from '@/lib/types';
 import { generateCsv, downloadCsv } from '@/lib/export-csv';
 import { saveRecentSearch } from '@/lib/recent-searches';
+import { useAnalytics } from '@/lib/hooks/useAnalytics';
 import PeriodSelector from '@/components/charts/PeriodSelector';
 import OverviewTab from '@/components/dashboard/OverviewTab';
 import FunctionsTab from '@/components/dashboard/FunctionsTab';
@@ -47,10 +48,8 @@ function updateUrl(address: string, period: string, tab: string) {
 export default function TabNavigation({ analytics: initialAnalytics, contractInfo, address, initialPeriod, initialTab }: TabNavigationProps) {
   const [activeTab, setActiveTab] = useState<TabId>(isValidTab(initialTab) ? initialTab : 'overview');
   const [period, setPeriod] = useState<Period>(initialPeriod === '7d' || initialPeriod === '90d' ? initialPeriod : '30d');
-  const [analytics, setAnalytics] = useState(initialAnalytics);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const abortRef = useRef<AbortController | null>(null);
+
+  const { data: analytics, isFetching: loading, error } = useAnalytics(address, period, initialAnalytics);
 
   useEffect(() => {
     saveRecentSearch(address, contractInfo.name);
@@ -59,49 +58,19 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
   const canExport = activeTab !== 'transactions' && activeTab !== 'audit';
 
   const handleExport = useCallback(() => {
+    if (!analytics) return;
     const csv = generateCsv(analytics, activeTab);
     if (!csv) return;
     const name = contractInfo.name || address.slice(0, 10);
     downloadCsv(csv, `${name}_${activeTab}_${period}.csv`);
   }, [analytics, activeTab, contractInfo.name, address, period]);
 
-  const handlePeriodChange = useCallback(async (newPeriod: Period) => {
-    abortRef.current?.abort();
-    const controller = new AbortController();
-    abortRef.current = controller;
-
+  const handlePeriodChange = useCallback((newPeriod: Period) => {
     setPeriod(newPeriod);
-    setLoading(true);
-    setError(null);
     updateUrl(address, newPeriod, activeTab);
-
-    const timeout = setTimeout(() => controller.abort(), 15_000);
-    try {
-      const res = await fetch(`/api/contract/${address}/analytics?period=${newPeriod}`, {
-        signal: controller.signal,
-      });
-      if (controller.signal.aborted) return;
-      if (!res.ok) {
-        setError('Failed to load data. Please try again.');
-        return;
-      }
-      const json = await res.json();
-      if (controller.signal.aborted) return;
-      if (json.success) {
-        setAnalytics(json.data.analytics);
-      } else {
-        setError('Failed to load data. Please try again.');
-      }
-    } catch (err) {
-      if (controller.signal.aborted) return;
-      setError(err instanceof DOMException && err.name === 'AbortError'
-        ? 'Request timed out. Please try again.'
-        : 'Network error. Please check your connection.');
-    } finally {
-      clearTimeout(timeout);
-      if (!controller.signal.aborted) setLoading(false);
-    }
   }, [address, activeTab]);
+
+  const currentAnalytics = analytics || initialAnalytics;
 
   return (
     <div>
@@ -147,7 +116,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
 
       {error && (
         <div className="bg-error/10 border border-error/30 text-error rounded-lg px-4 py-3 mb-4 text-sm">
-          {error}
+          {error instanceof Error ? error.message : 'Failed to load data. Please try again.'}
         </div>
       )}
 
@@ -163,7 +132,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
 
         <div className={loading ? 'pointer-events-none' : ''}>
           {activeTab === 'overview' && (
-            <OverviewTab analytics={analytics} />
+            <OverviewTab analytics={currentAnalytics} />
           )}
 
           {activeTab === 'transactions' && (
@@ -171,19 +140,19 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
           )}
 
           {activeTab === 'functions' && (
-            <FunctionsTab data={analytics.functionBreakdown} />
+            <FunctionsTab data={currentAnalytics.functionBreakdown} />
           )}
 
           {activeTab === 'errors' && (
             <ErrorsTable
-              data={analytics.errorBreakdown}
-              totalErrors={analytics.failCount}
-              errorRate={analytics.totalTransactions > 0 ? (analytics.failCount / analytics.totalTransactions) * 100 : 0}
+              data={currentAnalytics.errorBreakdown}
+              totalErrors={currentAnalytics.failCount}
+              errorRate={currentAnalytics.totalTransactions > 0 ? (currentAnalytics.failCount / currentAnalytics.totalTransactions) * 100 : 0}
             />
           )}
 
           {activeTab === 'callers' && (
-            <CallersTab data={analytics.callerBreakdown} />
+            <CallersTab data={currentAnalytics.callerBreakdown} />
           )}
 
           {activeTab === 'audit' && (
