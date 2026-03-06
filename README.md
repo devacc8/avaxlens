@@ -8,7 +8,7 @@ Paste any contract address — get instant analytics: transaction volume, gas us
 
 ---
 
-## Features (21 shipped)
+## Features
 
 ### 6 Dashboard Tabs
 
@@ -21,24 +21,23 @@ Paste any contract address — get instant analytics: transaction volume, gas us
 | **Callers** | Top callers ranked by activity, distribution charts, sortable tables |
 | **AI Audit** | Security analysis with risk scoring (A-F grade), findings, recommendations |
 
-### Platform
+### Platform Features
 
-- Live network stats in header: AVAX price, gas price, TVL (DeFiLlama + C-Chain RPC)
-- React Query for smart client-side caching (dedup, background refetch, stale/fresh)
-- CSV export per tab (Overview, Functions, Errors, Callers)
-- Shareable dashboard URLs (period + tab in query params)
-- Contract comparison page
-- Health check with live status indicator
-- Mobile-responsive design
+- **Live Network Stats** — AVAX price, gas price, TVL in header (DeFiLlama + C-Chain RPC, auto-refresh 30s)
+- **Period Selection** — 7d / 30d / 90d time ranges with instant switching
+- **CSV Export** — download analytics per tab as CSV file
+- **Shareable Links** — share dashboard via URL with period and tab preserved
+- **Contract Comparison** — side-by-side analytics for two contracts
+- **Recent Searches** — recently viewed contracts on landing page
+- **Health Check** — live API status indicator in footer
+- **Mobile Responsive** — works on all screen sizes
 
-### Security (audit score: 10/10)
+### Under the Hood
 
-- 3 independent security audits completed — 0 open findings
-- Rate limiting: 30 req/min per IP on all endpoints
-- 5 security headers: CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy
-- LRU cache with size limits and TTL
-- Input validation + response validation on all parameters
-- Fetch timeouts (AbortSignal) on all external API calls
+- React Query for client-side caching (dedup, background refetch, stale/fresh)
+- 3 security audits completed — score 10/10, 0 open findings
+- Rate limiting (30 req/min), 5 security headers (CSP, HSTS), LRU cache
+- Input/response validation, fetch timeouts on all external API calls
 
 ---
 
