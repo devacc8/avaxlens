@@ -12,7 +12,14 @@ export function getRecentSearches(): RecentSearch[] {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
-    return JSON.parse(raw) as RecentSearch[];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(
+      (r: unknown): r is RecentSearch =>
+        typeof r === 'object' && r !== null &&
+        typeof (r as RecentSearch).address === 'string' &&
+        typeof (r as RecentSearch).name === 'string'
+    );
   } catch {
     return [];
   }

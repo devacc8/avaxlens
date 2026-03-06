@@ -80,6 +80,14 @@
 - [x] **ContractExplorer** — merged Popular Contracts + Recent Searches into 60/40 two-column layout
 - [x] Landing page redesign: HeroSection simplified, FeatureGrid + ContractExplorer
 
+## Completed (v0.5.4)
+
+- [x] **React Query migration** — replaced manual fetch/AbortController/setInterval with @tanstack/react-query (4 hooks: useAnalytics, useTransactions, useNetworkStats, useHealth)
+- [x] **Network Stats in Header** — live AVAX price (DeFiLlama), gas price (C-Chain RPC), TVL (DeFiLlama) as badges in header
+- [x] **Security Audit v3** — score 10/10, all 5 findings from v3 audit fixed (response validation, localStorage validation, fetch timeouts, version bump, retry config)
+- [x] **Gas format fix** — smart formatting: < 0.01 → pAVAX, < 1 → 3 decimals, >= 1 → 1 decimal
+- [x] Version bump to 0.5.4
+
 ---
 
 ## Backlog
@@ -90,5 +98,3 @@
 - [ ] Unit tests for processing functions (post-MVP)
 - [ ] Demo video recording (5-min walkthrough)
 - [ ] **Add more AI Audit contracts** — target 10+ contracts (Pangolin, GMX, Benqi, Bullet, Yeti, Platypus, Gorilla, etc.)
-- [ ] **Quick Stats Banner** — "Avalanche: 500K+ daily txs" banner on home
-- [ ] **Gas Price Widget** — current gas price display on home

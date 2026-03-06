@@ -3,7 +3,7 @@
 ## Overview
 
 This document outlines feature priorities using the MoSCoW framework for AvaxLens development.
-Updated to reflect v0.5.3 state (March 2026).
+Updated to reflect v0.5.4 state (March 2026).
 
 ---
 
@@ -31,6 +31,9 @@ Core functionality required for initial release:
 | CSV Export | Export analytics data per tab as CSV | Shipped v0.5.1 (from Could Have) |
 | Shareable Links | Share dashboard via URL with period and tab params | Shipped v0.5.1 (from Could Have) |
 | Security Audit v2 | CSP, HSTS, LRU cache, period validation, ABI validation — 9/9 fixed | Shipped v0.5.2 |
+| React Query Migration | Client-side caching, deduplication, background refetch | Shipped v0.5.4 |
+| Network Stats | Live AVAX price, gas price, TVL in header | Shipped v0.5.4 |
+| Security Audit v3 | Score 10/10, all 5 findings fixed (response validation, timeouts, retry) | Shipped v0.5.4 |
 
 ---
 
@@ -47,6 +50,8 @@ Important items to complete before MVP demo:
 | Feature Bento Grid | 4 feature cards with icons on landing page | High (done) |
 | Recent Searches | Recently viewed contracts on landing (localStorage) | High (done) |
 | OG Tags / SEO | Open Graph + Twitter meta tags for social sharing | High (done) |
+| Client-Side Caching | React Query for all data fetching (dedup, retry, stale/fresh) | High (done) |
+| Network Stats | Live AVAX price, gas, TVL in header via DeFiLlama + RPC | High (done) |
 | Demo Video | 5-min screen recording with voice-over | High |
 | Manual Testing | Test all tabs with Trader Joe, Aave V3, WAVAX | High |
 | Edge Case Testing | Invalid address, unverified contract, empty results | Medium |
@@ -89,8 +94,8 @@ Out of scope for now:
 
 ## Summary
 
-- **Must Have:** 18 features — all shipped (v0.1.0 through v0.5.2)
-- **Should Have:** 10 items — 7 done, 3 remaining (demo video, testing)
+- **Must Have:** 21 features — all shipped (v0.1.0 through v0.5.4)
+- **Should Have:** 12 items — 9 done, 3 remaining (demo video, testing)
 - **Could Have:** 7 features — 4 done (CSV Export, Shareable Links, Search History, OG Tags), 3 remaining (PostgreSQL, PNG export, light theme)
 - **Won't Have:** 7 features — wallet, NFT, mobile app, real-time AI
 

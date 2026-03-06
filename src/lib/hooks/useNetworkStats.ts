@@ -12,21 +12,23 @@ export interface NetworkStats {
   tvl: number | null;
 }
 
-async function rpcCall(method: string): Promise<string> {
+async function rpcCall(method: string): Promise<string | null> {
   const res = await fetch(AVAX_RPC, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params: [] }),
+    signal: AbortSignal.timeout(10_000),
   });
   const json = await res.json();
+  if (typeof json.result !== 'string') return null;
   return json.result;
 }
 
 async function fetchNetworkStats(): Promise<NetworkStats> {
   const [gasResult, priceResult, chainsResult] = await Promise.allSettled([
     rpcCall('eth_gasPrice'),
-    fetch(DEFILLAMA_PRICE).then(r => r.json()),
-    fetch(DEFILLAMA_CHAINS).then(r => r.json()),
+    fetch(DEFILLAMA_PRICE, { signal: AbortSignal.timeout(10_000) }).then(r => r.json()),
+    fetch(DEFILLAMA_CHAINS, { signal: AbortSignal.timeout(10_000) }).then(r => r.json()),
   ]);
 
   // Gas price: hex wei → nAVAX (Gwei)
@@ -58,5 +60,6 @@ export function useNetworkStats() {
     queryFn: fetchNetworkStats,
     refetchInterval: 30_000,
     staleTime: 15_000,
+    retry: false,
   });
 }

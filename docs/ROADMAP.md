@@ -88,6 +88,21 @@
 - [x] Cache-Control headers on all API responses
 - [x] Rate limiting on health endpoint
 
+## Done (v0.5.3)
+
+- [x] **Feature Bento Grid** — 4 feature cards with icons on landing page
+- [x] **Recent Searches** — localStorage-based, shown on landing alongside Popular Contracts
+- [x] **OG Tags / SEO** — Open Graph + Twitter meta tags on landing + contract pages
+- [x] **ContractExplorer** — merged Popular Contracts + Recent Searches into adaptive layout
+
+## Done (v0.5.4)
+
+- [x] **React Query migration** — replaced manual fetch/AbortController/setInterval with @tanstack/react-query
+- [x] **Network Stats in Header** — live AVAX price, gas price, TVL as badges (DeFiLlama + C-Chain RPC)
+- [x] **Security Audit v3** — score 10/10, all 5 findings fixed (response validation, localStorage validation, fetch timeouts, retry config)
+- [x] Gas format fix — smart nAVAX/pAVAX formatting for low gas prices
+- [x] Cleanup: removed old NetworkStats component, consolidated Header
+
 ---
 
 ## Hackathon Deadlines
@@ -151,7 +166,7 @@
 - [ ] Export charts as PNG
 
 ### SEO & Meta
-- [ ] Open Graph tags per contract page
+- [x] Open Graph tags per contract page
 - [ ] Dynamic OG images with contract stats
 - [ ] Sitemap for popular contracts
 
@@ -250,7 +265,7 @@ Backend -> monitors all dependencies (DB, APIs, RPC) -> pushes status changes
 
 ### Backend Evolution
 
-Current (v0.5.2): Next.js API routes with in-memory cache (500 max, LRU eviction), rate limiting (30 req/min per IP), 5 security headers (CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy), health check endpoint. Static AI audit data (no runtime AI costs). CSV export, shareable dashboard URLs. Security audit score: 9.5/10.
+Current (v0.5.4): Next.js API routes with in-memory cache (500 max, LRU eviction), rate limiting (30 req/min per IP), 5 security headers (CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy), health check endpoint. Static AI audit data (no runtime AI costs). CSV export, shareable dashboard URLs. React Query for all client-side data fetching (dedup, caching, background refetch). Live network stats (AVAX price, gas, TVL via DeFiLlama + RPC). Security audit score: 10/10.
 
 Next: Add PostgreSQL for persistent storage, background jobs for indexing.
 
