@@ -81,3 +81,9 @@
 - [ ] New vs returning callers in Callers tab (requires DB)
 - [ ] Unit tests for processing functions (post-MVP)
 - [ ] Demo video recording (5-min walkthrough)
+- [ ] **Add more AI Audit contracts** — target 10+ contracts (Pangolin, GMX, Benqi, Bullet, Yeti, Platypus, Gorilla, etc.)
+- [ ] **OG Tags / SEO** — meta tags for social sharing, dynamic OG images
+- [ ] **Quick Stats Banner** — "Avalanche: 500K+ daily txs" banner on home
+- [ ] **Gas Price Widget** — current gas price display on home
+- [ ] **Feature Bento Grid** — 3-4 icons: Free, No Setup, AI Security, CSV Export
+- [ ] **Recent Searches** — show recently viewed contracts on home
