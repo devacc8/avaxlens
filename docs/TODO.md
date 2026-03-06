@@ -72,6 +72,14 @@
 - [x] Rate limiting on `/api/health` endpoint
 - [x] Updated MOSCOW, ROADMAP, video script with security achievements
 
+## Completed (v0.5.3)
+
+- [x] **Feature Bento Grid** — 4 feature cards with icons on landing (Free, Instant, AI Security, Export)
+- [x] **Recent Searches** — localStorage-based, shown on landing alongside Popular Contracts
+- [x] **OG Tags / SEO** — Open Graph + Twitter meta tags on landing + contract pages
+- [x] **ContractExplorer** — merged Popular Contracts + Recent Searches into 60/40 two-column layout
+- [x] Landing page redesign: HeroSection simplified, FeatureGrid + ContractExplorer
+
 ---
 
 ## Backlog
@@ -82,8 +90,5 @@
 - [ ] Unit tests for processing functions (post-MVP)
 - [ ] Demo video recording (5-min walkthrough)
 - [ ] **Add more AI Audit contracts** — target 10+ contracts (Pangolin, GMX, Benqi, Bullet, Yeti, Platypus, Gorilla, etc.)
-- [ ] **OG Tags / SEO** — meta tags for social sharing, dynamic OG images
 - [ ] **Quick Stats Banner** — "Avalanche: 500K+ daily txs" banner on home
 - [ ] **Gas Price Widget** — current gas price display on home
-- [ ] **Feature Bento Grid** — 3-4 icons: Free, No Setup, AI Security, CSV Export
-- [ ] **Recent Searches** — show recently viewed contracts on home
