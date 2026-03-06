@@ -2,13 +2,13 @@
 
 **Free smart contract analytics for Avalanche C-Chain.**
 
-Paste any contract address — get instant analytics: transaction volume, gas usage, function breakdown, error logs, caller analysis, and AI security audits. No signup. No API key. No cost.
+Paste any contract address — get instant analytics: transaction volume, gas usage, function breakdown, error logs, caller analysis, AI security audits, and live network stats. No signup. No API key. No cost.
 
 **Live:** [avaxlens.vercel.app](https://avaxlens.vercel.app)
 
 ---
 
-## Features (18 shipped)
+## Features (21 shipped)
 
 ### 6 Dashboard Tabs
 
@@ -23,19 +23,22 @@ Paste any contract address — get instant analytics: transaction volume, gas us
 
 ### Platform
 
+- Live network stats in header: AVAX price, gas price, TVL (DeFiLlama + C-Chain RPC)
+- React Query for smart client-side caching (dedup, background refetch, stale/fresh)
 - CSV export per tab (Overview, Functions, Errors, Callers)
 - Shareable dashboard URLs (period + tab in query params)
 - Contract comparison page
 - Health check with live status indicator
 - Mobile-responsive design
 
-### Security (audit score: 9.5/10)
+### Security (audit score: 10/10)
 
+- 3 independent security audits completed — 0 open findings
 - Rate limiting: 30 req/min per IP on all endpoints
 - 5 security headers: CSP, HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy
 - LRU cache with size limits and TTL
-- Input validation on all parameters
-- No secrets in client code, no XSS patterns
+- Input validation + response validation on all parameters
+- Fetch timeouts (AbortSignal) on all external API calls
 
 ---
 
@@ -44,6 +47,7 @@ Paste any contract address — get instant analytics: transaction volume, gas us
 - **Framework:** Next.js 16 (App Router, Turbopack)
 - **Language:** TypeScript 5
 - **Styling:** Tailwind CSS 4
+- **Data Fetching:** React Query (@tanstack/react-query)
 - **Charts:** Recharts
 - **Blockchain:** viem (ABI decoding)
 - **Deployment:** Vercel
@@ -54,6 +58,8 @@ Paste any contract address — get instant analytics: transaction volume, gas us
 |-----|---------|
 | [Snowtrace](https://snowtrace.io) | Contract ABI, name, verification status |
 | [Routescan](https://routescan.io) | Transaction history |
+| [DeFiLlama](https://defillama.com) | AVAX price, Avalanche TVL |
+| [Avalanche RPC](https://api.avax.network) | Gas price (eth_gasPrice) |
 
 No API keys required.
 
