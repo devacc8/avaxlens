@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
 import packageJson from '../../../package.json';
+import { useHealth } from '@/lib/hooks/useHealth';
 
 type StatusLevel = 'online' | 'degraded' | 'offline';
 
@@ -12,28 +12,9 @@ const STATUS_CONFIG: Record<StatusLevel, { color: string; label: string }> = {
 };
 
 const APP_VERSION = `v${packageJson.version}`;
-const POLL_INTERVAL = 30_000;
 
 export default function Footer() {
-  const [status, setStatus] = useState<StatusLevel>('online');
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  useEffect(() => {
-    const checkHealth = async () => {
-      try {
-        const res = await fetch('/api/health');
-        if (!res.ok) { setStatus('offline'); return; }
-        const json = await res.json();
-        setStatus(json.status || 'offline');
-      } catch {
-        setStatus('offline');
-      }
-    };
-
-    checkHealth();
-    intervalRef.current = setInterval(checkHealth, POLL_INTERVAL);
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, []);
+  const { data: status = 'online' } = useHealth();
 
   const { color, label } = STATUS_CONFIG[status];
 

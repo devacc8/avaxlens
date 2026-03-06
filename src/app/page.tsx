@@ -1,14 +1,16 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/landing/HeroSection';
-import PopularContracts from '@/components/landing/PopularContracts';
+import FeatureGrid from '@/components/landing/FeatureGrid';
+import ContractExplorer from '@/components/landing/ContractExplorer';
 
 export default function Home() {
   return (
     <>
       <Header />
       <HeroSection />
-      <PopularContracts />
+      <FeatureGrid />
+      <ContractExplorer />
       <Footer />
     </>
   );

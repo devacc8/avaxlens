@@ -12,20 +12,9 @@ export default function HeroSection() {
       <div className="w-full max-w-2xl">
         <AddressInput size="large" />
       </div>
-      <div className="flex flex-wrap gap-8 mt-12 text-center">
-        <div className="flex flex-col items-center gap-1">
-          <span className="text-lg font-semibold">Instant</span>
-          <span className="text-text-secondary text-sm">Analytics</span>
-        </div>
-        <div className="flex flex-col items-center gap-1">
-          <span className="text-lg font-semibold">No Signup</span>
-          <span className="text-text-secondary text-sm">No API Key</span>
-        </div>
-        <div className="flex flex-col items-center gap-1">
-          <span className="text-lg font-semibold">Free Forever</span>
-          <span className="text-text-secondary text-sm">No Hidden Costs</span>
-        </div>
-      </div>
+      <p className="text-text-secondary text-sm mt-8">
+        Free analytics for any Avalanche C-Chain contract
+      </p>
     </section>
   );
 }
