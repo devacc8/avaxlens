@@ -73,7 +73,7 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
   const currentAnalytics = analytics || initialAnalytics;
 
   return (
-    <div>
+    <div className="overflow-visible">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
         <div className="flex flex-wrap gap-1 bg-bg-input p-1 rounded-lg">
           {TABS.map((tab) => (
