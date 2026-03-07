@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import type { CallerStats } from '@/lib/types';
 import { shortenAddress, formatPercentage, formatGas } from '@/lib/utils';
+import SortDropdown from '@/components/ui/SortDropdown';
 
 interface CallersTableProps {
   data: CallerStats[];
@@ -20,18 +21,18 @@ export default function CallersTable({ data }: CallersTableProps) {
   const paged = sorted.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
 
   return (
-    <div className="bg-bg-card border border-border rounded-xl p-6">
+    <div className="bg-bg-card border border-border rounded-xl p-6 overflow-hidden">
       <div className="flex items-center justify-between mb-6">
         <h3 className="font-semibold">All Callers</h3>
-        <select
+        <SortDropdown
           value={sortBy}
-          onChange={(e) => { setSortBy(e.target.value as SortKey); setPage(0); }}
-          className="bg-bg-input border border-border px-3 py-2 rounded-lg text-sm text-white focus:outline-none cursor-pointer"
-        >
-          <option value="txCount">Sort by Transactions</option>
-          <option value="successRate">Sort by Success Rate</option>
-          <option value="totalGasUsed">Sort by Gas Used</option>
-        </select>
+          onChange={(v) => { setSortBy(v as SortKey); setPage(0); }}
+          options={[
+            { value: 'txCount', label: 'Sort by Transactions' },
+            { value: 'successRate', label: 'Sort by Success Rate' },
+            { value: 'totalGasUsed', label: 'Sort by Gas Used' },
+          ]}
+        />
       </div>
 
       {data.length === 0 ? (

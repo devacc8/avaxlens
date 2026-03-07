@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import type { ErrorStats } from '@/lib/types';
 import { formatPercentage } from '@/lib/utils';
 
@@ -10,6 +11,7 @@ interface ErrorsTableProps {
 }
 
 export default function ErrorsTable({ data, totalErrors, errorRate }: ErrorsTableProps) {
+  const [expandedRow, setExpandedRow] = useState<number | null>(null);
   if (data.length === 0) {
     return (
       <div className="bg-bg-card border border-border rounded-xl p-12 text-center">
@@ -41,7 +43,7 @@ export default function ErrorsTable({ data, totalErrors, errorRate }: ErrorsTabl
       )}
 
       {/* Error Table */}
-      <div className="bg-bg-card border border-border rounded-xl p-6">
+      <div className="bg-bg-card border border-border rounded-xl p-6 overflow-hidden">
         <h3 className="font-semibold mb-6">Error Log</h3>
         <div className="overflow-x-auto -mx-6 px-6">
           <table className="w-full text-xs sm:text-sm min-w-[450px]">
@@ -55,11 +57,27 @@ export default function ErrorsTable({ data, totalErrors, errorRate }: ErrorsTabl
             </thead>
             <tbody>
               {data.map((err, i) => (
-                <tr key={i} className="border-b border-border/50 hover:bg-bg-input/50 transition">
-                  <td className="py-2 sm:py-3 px-2 sm:px-4 font-mono text-error max-w-[150px] sm:max-w-none truncate">{err.error}</td>
-                  <td className="py-2 sm:py-3 px-2 sm:px-4 text-right font-medium">{err.count.toLocaleString()}</td>
-                  <td className="hidden sm:table-cell py-3 px-4 text-right text-text-secondary">{err.lastSeen}</td>
-                  <td className="hidden md:table-cell py-3 px-4 text-right font-mono max-w-[100px] truncate">{err.functionName}</td>
+                <tr
+                  key={i}
+                  className="border-b border-border/50 hover:bg-bg-input/50 transition cursor-pointer sm:cursor-default"
+                  onClick={() => setExpandedRow(expandedRow === i ? null : i)}
+                >
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 font-mono text-error max-w-[150px] sm:max-w-[250px] lg:max-w-none">
+                    <div className={`${expandedRow === i ? 'whitespace-normal break-all' : 'overflow-x-auto whitespace-nowrap scrollbar-none'}`} title={err.error}>
+                      {err.error}
+                    </div>
+                    {expandedRow === i && (
+                      <div className="sm:hidden mt-2 space-y-1 text-xs">
+                        <p className="text-text-secondary">Last seen: <span className="text-text-primary">{err.lastSeen}</span></p>
+                        <p className="text-text-secondary">Function: <span className="text-text-primary">{err.functionName}</span></p>
+                      </div>
+                    )}
+                  </td>
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 text-right font-medium align-top">{err.count.toLocaleString()}</td>
+                  <td className="hidden sm:table-cell py-3 px-4 text-right text-text-secondary align-top">{err.lastSeen}</td>
+                  <td className="hidden md:table-cell py-3 px-4 text-right font-mono max-w-[150px] align-top">
+                    <div className="overflow-x-auto whitespace-nowrap scrollbar-none ml-auto" title={err.functionName}>{err.functionName}</div>
+                  </td>
                 </tr>
               ))}
             </tbody>

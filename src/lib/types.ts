@@ -56,6 +56,8 @@ export interface ContractAnalytics {
   errorBreakdown: ErrorStats[];
   callerBreakdown: CallerStats[];
   periodDays: number;
+  dataRange: { from: string; to: string } | null;
+  rawTxCount: number;
 }
 
 export interface DailyVolume {
@@ -114,7 +116,7 @@ export interface ApiResponse<T> {
   error?: string;
 }
 
-export type Period = '7d' | '30d' | '90d';
+export type Period = '7d' | '30d';
 export type TabId = 'overview' | 'transactions' | 'functions' | 'errors' | 'callers' | 'audit';
 
 // AI Audit types

@@ -37,13 +37,13 @@ export async function GET(
 
   const searchParams = request.nextUrl.searchParams;
   const period = searchParams.get('period') || '30d';
-  if (!['7d', '30d', '90d'].includes(period)) {
+  if (!['7d', '30d'].includes(period)) {
     return NextResponse.json(
-      { success: false, error: 'Invalid period. Use 7d, 30d, or 90d.' },
+      { success: false, error: 'Invalid period. Use 7d or 30d.' },
       { status: 400 }
     );
   }
-  const periodDays = period === '7d' ? 7 : period === '90d' ? 90 : 30;
+  const periodDays = period === '7d' ? 7 : 30;
 
   const cacheKey = `analytics:${address}:${period}`;
   const cached = getCached<AnalyticsData>(cacheKey);

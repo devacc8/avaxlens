@@ -33,6 +33,17 @@ export function processTransactions(
   const errorBreakdown = buildErrorBreakdown(filtered);
   const callerBreakdown = buildCallerBreakdown(filtered);
 
+  let dataRange: { from: string; to: string } | null = null;
+  if (filtered.length > 0) {
+    const timestamps = filtered.map(tx => parseInt(tx.timeStamp, 10)).filter(ts => !isNaN(ts));
+    const minTs = Math.min(...timestamps);
+    const maxTs = Math.max(...timestamps);
+    dataRange = {
+      from: new Date(minTs * 1000).toISOString().split('T')[0],
+      to: new Date(maxTs * 1000).toISOString().split('T')[0],
+    };
+  }
+
   return {
     totalTransactions,
     successCount,
@@ -46,6 +57,8 @@ export function processTransactions(
     errorBreakdown,
     callerBreakdown,
     periodDays,
+    dataRange,
+    rawTxCount: transactions.length,
   };
 }
 
