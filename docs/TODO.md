@@ -90,14 +90,23 @@
 
 ---
 
+## Completed (v0.5.5)
+
+- [x] **Custom SortDropdown** — replaced native `<select>` with themed dropdown in FunctionsTable, CallersTable (click-outside close, chevron animation, active item highlight)
+- [x] **Mobile horizontal scroll fix** — added `overflow-hidden` to card wrappers + `overflow-x-auto` to inner tables across all tabs (Functions, Callers, Errors, Transactions, Compare)
+- [x] **Long names scroll** — replaced `truncate` with `overflow-x-auto whitespace-nowrap scrollbar-none` in function/error name cells
+- [x] **Expandable error rows** — mobile-only tap-to-expand on ErrorsTable rows (shows full error text + hidden columns)
+- [x] **Removed 90d period** — misleading with 10k API tx limit; kept 7d/30d only
+- [x] **Data coverage indicator** — shows actual date range under MetricCards + yellow warning when API limit reached
+- [x] **useAnalytics bugfix** — fixed response unwrapping (`json.data.analytics ?? json.data`) that caused crash on all contract pages
+- [x] **README rewrite** — full rewrite for hackathon judges (How It Works, Tech Stack, Data Sources, Try It, Team)
+- [x] **Demo GIF** — compressed from 7.7MB to 1.8MB, added to README
+- [x] **ContractHeader compact** — moved Snowtrace button to address row to reduce card height
+
+---
+
 ## Backlog
 
-- [ ] **Sort dropdown icon** — иконка/стрелочка в выпадающем списке сортировки (в таблицах Top Functions, All Callers и других) сейчас не видна на темном фоне. Нужно сделать её белой.
-
-- [ ] **Mobile horizontal scroll** — таблицы на вкладках Overview, Functions, Callers, Errors не скроллятся по горизонтали (выходят за экран). На Transactions работает, на остальных — нет. Проблема возможно в том, что эти таблицы рендерятся через OverviewTab/FunctionsTab компоненты.
-- [ ] **Compare page table** — аналогичная проблема с горизонтальным скроллом на мобильных
-- [ ] **Long names scroll** — длинные названия функций и ошибок не влазят в ячейки таблиц. Нужно добавить горизонтальный скролл внутри ячеек или сделать их прокручиваемыми при тапе.
-- [ ] Error names: add expandable row on tap for mobile (currently truncated)
 - [ ] Export charts as PNG
 - [ ] New vs returning callers in Callers tab (requires DB)
 - [ ] Unit tests for processing functions (post-MVP)
