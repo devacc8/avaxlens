@@ -41,10 +41,10 @@ export default function ErrorsTable({ data, totalErrors, errorRate }: ErrorsTabl
       )}
 
       {/* Error Table */}
-      <div className="bg-bg-card border border-border rounded-xl p-6">
-        <h3 className="font-semibold mb-6">Error Log</h3>
+      <div className="bg-bg-card border border-border rounded-xl p-6 overflow-x-auto">
+        <h3 className="font-semibold mb-6 min-w-max">Error Log</h3>
         <div className="overflow-x-auto">
-          <table className="w-full text-xs sm:text-sm">
+          <table className="w-full text-xs sm:text-sm min-w-[450px]">
             <thead>
               <tr className="text-text-secondary border-b border-border">
                 <th className="text-left py-2 sm:py-3 px-2 sm:px-4">Error</th>
