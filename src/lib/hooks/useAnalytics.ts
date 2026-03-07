@@ -17,7 +17,7 @@ export function useAnalytics(address: string, period: Period, initialData?: Cont
   return useQuery({
     queryKey: ['analytics', address, period],
     queryFn: () => fetchAnalytics(address, period),
-    initialData,
+    placeholderData: previousData => previousData ?? initialData,
     staleTime: 5 * 60_000,
   });
 }
