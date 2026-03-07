@@ -92,6 +92,11 @@
 
 ## Backlog
 
+- [ ] **Sort dropdown icon** — иконка/стрелочка в выпадающем списке сортировки (в таблицах Top Functions, All Callers и других) сейчас не видна на темном фоне. Нужно сделать её белой.
+
+- [ ] **Mobile horizontal scroll** — таблицы на вкладках Overview, Functions, Callers, Errors не скроллятся по горизонтали (выходят за экран). На Transactions работает, на остальных — нет. Проблема возможно в том, что эти таблицы рендерятся через OverviewTab/FunctionsTab компоненты.
+- [ ] **Compare page table** — аналогичная проблема с горизонтальным скроллом на мобильных
+- [ ] **Long names scroll** — длинные названия функций и ошибок не влазят в ячейки таблиц. Нужно добавить горизонтальный скролл внутри ячеек или сделать их прокручиваемыми при тапе.
 - [ ] Error names: add expandable row on tap for mobile (currently truncated)
 - [ ] Export charts as PNG
 - [ ] New vs returning callers in Callers tab (requires DB)
