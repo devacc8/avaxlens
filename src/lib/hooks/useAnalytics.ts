@@ -10,7 +10,7 @@ async function fetchAnalytics(address: string, period: Period): Promise<Contract
   if (!res.ok) throw new Error('Failed to load analytics');
   const json = await res.json();
   if (!json.success) throw new Error(json.error || 'Failed to load analytics');
-  return json.data;
+  return json.data.analytics ?? json.data;
 }
 
 export function useAnalytics(address: string, period: Period, initialData?: ContractAnalytics) {
