@@ -20,8 +20,8 @@ export default function CallersTable({ data }: CallersTableProps) {
   const paged = sorted.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
 
   return (
-    <div className="bg-bg-card border border-border rounded-xl p-6 overflow-x-auto">
-      <div className="flex items-center justify-between mb-6 min-w-max">
+    <div className="bg-bg-card border border-border rounded-xl p-6">
+      <div className="flex items-center justify-between mb-6">
         <h3 className="font-semibold">All Callers</h3>
         <select
           value={sortBy}
@@ -38,7 +38,7 @@ export default function CallersTable({ data }: CallersTableProps) {
         <p className="text-text-muted text-sm text-center py-8">No caller data available</p>
       ) : (
         <>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto -mx-6 px-6">
             <table className="w-full text-xs sm:text-sm min-w-[500px]">
               <thead>
                 <tr className="text-text-secondary border-b border-border">

@@ -99,12 +99,12 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
       </div>
 
       {/* Table */}
-      <div className="bg-bg-card border border-border rounded-xl p-6 overflow-x-auto">
+      <div className="bg-bg-card border border-border rounded-xl p-6">
         {filtered.length === 0 ? (
           <p className="text-text-muted text-sm text-center py-8">No transactions found</p>
         ) : (
           <>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto -mx-6 px-6">
               <table className="w-full text-xs sm:text-sm min-w-[600px]">
                 <thead>
                   <tr className="text-text-secondary border-b border-border">
