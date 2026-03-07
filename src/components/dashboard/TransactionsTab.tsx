@@ -110,9 +110,9 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
                   <tr className="text-text-secondary border-b border-border">
                     <th className="text-left py-2 sm:py-3 px-2 sm:px-4">Hash</th>
                     <th className="text-left py-2 sm:py-3 px-2 sm:px-4">Function</th>
-                    <th className="hidden md:table-cell text-left py-3 px-4">From</th>
-                    <th className="hidden lg:table-cell text-right py-3 px-4">Value</th>
-                    <th className="hidden lg:table-cell text-right py-3 px-4">Gas</th>
+                    <th className="text-left py-2 sm:py-3 px-2 sm:px-4">From</th>
+                    <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Value</th>
+                    <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Gas</th>
                     <th className="text-center py-2 sm:py-3 px-2 sm:px-4">Status</th>
                     <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Time</th>
                   </tr>
@@ -133,7 +133,7 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
                       <td className="py-2 sm:py-3 px-2 sm:px-4 font-mono max-w-[120px] sm:max-w-[180px] lg:max-w-none">
                         <div className="overflow-x-auto whitespace-nowrap scrollbar-none" title={tx.functionName}>{tx.functionName}</div>
                       </td>
-                      <td className="hidden md:table-cell py-3 px-4">
+                      <td className="py-2 sm:py-3 px-2 sm:px-4">
                         <a
                           href={`https://snowtrace.io/address/${tx.from}`}
                           target="_blank"
@@ -143,8 +143,8 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
                           {shortenAddress(tx.from)}
                         </a>
                       </td>
-                      <td className="hidden lg:table-cell py-3 px-4 text-right">{tx.value !== '0' ? tx.value + ' AVAX' : '0'}</td>
-                      <td className="hidden lg:table-cell py-3 px-4 text-right">{formatGas(tx.gasUsed)}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-right">{tx.value !== '0' ? tx.value + ' AVAX' : '0'}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 text-right">{formatGas(tx.gasUsed)}</td>
                       <td className="py-2 sm:py-3 px-2 sm:px-4 text-center">
                         <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${
                           tx.isError ? 'bg-error/10 text-error' : 'bg-success/10 text-success'

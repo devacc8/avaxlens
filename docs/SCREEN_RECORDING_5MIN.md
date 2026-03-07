@@ -55,9 +55,9 @@
 | 1:30 | Success Rate card | Hover | "Success rate — ninety-seven percent." |
 | 1:34 | Unique Callers card | Hover | "Unique callers — over 180,000 unique addresses interacting with this contract." |
 | 1:38 | Avg Gas card | Hover | "Average gas usage — helpful for understanding cost patterns." |
-| 1:43 | Volume Chart | Scroll to chart, hover over trend | "Transaction volume over time. Seven, thirty, or ninety days." |
-| 1:48 | Period switch | Click "7d", then "90d" | "Switch periods — updates instantly with smart caching. Notice the URL updates too." |
-| 1:53 | URL bar | Point to URL with ?period=90d | "Every view is shareable — copy the URL and send it to your team." |
+| 1:43 | Volume Chart | Scroll to chart, hover over trend | "Transaction volume over time. Seven or thirty days." |
+| 1:48 | Period switch | Click "7d", then "30d" | "Switch periods — updates instantly with smart caching. Notice the URL updates too." |
+| 1:53 | URL bar | Point to URL with ?period=30d | "Every view is shareable — copy the URL and send it to your team." |
 | 1:58 | Success/Fail Chart | Scroll down | "Success versus fail breakdown. Visual and clear." |
 
 ---
@@ -155,7 +155,7 @@
 - [ ] Recent Searches section visible (if you've viewed contracts before)
 - [ ] All nav links work (Compare, Use Cases, Roadmap)
 - [ ] All 6 tabs work (Overview, Transactions, Functions, Errors, Callers, AI Audit)
-- [ ] Period switching works (7d / 30d / 90d) — note instant cache on second switch
+- [ ] Period switching works (7d / 30d) — note instant cache on second switch
 - [ ] Tx hash search works in Transactions tab
 - [ ] AI Audit shows real data for Trader Joe
 - [ ] Export CSV button works on Functions tab

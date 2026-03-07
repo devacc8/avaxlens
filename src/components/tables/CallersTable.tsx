@@ -45,10 +45,10 @@ export default function CallersTable({ data }: CallersTableProps) {
                 <tr className="text-text-secondary border-b border-border">
                   <th className="text-left py-2 sm:py-3 px-2 sm:px-4">Address</th>
                   <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Txs</th>
-                  <th className="hidden sm:table-cell text-right py-3 px-4">%</th>
+                  <th className="text-right py-2 sm:py-3 px-2 sm:px-4">%</th>
                   <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Success</th>
-                  <th className="hidden md:table-cell text-right py-3 px-4">Gas Used</th>
-                  <th className="hidden md:table-cell text-right py-3 px-4">Last Active</th>
+                  <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Gas Used</th>
+                  <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Last Active</th>
                 </tr>
               </thead>
               <tbody>
@@ -65,12 +65,12 @@ export default function CallersTable({ data }: CallersTableProps) {
                       </a>
                     </td>
                     <td className="py-2 sm:py-3 px-2 sm:px-4 text-right font-medium">{caller.txCount.toLocaleString()}</td>
-                    <td className="hidden sm:table-cell py-3 px-4 text-right text-text-secondary">{formatPercentage(caller.percentage)}</td>
+                    <td className="py-2 sm:py-3 px-2 sm:px-4 text-right text-text-secondary">{formatPercentage(caller.percentage)}</td>
                     <td className={`py-2 sm:py-3 px-2 sm:px-4 text-right ${caller.successRate >= 98 ? 'text-success' : caller.successRate >= 95 ? 'text-warning' : 'text-error'}`}>
                       {formatPercentage(caller.successRate)}
                     </td>
-                    <td className="hidden md:table-cell py-3 px-4 text-right">{formatGas(caller.totalGasUsed)}</td>
-                    <td className="hidden md:table-cell py-3 px-4 text-right text-text-secondary">{caller.lastActive}</td>
+                    <td className="py-2 sm:py-3 px-2 sm:px-4 text-right">{formatGas(caller.totalGasUsed)}</td>
+                    <td className="py-2 sm:py-3 px-2 sm:px-4 text-right text-text-secondary">{caller.lastActive}</td>
                   </tr>
                 ))}
               </tbody>
