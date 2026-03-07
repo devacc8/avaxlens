@@ -19,12 +19,12 @@
 
 - [x] Contract address input with validation
 - [x] Contract info display (name, compiler, creation date, Snowtrace link)
-- [x] Transaction volume chart (7d / 30d / 90d)
+- [x] Transaction volume chart (7d / 30d — 90d available with Pro API)
 - [x] Success/fail stacked bar chart
 - [x] Metric cards (total txs, success rate, unique callers, avg gas)
 - [x] Function breakdown table (ABI-decoded)
 - [x] Error log table
-- [x] Period switching (7d / 30d / 90d) via client-side fetch
+- [x] Period switching (7d / 30d) via client-side fetch (90d available with Pro API)
 - [x] Popular contracts on landing page
 - [x] Skeleton loading states
 - [x] Error boundary
