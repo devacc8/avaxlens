@@ -19,7 +19,7 @@ Core functionality required for initial release:
 | Gas Metrics | Average gas usage, gas trends | Shipped v0.1.0 |
 | Function Breakdown | ABI-decoded function calls with counts, gas analysis | Shipped v0.1.0 |
 | Error Logs | Decoded revert reasons with error distribution | Shipped v0.1.0 |
-| Period Selection | 7d, 30d, 90d time ranges | Shipped v0.1.0 |
+| Period Selection | 7d, 30d time ranges (longer periods limited by free API) | Shipped v0.1.0 |
 | Mobile Responsive | Works on mobile devices | Shipped v0.1.0 |
 | Functions Tab | Dedicated view: call charts, gas charts, extended table | Shipped v0.4.0 |
 | Callers Tab | Top callers, distribution chart, sortable table | Shipped v0.4.0 |

@@ -74,7 +74,7 @@
 **Trigger:** Weekly review of protocol health
 **Flow:**
 1. Open dashboard for main contract
-2. Select 30d or 90d period
+2. Select 7d or 30d period (longer periods limited by free API — shows actual data range covered)
 3. Review transaction volume chart
 4. Check top functions table
 5. Export metrics if needed
