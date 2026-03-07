@@ -6,6 +6,8 @@ Paste any contract address — get instant analytics: transaction volume, gas us
 
 **Live:** [avaxlens.vercel.app](https://avaxlens.vercel.app)
 
+![AvaxLens Demo](docs/demo.gif)
+
 ---
 
 ## How It Works

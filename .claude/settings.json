@@ -1,4 +1,11 @@
 {
+  "env": {
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
+  },
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Bash",
@@ -9,16 +16,15 @@
       "Glob",
       "Task",
       "WebFetch",
-      "WebSearch"
+      "WebSearch",
+      "Bash(npm run build)",
+      "Bash(git push origin main)",
+      "Bash(git checkout public-release)",
+      "Bash(git merge main --no-edit)",
+      "Bash(git stash -- .claude/settings.json)",
+      "Bash(git stash pop)"
     ],
     "deny": [],
     "ask": []
-  },
-  "env": {
-    "DISABLE_TELEMETRY": "1",
-    "DISABLE_ERROR_REPORTING": "1",
-    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
-  },
-  "includeCoAuthoredBy": false
+  }
 }
