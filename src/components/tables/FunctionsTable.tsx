@@ -40,10 +40,10 @@ export default function FunctionsTable({ data, extended }: FunctionsTableProps) 
               <tr className="text-text-secondary border-b border-border">
                 <th className="text-left py-2 sm:py-3 px-2 sm:px-4">Function</th>
                 <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Calls</th>
-                <th className="hidden sm:table-cell text-right py-3 px-4">%</th>
+                <th className="text-right py-2 sm:py-3 px-2 sm:px-4">%</th>
                 <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Success</th>
-                <th className="hidden md:table-cell text-right py-3 px-4">Avg Gas</th>
-                {extended && <th className="hidden lg:table-cell text-right py-3 px-4">Total Gas</th>}
+                <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Avg Gas</th>
+                {extended && <th className="text-right py-2 sm:py-3 px-2 sm:px-4">Total Gas</th>}
               </tr>
             </thead>
             <tbody>
@@ -53,12 +53,12 @@ export default function FunctionsTable({ data, extended }: FunctionsTableProps) 
                     <div className="overflow-x-auto whitespace-nowrap scrollbar-none" title={func.name}>{func.name}</div>
                   </td>
                   <td className="py-2 sm:py-3 px-2 sm:px-4 text-right font-medium">{func.calls.toLocaleString()}</td>
-                  <td className="hidden sm:table-cell py-3 px-4 text-right text-text-secondary">{formatPercentage(func.percentage)}</td>
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 text-right text-text-secondary">{formatPercentage(func.percentage)}</td>
                   <td className={`py-2 sm:py-3 px-2 sm:px-4 text-right ${func.successRate >= 98 ? 'text-success' : func.successRate >= 95 ? 'text-warning' : 'text-error'}`}>
                     {formatPercentage(func.successRate)}
                   </td>
-                  <td className="hidden md:table-cell py-3 px-4 text-right">{formatGas(func.avgGas)}</td>
-                  {extended && <td className="hidden lg:table-cell py-3 px-4 text-right">{formatGas(func.totalGas)}</td>}
+                  <td className="py-2 sm:py-3 px-2 sm:px-4 text-right">{formatGas(func.avgGas)}</td>
+                  {extended && <td className="py-2 sm:py-3 px-2 sm:px-4 text-right">{formatGas(func.totalGas)}</td>}
                 </tr>
               ))}
             </tbody>

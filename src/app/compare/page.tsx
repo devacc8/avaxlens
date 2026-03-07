@@ -111,9 +111,9 @@ export default function ComparePage() {
                 <tr className="border-b border-border">
                   <th className="text-left p-2 sm:p-4 text-text-secondary font-medium">Feature</th>
                   <th className="p-2 sm:p-4 text-center text-avax-red font-bold">AvaxLens</th>
-                  <th className="hidden sm:table-cell p-4 text-center text-text-secondary font-medium">Snowtrace</th>
+                  <th className="p-2 sm:p-4 text-center text-text-secondary font-medium">Snowtrace</th>
                   <th className="p-2 sm:p-4 text-center text-text-secondary font-medium">Tenderly</th>
-                  <th className="hidden md:table-cell p-4 text-center text-text-secondary font-medium">Dune</th>
+                  <th className="p-2 sm:p-4 text-center text-text-secondary font-medium">Dune</th>
                 </tr>
               </thead>
               <tbody>
@@ -121,9 +121,9 @@ export default function ComparePage() {
                   <tr key={row.feature} className="border-b border-border/50 hover:bg-bg-primary/30 transition">
                     <td className="p-2 sm:p-4 text-white font-medium">{row.feature}</td>
                     <td className="p-2 sm:p-4 text-center"><CellValue value={row.avaxlens} /></td>
-                    <td className="hidden sm:table-cell p-4 text-center"><CellValue value={row.snowtrace} /></td>
+                    <td className="p-2 sm:p-4 text-center"><CellValue value={row.snowtrace} /></td>
                     <td className="p-2 sm:p-4 text-center"><CellValue value={row.tenderly} /></td>
-                    <td className="hidden md:table-cell p-4 text-center"><CellValue value={row.dune} /></td>
+                    <td className="p-2 sm:p-4 text-center"><CellValue value={row.dune} /></td>
                   </tr>
                 ))}
               </tbody>
