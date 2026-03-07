@@ -99,13 +99,13 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
       </div>
 
       {/* Table */}
-      <div className="bg-bg-card border border-border rounded-xl p-6">
+      <div className="bg-bg-card border border-border rounded-xl p-6 overflow-hidden">
         {filtered.length === 0 ? (
           <p className="text-text-muted text-sm text-center py-8">No transactions found</p>
         ) : (
           <>
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs sm:text-sm">
+            <div className="overflow-x-auto -mx-6 px-6">
+              <table className="w-full text-xs sm:text-sm min-w-[600px]">
                 <thead>
                   <tr className="text-text-secondary border-b border-border">
                     <th className="text-left py-2 sm:py-3 px-2 sm:px-4">Hash</th>
@@ -130,7 +130,9 @@ export default function TransactionsTab({ address, period }: TransactionsTabProp
                           {tx.hash.slice(0, 10)}...
                         </a>
                       </td>
-                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-mono max-w-[120px] sm:max-w-[180px] truncate">{tx.functionName}</td>
+                      <td className="py-2 sm:py-3 px-2 sm:px-4 font-mono max-w-[120px] sm:max-w-[180px] lg:max-w-none">
+                        <div className="overflow-x-auto whitespace-nowrap scrollbar-none" title={tx.functionName}>{tx.functionName}</div>
+                      </td>
                       <td className="hidden md:table-cell py-3 px-4">
                         <a
                           href={`https://snowtrace.io/address/${tx.from}`}

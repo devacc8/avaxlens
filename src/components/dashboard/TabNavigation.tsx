@@ -47,7 +47,7 @@ function updateUrl(address: string, period: string, tab: string) {
 
 export default function TabNavigation({ analytics: initialAnalytics, contractInfo, address, initialPeriod, initialTab }: TabNavigationProps) {
   const [activeTab, setActiveTab] = useState<TabId>(isValidTab(initialTab) ? initialTab : 'overview');
-  const [period, setPeriod] = useState<Period>(initialPeriod === '7d' || initialPeriod === '90d' ? initialPeriod : '30d');
+  const [period, setPeriod] = useState<Period>(initialPeriod === '7d' ? initialPeriod : '30d');
 
   const { data: analytics, isFetching: loading, error } = useAnalytics(address, period, initialAnalytics);
 

@@ -104,9 +104,9 @@ export default function ComparePage() {
         </div>
 
         {/* Feature comparison table */}
-        <div className="bg-bg-card border border-border rounded-xl overflow-hidden mb-16">
+        <div className="bg-bg-card border border-border rounded-xl mb-16 overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-xs sm:text-sm">
+            <table className="w-full text-xs sm:text-sm min-w-[600px]">
               <thead>
                 <tr className="border-b border-border">
                   <th className="text-left p-2 sm:p-4 text-text-secondary font-medium">Feature</th>

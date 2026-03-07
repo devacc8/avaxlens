@@ -44,7 +44,7 @@ export default async function ContractDashboard({ params, searchParams }: Props)
     notFound();
   }
 
-  const periodDays = period === '7d' ? 7 : period === '90d' ? 90 : 30;
+  const periodDays = period === '7d' ? 7 : 30;
 
   try {
     // Sequential calls to respect API rate limits
@@ -71,7 +71,7 @@ export default async function ContractDashboard({ params, searchParams }: Props)
                 analytics={analytics}
                 contractInfo={contractInfo}
                 address={address}
-                initialPeriod={period === '7d' || period === '90d' ? period : '30d'}
+                initialPeriod={period === '7d' ? period : '30d'}
                 initialTab={tab}
               />
             </>

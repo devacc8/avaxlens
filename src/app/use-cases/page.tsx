@@ -210,7 +210,7 @@ const USE_CASES: UseCase[] = [
     problem: 'You deployed a contract last week. Is it being used? Are transactions increasing? Is the success rate dropping?',
     solution: 'Get a complete health dashboard in 10 seconds. Track volume trends, success rates, and user growth over time.',
     bullets: [
-      'Transaction volume charts (7d / 30d / 90d)',
+      'Transaction volume charts (7d / 30d)',
       'Success vs fail trend analysis',
       'Unique callers tracking',
       'Period comparison for growth metrics',
