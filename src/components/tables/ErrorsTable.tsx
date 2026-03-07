@@ -59,7 +59,7 @@ export default function ErrorsTable({ data, totalErrors, errorRate }: ErrorsTabl
                   <td className="py-2 sm:py-3 px-2 sm:px-4 font-mono text-error max-w-[150px] sm:max-w-none truncate">{err.error}</td>
                   <td className="py-2 sm:py-3 px-2 sm:px-4 text-right font-medium">{err.count.toLocaleString()}</td>
                   <td className="hidden sm:table-cell py-3 px-4 text-right text-text-secondary">{err.lastSeen}</td>
-                  <td className="hidden md:table-cell py-3 px-4 text-right font-mono">{err.functionName}</td>
+                  <td className="hidden md:table-cell py-3 px-4 text-right font-mono max-w-[100px] truncate">{err.functionName}</td>
                 </tr>
               ))}
             </tbody>
