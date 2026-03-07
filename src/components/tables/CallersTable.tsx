@@ -38,7 +38,7 @@ export default function CallersTable({ data }: CallersTableProps) {
         <p className="text-text-muted text-sm text-center py-8">No caller data available</p>
       ) : (
         <>
-          <div className="overflow-x-auto -mx-6 px-6">
+          <div className="overflow-x-auto">
             <table className="w-full text-xs sm:text-sm min-w-[500px]">
               <thead>
                 <tr className="text-text-secondary border-b border-border">
