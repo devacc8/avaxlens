@@ -107,8 +107,6 @@
 
 ## Backlog
 
-- [ ] **Truncate long names** — если название контракта, функции или ошибки слишком длинное — обрезать до разумной длины с многоточием (сейчас добавлен горизонтальный скролл, но можно и обрезать)
-
 - [ ] Export charts as PNG
 - [ ] New vs returning callers in Callers tab (requires DB)
 - [ ] Unit tests for processing functions (post-MVP)
