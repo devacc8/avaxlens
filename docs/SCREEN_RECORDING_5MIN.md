@@ -164,3 +164,19 @@
 - [ ] Clean browser (no extensions, no bookmarks)
 - [ ] Microphone tested
 - [ ] Screen recording software ready
+
+---
+
+## Optional: Mobile Version (15-30 sec)
+
+If showing mobile version, add after Block 4 (before Block 5):
+
+**Time:** After 3:40 mark
+
+| Time | Screen | Mouse | Audio |
+|------|--------|-------|-------|
+| 3:40 | Open DevTools | Press F12, toggle device toolbar | "Works on mobile too — responsive design throughout." |
+| 3:45 | iPhone 14 Pro viewport | Scroll dashboard | "All six tabs, charts, tables — adapted for smaller screens." |
+| 4:00 | Back to desktop | Close device toolbar | "But desktop gives you the full picture." |
+
+**Note:** This segment is optional — judges may primarily evaluate on desktop. Record only if time allows.

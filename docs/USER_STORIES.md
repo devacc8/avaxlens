@@ -27,6 +27,32 @@
 - **...see success rate** so I can assess risk
 - **...understand usage trends** so I can make informed decisions
 
+### As a security-conscious user, I want to...
+- **...see AI-powered security audits** so I can assess contract risks before interacting
+- **...get quick security score (A-F)** so I can make informed decisions
+
+---
+
+## New Features (v0.5.x)
+
+### AI Security Audit
+- **...get instant security analysis** with risk score (A-F grade)
+- **...see specific security findings** with severity levels (critical/warning/info)
+- **...receive recommendations** on how to mitigate identified risks
+
+### Contract Comparison
+- **...compare two contracts side-by-side** to benchmark against competitors
+- **...see feature matrix** comparing AvaxLens vs Snowtrace vs Tenderly vs Dune
+
+### Recent Searches
+- **...see recently viewed contracts** so I can quickly revisit them
+- **...search history persists** across browser sessions
+
+### Network Stats
+- **...see live AVAX price** in the header
+- **...see current gas price** before making transactions
+- **...see TVL (Total Value Locked)** for Avalanche network
+
 ---
 
 ## Use Cases
