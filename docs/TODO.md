@@ -109,9 +109,15 @@
 
 - [ ] Export charts as PNG
 - [ ] New vs returning callers in Callers tab (requires DB)
-- [ ] Unit tests for processing functions (post-MVP)
-- [ ] Demo video recording (5-min walkthrough)
+- [x] Unit tests for processing functions (post-MVP) — skip for now
+- [x] Demo video recording (5-min walkthrough) — YouTube ready
 - [ ] **Add more AI Audit contracts** — target 10+ contracts (Pangolin, GMX, Benqi, Bullet, Yeti, Platypus, Gorilla, etc.)
+
+---
+
+## For Dev Review
+
+- [ ] Review Phase 3 submission docs — see docs/PHASE3_*.md files for future roadmap, monetization, competitors
 
 ---
 
