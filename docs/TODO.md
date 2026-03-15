@@ -112,3 +112,44 @@
 - [ ] Unit tests for processing functions (post-MVP)
 - [ ] Demo video recording (5-min walkthrough)
 - [ ] **Add more AI Audit contracts** — target 10+ contracts (Pangolin, GMX, Benqi, Bullet, Yeti, Platypus, Gorilla, etc.)
+
+---
+
+## Phase 2 — Backend + Pro Tier (Q2 2026)
+
+- [ ] **PostgreSQL setup** — deploy on Railway, add Drizzle ORM
+- [ ] **User accounts** — WalletConnect integration, store wallet address
+- [ ] **Watchlist** — save favorite contracts per user (stored in PostgreSQL)
+- [ ] **Query history** — log queries per user
+- [ ] **Pro tier UI** — $19/mo badge, upgrade button, gated features
+- [ ] **90+ day history for Pro** — unlock extended data in API
+- [ ] **Multi-contract comparison** — select 2+ contracts, compare side-by-side
+- [ ] **Unlimited AI audits for Pro** — remove 4-contract limit for paid users
+
+---
+
+## Phase 3 — AI Security Expansion (Q3 2026)
+
+- [ ] **AI Contract Summary** — generate plain English explanation from ABI
+- [ ] **AI Gas Suggestions** — analyze functions, suggest optimizations
+- [ ] **Anomaly detection** — alert on volume spikes, gas anomalies
+- [ ] **Telegram/Discord alerts** — user configures triggers, bot notifies
+- [ ] **MCP Server** — API endpoint for AI assistants (Claude, Cursor, Windsurf)
+
+---
+
+## Phase 4 — Max Tier + Multi-Chain (Q4 2026)
+
+- [ ] **Max tier ($29/mo)** — AI Gas Suggestions + API access
+- [ ] **API access for Max** — generate API keys, rate-limited endpoint
+- [ ] **Avalanche Subnets** — support Beam, DFK Chain, Dexalot
+- [ ] **Cross-chain comparison** — compare contracts across subnets
+
+---
+
+## Post-Phase 4
+
+- [ ] White-label solution for protocols
+- [ ] Generic EVM chain support (Polygon, Arbitrum, Fantom)
+- [ ] Team dashboards (shared access)
+- [ ] Public API documentation
