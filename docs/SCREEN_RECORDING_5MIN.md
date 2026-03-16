@@ -23,9 +23,8 @@
 
 | Time | Screen | Mouse | Audio |
 |------|--------|-------|-------|
-| 0:00 | avaxlens.vercel.app home page | Slow scroll to show hero | "Hello. I'm [name], co-founder of AvaxLens. We're building the missing analytics tool for Avalanche developers." |
-| 0:08 | Header with network stats | Point to AVAX price, Gas, TVL badges | "Right here you can see live network data — AVAX price, gas price, and total value locked — all updating in real time." |
-| 0:15 | Feature Bento Grid | Scroll to 4 feature cards | "Free. Instant. AI-powered security. Export ready. That's the promise." |
+| 0:00 | avaxlens.vercel.app home page | Slow scroll to show hero | "Hello. Alex and Mark here, we are co-founders of AvaxLens. We're building the missing analytics tool for Avalanche developers." |
+| 0:08 | Feature Bento Grid | Scroll to 4 feature cards | "Free. Instant. AI-powered security. Export ready. That's the promise." |
 | 0:22 | Popular Contracts + Recent Searches | Hover over contract cards | "Pick a popular contract or jump back to one you've recently viewed." |
 | 0:27 | Hero section | Point to search bar | "Today, most developers dig through raw transaction lists on Snowtrace. There has to be a better way." |
 
@@ -49,16 +48,14 @@
 |------|--------|-------|-------|
 | 1:05 | Back to home page | Click logo | "That's why we built AvaxLens." |
 | 1:08 | Search input | Click into input, paste Trader Joe address | "Paste any C-Chain contract address — get instant analytics." |
-| 1:15 | Dashboard loads | Pause on loading, then show metrics cards | "No signup. No API key. No setup. Let me show you." |
-| 1:20 | Header network stats | Point to AVAX price + gas badges | "Live network stats right in the header — AVAX price, current gas, total value locked." |
-| 1:25 | Total Transactions | Hover over the card | "Total transaction count — here's Trader Joe with over 2 million transactions." |
+| 1:15 | Dashboard loads | Pause on loading, then show metrics cards | "No signup. No API key. No setup. Live network stats in the header — AVAX price, gas, TVL. Let me show you." |
+| 1:22 | Total Transactions | Hover over the card | "Total transaction count — here's Trader Joe with over 2 million transactions." |
 | 1:30 | Success Rate card | Hover | "Success rate — ninety-seven percent." |
 | 1:34 | Unique Callers card | Hover | "Unique callers — over 180,000 unique addresses interacting with this contract." |
 | 1:38 | Avg Gas card | Hover | "Average gas usage — helpful for understanding cost patterns." |
 | 1:43 | Volume Chart | Scroll to chart, hover over trend | "Transaction volume over time. Seven or thirty days." |
-| 1:48 | Period switch | Click "7d", then "30d" | "Switch periods — updates instantly with smart caching. Notice the URL updates too." |
-| 1:53 | URL bar | Point to URL with ?period=30d | "Every view is shareable — copy the URL and send it to your team." |
-| 1:58 | Success/Fail Chart | Scroll down | "Success versus fail breakdown. Visual and clear." |
+| 1:48 | Period switch | Click "7d", then "30d" | "Switch periods — updates instantly with smart caching." |
+| 1:53 | Success/Fail Chart | Scroll down | "Success versus fail breakdown. Visual and clear." |
 
 ---
 
@@ -117,13 +114,13 @@
 ## Voice Script (5 min total)
 
 **Block 1 — Intro (30 sec)**
-"Hello. I'm [name], co-founder of AvaxLens. We're building the missing analytics tool for Avalanche developers. Right here in the header you can see live network data — AVAX price, current gas price, and total value locked on Avalanche — all updating in real time. Free. Instant. AI-powered security. Export ready. But today, most developers still dig through raw transaction lists on Snowtrace. There has to be a better way."
+"Hello. Alex and Mark here, we are co-founders of AvaxLens. We're building the missing analytics tool for Avalanche developers. Free. Instant. AI-powered security. Export ready. But today, most developers still dig through raw transaction lists on Snowtrace. There has to be a better way."
 
 **Block 2 — Problem (35 sec)**
 "Let me show you the current options. Snowtrace — free, but just a raw list of transactions. No charts, no analytics. Tenderly — powerful, but forty-nine dollars a month, requires project setup. Dune — requires SQL knowledge, thirty-nine dollars a month. You need to write queries just to see basic metrics. There's a gap. No free, instant, visual analytics for Avalanche contracts."
 
 **Block 3 — Solution: Overview (60 sec)**
-"That's why we built AvaxLens. Paste any C-Chain contract address — get instant analytics. No signup. No API key. No setup. Live network stats right in the header — AVAX price, gas, TVL. Here's Trader Joe — the biggest DEX on Avalanche. Total transactions — over 2 million. Success rate — ninety-seven percent. Unique callers — over 180,000 addresses. Transaction volume over time — switch periods instantly with smart caching powered by React Query. Notice the URL updates — every view is shareable. Copy the link and send it to your team. Success versus fail breakdown — visual and clear."
+"That's why we built AvaxLens. Paste any C-Chain contract address — get instant analytics. No signup. No API key. No setup. Live network stats in the header — AVAX price, gas, TVL. Here's Trader Joe — the biggest DEX on Avalanche. Total transactions — over 2 million. Success rate — ninety-seven percent. Unique callers — over 180,000 addresses. Transaction volume over time — switch periods instantly with smart caching powered by React Query. Success versus fail breakdown — visual and clear."
 
 **Block 4 — Deep Dive: Tabs (75 sec)**
 "Let's dive deeper. Functions tab — every function decoded from the ABI. Top functions by call count, gas usage per function. Full breakdown with success rates. And one click to export as CSV — take the data with you. Callers tab — who's using this contract? Top callers ranked by activity, sortable table with last active time. Transactions tab — full paginated history. Filter by status, search by transaction hash. Errors tab — every revert reason decoded, grouped by error type."
