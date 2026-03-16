@@ -3,15 +3,20 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { POPULAR_CONTRACTS } from '@/lib/constants';
+import { AUDITED_CONTRACTS } from '@/data/audits';
 import { getRecentSearches, type RecentSearch } from '@/lib/recent-searches';
 
 const categoryColors: Record<string, string> = {
   DEX: 'text-avax-red',
   Lending: 'text-success',
   Token: 'text-warning',
+  Bridge: 'text-accent-purple-light',
 };
 
-function ContractRow({ name, address, category }: { name: string; address: string; category?: string }) {
+const popularAddresses = new Set(POPULAR_CONTRACTS.map(c => c.address.toLowerCase()));
+const EXTRA_AUDITED = AUDITED_CONTRACTS.filter(c => !popularAddresses.has(c.address.toLowerCase()));
+
+function ContractRow({ name, address, category, grade }: { name: string; address: string; category?: string; grade?: string }) {
   return (
     <Link
       href={`/contract/${address}`}
@@ -24,6 +29,11 @@ function ContractRow({ name, address, category }: { name: string; address: strin
           </span>
         )}
         <span className="font-medium text-sm">{name}</span>
+        {grade && (
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-avax-red/15 text-avax-red font-semibold">
+            {grade}
+          </span>
+        )}
       </div>
       <div className="flex items-center gap-3">
         <span className="text-text-muted text-xs font-mono hidden sm:inline">
@@ -58,6 +68,22 @@ export default function ContractExplorer() {
                 name={contract.name}
                 address={contract.address}
                 category={contract.category}
+              />
+            ))}
+          </div>
+
+          <h3 className="text-text-secondary text-sm font-medium mb-3 mt-6 flex items-center gap-2">
+            AI Audited
+            <span className="text-[10px] px-1.5 py-0.5 rounded bg-avax-red/15 text-avax-red font-semibold">{EXTRA_AUDITED.length + POPULAR_CONTRACTS.length} contracts</span>
+          </h3>
+          <div className="flex flex-col gap-1">
+            {EXTRA_AUDITED.map((contract) => (
+              <ContractRow
+                key={contract.address}
+                name={contract.name}
+                address={contract.address}
+                category={contract.category}
+                grade={contract.grade}
               />
             ))}
           </div>

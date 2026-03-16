@@ -541,7 +541,21 @@ export function getAuditData(address: string): AiAuditData | undefined {
   return AUDITS[address.toLowerCase()];
 }
 
+const AUDIT_CATEGORIES: Record<string, string> = {
+  'JoeRouter02': 'DEX',
+  'LBRouter': 'DEX',
+  'Aave V3 Pool (Proxy)': 'Lending',
+  'WAVAX': 'Token',
+  'QiAvax': 'Lending',
+  'Stargate Router': 'Bridge',
+  'Platypus Pool (Proxy)': 'DEX',
+  'WooRouterV2': 'DEX',
+  'PangolinRouter': 'DEX',
+};
+
 export const AUDITED_CONTRACTS = Object.values(AUDITS).map((a) => ({
   address: a.contractAddress,
   name: a.contractName,
+  category: AUDIT_CATEGORIES[a.contractName] || 'Other',
+  grade: a.grade,
 }));
