@@ -7,12 +7,12 @@ import { formatGas } from '@/lib/utils';
 
 const FunctionCallsChart = dynamic(() => import('@/components/charts/FunctionCallsChart'), {
   ssr: false,
-  loading: () => <div className="h-[300px] bg-bg-card animate-pulse rounded" />,
+  loading: () => <div className="h-[300px] bg-bg-input animate-pulse rounded-lg" />,
 });
 
 const FunctionGasChart = dynamic(() => import('@/components/charts/FunctionGasChart'), {
   ssr: false,
-  loading: () => <div className="h-[300px] bg-bg-card animate-pulse rounded" />,
+  loading: () => <div className="h-[300px] bg-bg-input animate-pulse rounded-lg" />,
 });
 
 interface FunctionsTabProps {

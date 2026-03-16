@@ -6,12 +6,12 @@ import FunctionsTable from '@/components/tables/FunctionsTable';
 
 const VolumeChart = dynamic(() => import('@/components/charts/VolumeChart'), {
   ssr: false,
-  loading: () => <div className="h-[180px] bg-bg-card animate-pulse rounded" />,
+  loading: () => <div className="h-[180px] bg-bg-input animate-pulse rounded-lg" />,
 });
 
 const SuccessFailChart = dynamic(() => import('@/components/charts/SuccessFailChart'), {
   ssr: false,
-  loading: () => <div className="h-[180px] bg-bg-card animate-pulse rounded" />,
+  loading: () => <div className="h-[180px] bg-bg-input animate-pulse rounded-lg" />,
 });
 
 interface OverviewTabProps {

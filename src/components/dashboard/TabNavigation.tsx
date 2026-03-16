@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import type { ContractAnalytics, ContractInfo, Period, TabId } from '@/lib/types';
 import { generateCsv, downloadCsv } from '@/lib/export-csv';
 import { saveRecentSearch } from '@/lib/recent-searches';
@@ -49,6 +49,9 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
   const [activeTab, setActiveTab] = useState<TabId>(isValidTab(initialTab) ? initialTab : 'overview');
   const [period, setPeriod] = useState<Period>(initialPeriod === '7d' ? initialPeriod : '30d');
 
+  const [exportDone, setExportDone] = useState(false);
+  const exportTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
   const { data: analytics, isFetching: loading, error } = useAnalytics(address, period, initialAnalytics);
 
   useEffect(() => {
@@ -63,6 +66,9 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
     if (!csv) return;
     const name = contractInfo.name || address.slice(0, 10);
     downloadCsv(csv, `${name}_${activeTab}_${period}.csv`);
+    setExportDone(true);
+    clearTimeout(exportTimer.current);
+    exportTimer.current = setTimeout(() => setExportDone(false), 2000);
   }, [analytics, activeTab, contractInfo.name, address, period]);
 
   const handlePeriodChange = useCallback((newPeriod: Period) => {
@@ -101,11 +107,24 @@ export default function TabNavigation({ analytics: initialAnalytics, contractInf
             <button
               onClick={handleExport}
               disabled={loading}
-              className="px-3 py-1.5 text-xs sm:text-sm bg-bg-input border border-border rounded-lg text-text-secondary hover:text-white hover:border-border-hover transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className={`px-3 py-1.5 text-xs sm:text-sm bg-bg-input border rounded-lg transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
+                exportDone
+                  ? 'border-success/50 text-success'
+                  : 'border-border text-text-secondary hover:text-white hover:border-border-hover'
+              }`}
               title="Export as CSV"
             >
-              <span className="hidden sm:inline">Export CSV</span>
-              <span className="sm:hidden">CSV</span>
+              {exportDone ? (
+                <>
+                  <span className="hidden sm:inline">Exported!</span>
+                  <span className="sm:hidden">Done</span>
+                </>
+              ) : (
+                <>
+                  <span className="hidden sm:inline">Export CSV</span>
+                  <span className="sm:hidden">CSV</span>
+                </>
+              )}
             </button>
           )}
           {activeTab !== 'audit' && (
