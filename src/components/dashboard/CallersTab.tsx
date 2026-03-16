@@ -7,7 +7,7 @@ import { shortenAddress } from '@/lib/utils';
 
 const CallerDistributionChart = dynamic(() => import('@/components/charts/CallerDistributionChart'), {
   ssr: false,
-  loading: () => <div className="h-[300px] bg-bg-card animate-pulse rounded" />,
+  loading: () => <div className="h-[300px] bg-bg-input animate-pulse rounded-lg" />,
 });
 
 interface CallersTabProps {

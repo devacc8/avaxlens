@@ -36,7 +36,7 @@ export default function AddressInput({ size = 'large', placeholder }: AddressInp
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className={`bg-bg-input rounded-xl ${isLarge ? 'p-2' : 'p-1'} flex flex-col ${isLarge ? 'md:flex-row' : 'flex-row'} gap-2`}>
+      <div className={`bg-bg-input rounded-xl ${isLarge ? 'p-2' : 'p-1'} flex flex-col ${isLarge ? 'md:flex-row' : 'flex-row'} gap-2 border ${error ? 'border-error/50' : 'border-transparent'} transition`}>
         <input
           type="text"
           value={address}
