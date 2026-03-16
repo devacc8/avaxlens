@@ -201,33 +201,31 @@ Infrastructure evolution from in-memory cache to persistent storage.
 - [ ] Save favorite contracts to watchlist
 - [ ] Alerts: Telegram/Discord notifications on anomalies
 
-### Phase 2: AI Features (Month 2-3)
+### Phase 2: Pro Tier Launch (Month 2-3)
 
-- [ ] Smart contract security audit (analyze source/bytecode for vulnerability patterns)
-- [ ] AI-powered security analysis (Pro tier) — vulnerability detection, risk scoring, exploit patterns
+| Tier | Price | Features |
+|------|-------|----------|
+| Free | $0 | Basic analytics, 10k tx limit, 30d history |
+| Pro | $19/mo | Unlimited AI audits, 90+ day history, CSV export, multi-contract comparison, alerts |
+| Max | $29/mo | AI Gas Suggestions, API access |
+
+Additional revenue streams:
+- API access for bots/dashboards
+- Avalanche Foundation / Retro9000 grants
+
+### Phase 3: AI Security Expansion (Month 3-4)
+
+- [ ] AI Contract Summary — explains any contract in plain English
+- [ ] AI Gas Suggestions — optimization recommendations
 - [ ] Anomaly detection (volume spikes, gas anomalies, suspicious calls)
-- [ ] Similar contract search (find contracts with similar behavior)
-- [ ] Vector embeddings for contract bytecode (zvec)
 - [ ] MCP server — AI assistants can query contracts programmatically (Claude, Cursor, Windsurf, etc.)
 
-### Phase 3: Multi-Chain (Month 3-4)
+### Phase 4: Max Tier + Multi-Chain (Month 4-6)
 
 - [ ] Avalanche Subnet/L1 support (Beam, DFK Chain, Dexalot)
 - [ ] Cross-chain contract comparison
 - [ ] Subnet health metrics
 - [ ] Generic EVM chain support
-
-### Phase 4: Pro Tier & Revenue (Month 4-6)
-
-| Tier | Price | Features |
-|------|-------|----------|
-| Free | $0 | 3 contracts, 30d history, basic analytics |
-| Pro | $10-20/mo | Unlimited contracts, 90d+ history, alerts, API access, CSV export, AI security analysis, MCP access |
-| Team | $50/mo | Shared dashboards, role-based access |
-
-Additional revenue streams:
-- API access for bots/dashboards
-- Avalanche Foundation / Retro9000 grants
 
 ### Infrastructure Scale
 

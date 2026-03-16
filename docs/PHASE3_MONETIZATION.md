@@ -31,7 +31,7 @@ We generate sustainable revenue through recurring subscriptions. Users pay month
 
 **Why sustainable:**
 
-- Marginal cost near zero (PostgreSQL $5/mo, AI API calls ~$10/mo at scale)
+- Marginal cost near zero (DB hosted on VPS, AI API calls ~$10/mo at scale)
 - Recurring revenue = predictable income
 - Avalanche9000 ecosystem growth = more potential users
 - Lower price than competitors (Tenderly $49, Dune $39) with more features

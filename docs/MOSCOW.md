@@ -73,6 +73,7 @@ Desirable but not critical for hackathon:
 | New vs Returning Callers | Track caller retention (requires DB) | Low |
 | Open Graph Tags | Dynamic OG images with contract stats | Done (v0.5.3) |
 | Light Theme | Light/dark toggle respecting system preference | Low |
+| Wallet Connection | User accounts via WalletConnect (Phase 1 post-hackathon) | High |
 
 ---
 
@@ -82,7 +83,6 @@ Out of scope for now:
 
 | Feature | Reason |
 |---------|--------|
-| Wallet Connection | Read-only analytics — no transactions needed |
 | NFT Support | Focus on C-Chain smart contracts first |
 | Mainnet X/P Chain | C-Chain only for MVP |
 | Custom Dashboards | Single contract view for now |
