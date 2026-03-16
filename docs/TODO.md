@@ -111,7 +111,7 @@
 - [ ] New vs returning callers in Callers tab (requires DB)
 - [x] Unit tests for processing functions (post-MVP) — skip for now
 - [x] Demo video recording (5-min walkthrough) — YouTube ready
-- [ ] **Add more AI Audit contracts** — target 10+ contracts (Pangolin, GMX, Benqi, Bullet, Yeti, Platypus, Gorilla, etc.)
+- [x] **Add more AI Audit contracts** — 9 total: +Benqi, Stargate, Platypus, WooFi, Pangolin
 
 ---
 

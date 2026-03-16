@@ -137,7 +137,7 @@ function AuditComingSoon() {
         AI security audits are currently available for select contracts.
         Try one of the audited contracts below:
       </p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-2xl mx-auto">
         {AUDITED_CONTRACTS.map((c) => (
           <a
             key={c.address}
@@ -150,10 +150,6 @@ function AuditComingSoon() {
             </p>
           </a>
         ))}
-      </div>
-      <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-bg-input rounded-lg text-sm text-text-secondary">
-        <span className="w-2 h-2 bg-avax-red rounded-full animate-pulse" />
-        More contracts coming soon
       </div>
     </div>
   );
